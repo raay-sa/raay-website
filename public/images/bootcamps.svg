@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="300" height="200" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .people { fill: #2A2665; }
+    .accent { fill: #B29567; }
+    .light { fill: #F8D6F3; }
+    .medium { fill: #E890D8; }
+  </style>
+  
+  <!-- Background Elements -->
+  <rect x="50" y="40" width="200" height="120" rx="10" fill="#F8D6F3" opacity="0.4" />
+  <circle cx="100" cy="70" r="25" fill="#F8D6F3" opacity="0.7" />
+  <circle cx="220" cy="60" r="15" fill="#F8D6F3" opacity="0.7" />
+  
+  <!-- Teacher/Instructor -->
+  <circle cx="100" cy="90" r="16" class="people" />
+  <rect x="95" y="106" width="10" height="25" rx="5" class="people" />
+  <line x1="95" y1="115" x2="85" y2="125" stroke="#2A2665" stroke-width="3" stroke-linecap="round" />
+  <line x1="105" y1="115" x2="115" y2="125" stroke="#2A2665" stroke-width="3" stroke-linecap="round" />
+  
+  <!-- Whiteboard/Screen -->
+  <rect x="130" y="50" width="110" height="70" rx="4" fill="white" stroke="#2A2665" stroke-width="2" />
+  
+  <!-- Code on Board -->
+  <g transform="translate(140, 65)">
+    <rect width="90" height="40" rx="2" fill="#F5F5FF" />
+    <text x="5" y="15" font-family="monospace" font-size="8" fill="#2A2665">&lt;div class="container"&gt;</text>
+    <text x="10" y="25" font-family="monospace" font-size="8" fill="#2A2665">&lt;h1&gt;Welcome&lt;/h1&gt;</text>
+    <text x="10" y="35" font-family="monospace" font-size="8" fill="#2A2665">&lt;p&gt;Learn coding&lt;/p&gt;</text>
+    <text x="5" y="45" font-family="monospace" font-size="8" fill="#2A2665">&lt;/div&gt;</text>
+  </g>
+  
+  <!-- Students Row -->
+  <!-- Student 1 with laptop -->
+  <g transform="translate(130, 140)">
+    <circle cx="0" cy="0" r="10" class="people" />
+    <rect x="-5" y="10" width="10" height="15" rx="5" class="people" />
+    <rect x="-15" y="-5" width="30" height="20" rx="2" fill="#2A2665" opacity="0.8" />
+    <rect x="-12" y="-2" width="24" height="14" rx="1" fill="white" />
+  </g>
+  
+  <!-- Student 2 with laptop -->
+  <g transform="translate(170, 140)">
+    <circle cx="0" cy="0" r="10" class="people" />
+    <rect x="-5" y="10" width="10" height="15" rx="5" class="people" />
+    <rect x="-15" y="-5" width="30" height="20" rx="2" fill="#2A2665" opacity="0.8" />
+    <rect x="-12" y="-2" width="24" height="14" rx="1" fill="white" />
+  </g>
+  
+  <!-- Student 3 with laptop -->
+  <g transform="translate(210, 140)">
+    <circle cx="0" cy="0" r="10" class="people" />
+    <rect x="-5" y="10" width="10" height="15" rx="5" class="people" />
+    <rect x="-15" y="-5" width="30" height="20" rx="2" fill="#2A2665" opacity="0.8" />
+    <rect x="-12" y="-2" width="24" height="14" rx="1" fill="white" />
+  </g>
+  
+  <!-- Code Symbols & Decor -->
+  <text x="235" y="80" font-family="monospace" font-size="12" fill="#B29567" font-weight="bold">&lt;/&gt;</text>
+  <text x="80" y="60" font-family="monospace" font-size="12" fill="#B29567" font-weight="bold">{}</text>
+  
+  <!-- Connected Lines -->
+  <line x1="110" y1="120" x2="130" y2="130" stroke="#B29567" stroke-width="1" stroke-dasharray="3,2" />
+  <line x1="130" y1="130" x2="170" y2="130" stroke="#B29567" stroke-width="1" stroke-dasharray="3,2" />
+  <line x1="170" y1="130" x2="210" y2="130" stroke="#B29567" stroke-width="1" stroke-dasharray="3,2" />
+</svg>

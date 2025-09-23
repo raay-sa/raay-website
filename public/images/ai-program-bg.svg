@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background with light texture -->
+  <rect width="800" height="600" fill="#f8f9fa" />
+  
+  <!-- Subtle geometric patterns inspired by Islamic design -->
+  <g opacity="0.07">
+    <path d="M0,0 L800,0 L800,600 L0,600 L0,0 Z" fill="#2a2665" />
+  </g>
+  
+  <!-- Neural network visualization with Arabian geometric influence -->
+  <g opacity="0.15">
+    <!-- Nodes in the neural network -->
+    <g fill="#2a2665">
+      <!-- Input layer -->
+      <circle cx="150" cy="150" r="10" />
+      <circle cx="150" cy="250" r="10" />
+      <circle cx="150" cy="350" r="10" />
+      <circle cx="150" cy="450" r="10" />
+      
+      <!-- Hidden layer 1 -->
+      <circle cx="300" cy="130" r="10" />
+      <circle cx="300" cy="230" r="10" />
+      <circle cx="300" cy="330" r="10" />
+      <circle cx="300" cy="430" r="10" />
+      <circle cx="300" cy="530" r="10" />
+      
+      <!-- Hidden layer 2 -->
+      <circle cx="450" cy="150" r="10" />
+      <circle cx="450" cy="250" r="10" />
+      <circle cx="450" cy="350" r="10" />
+      <circle cx="450" cy="450" r="10" />
+      
+      <!-- Output layer -->
+      <circle cx="600" cy="200" r="10" />
+      <circle cx="600" cy="300" r="10" />
+      <circle cx="600" cy="400" r="10" />
+    </g>
+    
+    <!-- Connections between nodes with Arabian pattern influence -->
+    <g stroke="#b29567" stroke-width="1" opacity="0.5">
+      <!-- Input to Hidden 1 connections -->
+      <path d="M150,150 L300,130" />
+      <path d="M150,150 L300,230" />
+      <path d="M150,150 L300,330" />
+      <path d="M150,150 L300,430" />
+      
+      <path d="M150,250 L300,130" />
+      <path d="M150,250 L300,230" />
+      <path d="M150,250 L300,330" />
+      <path d="M150,250 L300,430" />
+      
+      <path d="M150,350 L300,130" />
+      <path d="M150,350 L300,230" />
+      <path d="M150,350 L300,330" />
+      <path d="M150,350 L300,430" />
+      <path d="M150,350 L300,530" />
+      
+      <path d="M150,450 L300,230" />
+      <path d="M150,450 L300,330" />
+      <path d="M150,450 L300,430" />
+      <path d="M150,450 L300,530" />
+      
+      <!-- Hidden 1 to Hidden 2 connections -->
+      <path d="M300,130 L450,150" />
+      <path d="M300,130 L450,250" />
+      
+      <path d="M300,230 L450,150" />
+      <path d="M300,230 L450,250" />
+      <path d="M300,230 L450,350" />
+      
+      <path d="M300,330 L450,250" />
+      <path d="M300,330 L450,350" />
+      <path d="M300,330 L450,450" />
+      
+      <path d="M300,430 L450,350" />
+      <path d="M300,430 L450,450" />
+      
+      <path d="M300,530 L450,450" />
+      
+      <!-- Hidden 2 to Output connections -->
+      <path d="M450,150 L600,200" />
+      <path d="M450,150 L600,300" />
+      
+      <path d="M450,250 L600,200" />
+      <path d="M450,250 L600,300" />
+      <path d="M450,250 L600,400" />
+      
+      <path d="M450,350 L600,200" />
+      <path d="M450,350 L600,300" />
+      <path d="M450,350 L600,400" />
+      
+      <path d="M450,450 L600,300" />
+      <path d="M450,450 L600,400" />
+    </g>
+  </g>
+  
+  <!-- Symbolic AI elements with Arabian design influence -->
+  <g>
+    <!-- Central brain/AI concept with Arab geometric patterns -->
+    <g transform="translate(400, 300)" opacity="0.2">
+      <!-- Stylized AI brain with Arab geometric influences -->
+      <path d="M-80,-50 C-40,-80 40,-80 80,-50 C100,-30 100,30 80,50 C40,80 -40,80 -80,50 C-100,30 -100,-30 -80,-50 Z" fill="#2a2665" />
+      
+      <!-- Neural pathways inspired by Arab mosaic patterns -->
+      <g stroke="#b29567" stroke-width="2" fill="none">
+        <!-- Horizontal connections -->
+        <path d="M-70,0 L70,0" />
+        <path d="M-60,20 L60,20" />
+        <path d="M-60,-20 L60,-20" />
+        
+        <!-- Vertical connections -->
+        <path d="M0,-60 L0,60" />
+        <path d="M-40,-40 L-40,40" />
+        <path d="M40,-40 L40,40" />
+        
+        <!-- Diagonal connections -->
+        <path d="M-40,-40 L40,40" />
+        <path d="M40,-40 L-40,40" />
+        
+        <!-- Circular connections inspired by Arab circular patterns -->
+        <circle cx="0" cy="0" r="30" stroke-dasharray="10,5" />
+        
+        <!-- Hexagonal pattern inspired by Arab tile work -->
+        <path d="M0,-30 L26,-15 L26,15 L0,30 L-26,15 L-26,-15 Z" />
+      </g>
+      
+      <!-- Processing nodes inspired by Arab stars -->
+      <g fill="#b29567">
+        <path d="M0,0 L5,-15 L0,-10 L-5,-15 Z" />
+        <path d="M0,0 L15,-5 L10,0 L15,5 Z" />
+        <path d="M0,0 L5,15 L0,10 L-5,15 Z" />
+        <path d="M0,0 L-15,-5 L-10,0 L-15,5 Z" />
+        
+        <circle cx="-40" cy="-40" r="5" />
+        <circle cx="40" cy="-40" r="5" />
+        <circle cx="-40" cy="40" r="5" />
+        <circle cx="40" cy="40" r="5" />
+        
+        <circle cx="0" cy="-60" r="5" />
+        <circle cx="-60" cy="0" r="5" />
+        <circle cx="60" cy="0" r="5" />
+        <circle cx="0" cy="60" r="5" />
+      </g>
+    </g>
+  </g>
+  
+  <!-- Decorative elements inspired by Arabian patterns -->
+  <g opacity="0.15">
+    <!-- Abstract data stream effect with Arabian caligraphy-inspired flow -->
+    <g transform="translate(700, 150)">
+      <path d="M0,0 C-50,50 -100,80 -200,100 C-300,120 -400,120 -500,150 C-600,180 -650,250 -700,300" 
+            stroke="#2a2665" stroke-width="5" fill="none" opacity="0.2" />
+      
+      <path d="M0,20 C-50,70 -100,100 -200,120 C-300,140 -400,140 -500,170 C-600,200 -650,270 -700,320" 
+            stroke="#2a2665" stroke-width="3" fill="none" opacity="0.2" />
+      
+      <path d="M0,40 C-50,90 -100,120 -200,140 C-300,160 -400,160 -500,190 C-600,220 -650,290 -700,340" 
+            stroke="#b29567" stroke-width="2" fill="none" opacity="0.2" />
+    </g>
+    
+    <!-- Corner decorations in Arabian style -->
+    <path d="M0,0 L150,0 A150,150 0 0,0 0,150 Z" fill="#b29567" />
+    <path d="M800,600 L650,600 A150,150 0 0,0 800,450 Z" fill="#2a2665" />
+    
+    <!-- Arabesque corner decoration -->
+    <g transform="translate(50, 50)" fill="#2a2665">
+      <path d="M0,0 C10,5 20,5 30,0 C20,10 20,20 30,30 C20,25 10,25 0,30 C10,20 10,10 0,0 Z" />
+    </g>
+    
+    <g transform="translate(750, 550)" fill="#b29567">
+      <path d="M0,0 C10,5 20,5 30,0 C20,10 20,20 30,30 C20,25 10,25 0,30 C10,20 10,10 0,0 Z" />
+    </g>
+  </g>
+</svg>

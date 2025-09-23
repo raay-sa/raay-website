@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800px" height="800px" viewBox="0 0 800 800" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <!-- امرأة سعودية بالزي التقليدي -->
+  <g id="saudi-woman">
+    <!-- خلفية شفافة -->
+    <rect width="800" height="800" fill="none"/>
+    
+    <!-- الجسم -->
+    <g id="body" transform="translate(150, 100)">
+      <!-- العباءة -->
+      <path d="M250,650 C250,600 200,350 200,350 L400,350 C400,350 350,600 350,650 L250,650 Z" fill="#222222" stroke="#444444" stroke-width="3"/>
+      
+      <!-- الجزء العلوي من العباءة -->
+      <path d="M150,350 C150,250 225,200 300,200 C375,200 450,250 450,350 L150,350 Z" fill="#222222" stroke="#444444" stroke-width="3"/>
+      
+      <!-- الوجه -->
+      <circle cx="300" cy="150" r="80" fill="#F5D7B7"/>
+      
+      <!-- العينان -->
+      <ellipse cx="275" cy="145" rx="10" ry="7" fill="#4A2F27"/>
+      <ellipse cx="325" cy="145" rx="10" ry="7" fill="#4A2F27"/>
+      
+      <!-- الأنف -->
+      <path d="M300,150 L295,170 L305,170 Z" fill="#E5C7A7"/>
+      
+      <!-- الفم -->
+      <path d="M285,185 C285,185 300,195 315,185" fill="none" stroke="#8E5A4F" stroke-width="2" stroke-linecap="round"/>
+      
+      <!-- الحجاب (شمّار) -->
+      <path d="M220,200 C220,80 380,80 380,200 L380,240 C380,240 340,260 300,260 C260,260 220,240 220,240 L220,200 Z" fill="#222222" stroke="#444444" stroke-width="2"/>
+      
+      <!-- النقاب (غطاء الوجه الجزئي) -->
+      <path d="M260,180 C260,180 300,200 340,180 L340,200 C340,200 300,220 260,200 L260,180 Z" fill="#222222" stroke="#444444" stroke-width="2" opacity="0.7"/>
+      
+      <!-- زخارف على العباءة -->
+      <path d="M220,350 L220,400" stroke="#C6A664" stroke-width="5" stroke-opacity="0.7"/>
+      <path d="M250,350 L250,420" stroke="#C6A664" stroke-width="5" stroke-opacity="0.7"/>
+      <path d="M280,350 L280,430" stroke="#C6A664" stroke-width="5" stroke-opacity="0.7"/>
+      <path d="M310,350 L310,440" stroke="#C6A664" stroke-width="5" stroke-opacity="0.7"/>
+      <path d="M340,350 L340,430" stroke="#C6A664" stroke-width="5" stroke-opacity="0.7"/>
+      <path d="M370,350 L370,420" stroke="#C6A664" stroke-width="5" stroke-opacity="0.7"/>
+      <path d="M400,350 L400,400" stroke="#C6A664" stroke-width="5" stroke-opacity="0.7"/>
+      
+      <!-- طرحة إضافية -->
+      <path d="M200,150 C200,100 400,100 400,150" fill="none" stroke="#222222" stroke-width="20"/>
+    </g>
+  </g>
+</svg>

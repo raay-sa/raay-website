@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="600" height="300" viewBox="0 0 600 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background with gradient for consultations: pink/purple theme -->
+  <rect width="600" height="300" fill="url(#pink_gradient)"/>
+  
+  <!-- Subtle pattern for professional consultation feel -->
+  <g opacity="0.1">
+    <!-- Abstract connection pattern - professional network -->
+    <circle cx="100" cy="100" r="5" fill="white"/>
+    <circle cx="200" cy="80" r="5" fill="white"/>
+    <circle cx="320" cy="120" r="5" fill="white"/>
+    <circle cx="400" cy="60" r="5" fill="white"/>
+    <circle cx="500" cy="90" r="5" fill="white"/>
+    <circle cx="150" cy="200" r="5" fill="white"/>
+    <circle cx="250" cy="230" r="5" fill="white"/>
+    <circle cx="350" cy="190" r="5" fill="white"/>
+    <circle cx="450" cy="210" r="5" fill="white"/>
+    
+    <line x1="100" y1="100" x2="200" y2="80" stroke="white" stroke-width="1"/>
+    <line x1="200" y1="80" x2="320" y2="120" stroke="white" stroke-width="1"/>
+    <line x1="320" y1="120" x2="400" y2="60" stroke="white" stroke-width="1"/>
+    <line x1="400" y1="60" x2="500" y2="90" stroke="white" stroke-width="1"/>
+    <line x1="100" y1="100" x2="150" y2="200" stroke="white" stroke-width="1"/>
+    <line x1="200" y1="80" x2="250" y2="230" stroke="white" stroke-width="1"/>
+    <line x1="320" y1="120" x2="350" y2="190" stroke="white" stroke-width="1"/>
+    <line x1="400" y1="60" x2="450" y2="210" stroke="white" stroke-width="1"/>
+    <line x1="150" y1="200" x2="250" y2="230" stroke="white" stroke-width="1"/>
+    <line x1="250" y1="230" x2="350" y2="190" stroke="white" stroke-width="1"/>
+    <line x1="350" y1="190" x2="450" y2="210" stroke="white" stroke-width="1"/>
+  </g>
+  
+  <!-- Consultation scene - consultant and client -->
+  <g transform="translate(300, 160)">
+    <!-- Consultant figure -->
+    <g transform="translate(-50, 0)">
+      <circle cx="0" cy="-25" r="20" fill="#9F7AEA" opacity="0.9"/>
+      <path d="M-15 -5 L15 -5 L10 40 L-10 40 Z" fill="#9F7AEA" opacity="0.9"/>
+      <rect x="-8" y="-35" width="16" height="5" fill="#9F7AEA" opacity="0.9"/>
+    </g>
+    
+    <!-- Client figure -->
+    <g transform="translate(50, 0)">
+      <circle cx="0" cy="-25" r="20" fill="#9F7AEA" opacity="0.9"/>
+      <path d="M-15 -5 L15 -5 L10 40 L-10 40 Z" fill="#9F7AEA" opacity="0.9"/>
+    </g>
+    
+    <!-- Consultation table -->
+    <rect x="-80" y="40" width="160" height="5" rx="2" fill="#9F7AEA" opacity="0.9"/>
+    <rect x="-75" y="45" width="5" height="15" fill="#9F7AEA" opacity="0.9"/>
+    <rect x="70" y="45" width="5" height="15" fill="#9F7AEA" opacity="0.9"/>
+    
+    <!-- Consultation elements -->
+    <rect x="-40" y="20" width="80" height="15" rx="3" fill="#FFFFFF" opacity="0.9"/>
+    <g opacity="0.9">
+      <line x1="-30" y1="25" x2="30" y2="25" stroke="#b29567" stroke-width="1"/>
+      <line x1="-30" y1="30" x2="20" y2="30" stroke="#b29567" stroke-width="1"/>
+    </g>
+  </g>
+  
+  <!-- Professional elements for consultation -->
+  <g opacity="0.8">
+    <!-- Chart/graph -->
+    <g transform="translate(150, 70)">
+      <rect x="-40" y="-30" width="80" height="60" rx="3" fill="#FFFFFF"/>
+      <path d="M-30 10 L-15 -10 L0 15 L15 0 L30 -15" stroke="#b29567" stroke-width="2" fill="none"/>
+      <line x1="-30" y1="20" x2="30" y2="20" stroke="#9F7AEA" stroke-width="1"/>
+      <line x1="-30" y1="-30" x2="-30" y2="20" stroke="#9F7AEA" stroke-width="1"/>
+    </g>
+    
+    <!-- Document with seal -->
+    <g transform="translate(450, 70)">
+      <rect x="-30" y="-40" width="60" height="80" rx="3" fill="#FFFFFF"/>
+      <line x1="-20" y1="-30" x2="20" y2="-30" stroke="#9F7AEA" stroke-width="1"/>
+      <line x1="-20" y1="-25" x2="10" y2="-25" stroke="#9F7AEA" stroke-width="1"/>
+      <line x1="-20" y1="-20" x2="20" y2="-20" stroke="#9F7AEA" stroke-width="1"/>
+      <line x1="-20" y1="-15" x2="5" y2="-15" stroke="#9F7AEA" stroke-width="1"/>
+      <line x1="-20" y1="-10" x2="20" y2="-10" stroke="#9F7AEA" stroke-width="1"/>
+      <line x1="-20" y1="-5" x2="15" y2="-5" stroke="#9F7AEA" stroke-width="1"/>
+      <line x1="-20" y1="0" x2="20" y2="0" stroke="#9F7AEA" stroke-width="1"/>
+      <line x1="-20" y1="5" x2="10" y2="5" stroke="#9F7AEA" stroke-width="1"/>
+      <line x1="-20" y1="10" x2="15" y2="10" stroke="#9F7AEA" stroke-width="1"/>
+      <circle cx="0" cy="25" r="10" fill="#b29567"/>
+      <path d="M-5 25 L0 20 L5 25 L0 30 Z" fill="#FFFFFF"/>
+    </g>
+    
+    <!-- Lightbulb/idea icon -->
+    <g transform="translate(100, 220)">
+      <circle cx="0" cy="-10" r="15" fill="#b29567"/>
+      <path d="M-5 5 L5 5 L5 15 L-5 15 Z" fill="#b29567"/>
+      <path d="M-8 -15 L8 -15" stroke="#FFFFFF" stroke-width="2"/>
+      <path d="M-10 -10 L10 -10" stroke="#FFFFFF" stroke-width="2"/>
+      <path d="M-8 -5 L8 -5" stroke="#FFFFFF" stroke-width="2"/>
+    </g>
+    
+    <!-- Target/goal icon -->
+    <g transform="translate(500, 220)">
+      <circle cx="0" cy="0" r="20" stroke="#b29567" stroke-width="2" fill="none"/>
+      <circle cx="0" cy="0" r="15" stroke="#b29567" stroke-width="2" fill="none"/>
+      <circle cx="0" cy="0" r="10" stroke="#b29567" stroke-width="2" fill="none"/>
+      <circle cx="0" cy="0" r="5" fill="#b29567"/>
+      <line x1="-25" y1="0" x2="25" y2="0" stroke="#b29567" stroke-width="1"/>
+      <line x1="0" y1="-25" x2="0" y2="25" stroke="#b29567" stroke-width="1"/>
+    </g>
+  </g>
+  
+  <!-- Arabic-inspired decorative elements -->
+  <g opacity="0.3">
+    <path d="M50 260 Q100 240 150 260 Q200 280 250 260 Q300 240 350 260 Q400 280 450 260 Q500 240 550 260" stroke="#b29567" stroke-width="2" fill="none"/>
+    <circle cx="100" cy="260" r="3" fill="#b29567"/>
+    <circle cx="200" cy="260" r="3" fill="#b29567"/>
+    <circle cx="300" cy="260" r="3" fill="#b29567"/>
+    <circle cx="400" cy="260" r="3" fill="#b29567"/>
+    <circle cx="500" cy="260" r="3" fill="#b29567"/>
+  </g>
+  
+  <!-- Gradient definitions -->
+  <defs>
+    <linearGradient id="pink_gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F472B6"/>
+      <stop offset="100%" stop-color="#7C3AED"/>
+    </linearGradient>
+  </defs>
+</svg>

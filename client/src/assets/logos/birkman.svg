@@ -1,0 +1,10 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="200" rx="10" fill="#3b82f6" opacity="0.1"/>
+  <text x="100" y="95" font-family="Arial, sans-serif" font-size="28" font-weight="bold" text-anchor="middle" fill="#3b82f6">BIRKMAN</text>
+  <text x="100" y="125" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#3b82f6">PERSONALITY ASSESSMENT</text>
+  <circle cx="100" cy="60" r="25" stroke="#3b82f6" stroke-width="3" fill="none"/>
+  <path d="M85,55 L115,55 M85,65 L115,65" stroke="#3b82f6" stroke-width="2"/>
+  <path d="M90,45 C90,45 100,65 110,45" stroke="#3b82f6" stroke-width="2"/>
+  <path d="M75,140 L125,140" stroke="#3b82f6" stroke-width="3"/>
+  <path d="M75,150 L125,150" stroke="#3b82f6" stroke-width="3"/>
+</svg>

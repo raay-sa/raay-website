@@ -1,0 +1,35 @@
+<svg width="500" height="500" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- وجه بملامح عربية -->
+  <circle cx="250" cy="180" r="100" fill="#e0ac69"/>
+  <ellipse cx="250" cy="140" rx="85" ry="100" fill="#e0ac69"/>
+  
+  <!-- اللحية -->
+  <path d="M200,180 C200,220 230,260 250,260 C270,260 300,220 300,180" fill="#4a2513"/>
+  
+  <!-- الشماغ -->
+  <path d="M150,150 L350,150 L350,80 L150,80 Z" fill="#ffffff"/>
+  <path d="M150,150 L170,190 L330,190 L350,150 Z" fill="#ffffff"/>
+  <path d="M150,150 L130,190 L150,230 L170,190 Z" fill="#ffffff"/>
+  <path d="M350,150 L370,190 L350,230 L330,190 Z" fill="#ffffff"/>
+  
+  <!-- العقال -->
+  <ellipse cx="250" cy="120" rx="100" ry="25" fill="#000000"/>
+  <ellipse cx="250" cy="120" rx="90" ry="15" fill="none" stroke="#000000" stroke-width="5"/>
+  
+  <!-- الثوب -->
+  <path d="M150,230 L350,230 L380,500 L120,500 Z" fill="#ffffff"/>
+  <path d="M170,350 L330,350 L350,500 L150,500 Z" fill="#ffffff" stroke="#ededed" stroke-width="2"/>
+  
+  <!-- المشلح -->
+  <path d="M150,230 L350,230 L400,500 L100,500 Z" fill="none" stroke="#8c7a69" stroke-width="20" stroke-linejoin="round"/>
+  
+  <!-- نقوش الشماغ -->
+  <path d="M150,100 L350,100 M150,120 L350,120 M150,140 L350,140" stroke="#a00" stroke-width="2" stroke-dasharray="4 4"/>
+  <path d="M170,80 L170,150 M190,80 L190,150 M210,80 L210,150 M230,80 L230,150 M250,80 L250,150 M270,80 L270,150 M290,80 L290,150 M310,80 L310,150 M330,80 L330,150" stroke="#a00" stroke-width="2" stroke-dasharray="4 4"/>
+  
+  <!-- تفاصيل الوجه -->
+  <ellipse cx="220" cy="160" rx="8" ry="5" fill="#4a2513"/>
+  <ellipse cx="280" cy="160" rx="8" ry="5" fill="#4a2513"/>
+  <path d="M240,170 Q250,180 260,170" stroke="#4a2513" stroke-width="3" fill="none"/>
+  <path d="M220,155 L210,145 M280,155 L290,145" stroke="#4a2513" stroke-width="2" fill="none"/>
+</svg>

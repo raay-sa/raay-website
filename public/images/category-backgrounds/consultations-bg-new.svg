@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="600" height="300" viewBox="0 0 600 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background with brand pink/purple gradient -->
+  <rect width="600" height="300" fill="url(#brand_gradient_pink)"/>
+  
+  <!-- Subtle geometric overlay pattern -->
+  <g opacity="0.06">
+    <!-- Professional grid pattern -->
+    <circle cx="150" cy="75" r="50" stroke="white" stroke-width="1" fill="none"/>
+    <circle cx="150" cy="75" r="30" stroke="white" stroke-width="1" fill="none"/>
+    <circle cx="150" cy="75" r="10" stroke="white" stroke-width="1" fill="none"/>
+    
+    <circle cx="450" cy="75" r="50" stroke="white" stroke-width="1" fill="none"/>
+    <circle cx="450" cy="75" r="30" stroke="white" stroke-width="1" fill="none"/>
+    <circle cx="450" cy="75" r="10" stroke="white" stroke-width="1" fill="none"/>
+    
+    <circle cx="150" cy="225" r="50" stroke="white" stroke-width="1" fill="none"/>
+    <circle cx="150" cy="225" r="30" stroke="white" stroke-width="1" fill="none"/>
+    <circle cx="150" cy="225" r="10" stroke="white" stroke-width="1" fill="none"/>
+    
+    <circle cx="450" cy="225" r="50" stroke="white" stroke-width="1" fill="none"/>
+    <circle cx="450" cy="225" r="30" stroke="white" stroke-width="1" fill="none"/>
+    <circle cx="450" cy="225" r="10" stroke="white" stroke-width="1" fill="none"/>
+    
+    <line x1="150" y1="25" x2="150" y2="275" stroke="white" stroke-width="1"/>
+    <line x1="450" y1="25" x2="450" y2="275" stroke="white" stroke-width="1"/>
+    <line x1="100" y1="75" x2="500" y2="75" stroke="white" stroke-width="1"/>
+    <line x1="100" y1="225" x2="500" y2="225" stroke="white" stroke-width="1"/>
+  </g>
+  
+  <!-- Main consultation elements -->
+  <g transform="translate(300, 150)">
+    <!-- Central consultation hub -->
+    <circle cx="0" cy="0" r="90" fill="#2a2665" opacity="0.85"/>
+    
+    <!-- Consultation table with document -->
+    <rect x="-60" y="10" width="120" height="10" rx="3" fill="#b29567" opacity="0.9"/>
+    <rect x="-50" y="20" width="8" height="30" fill="#b29567" opacity="0.9"/>
+    <rect x="42" y="20" width="8" height="30" fill="#b29567" opacity="0.9"/>
+    
+    <!-- Document on table -->
+    <rect x="-40" y="-30" width="80" height="40" rx="3" fill="white" opacity="0.9"/>
+    <g opacity="0.9">
+      <line x1="-30" y1="-20" x2="30" y2="-20" stroke="#b29567" stroke-width="1.5"/>
+      <line x1="-30" y1="-15" x2="20" y2="-15" stroke="#b29567" stroke-width="1.5"/>
+      <line x1="-30" y1="-10" x2="30" y2="-10" stroke="#b29567" stroke-width="1.5"/>
+      <line x1="-30" y1="-5" x2="25" y2="-5" stroke="#b29567" stroke-width="1.5"/>
+      <line x1="-30" y1="0" x2="30" y2="0" stroke="#b29567" stroke-width="1.5"/>
+    </g>
+    
+    <!-- Consultant figure -->
+    <g transform="translate(-30, -40)">
+      <circle cx="0" cy="-15" r="15" fill="#b29567" opacity="0.9"/>
+      <!-- Business suit representation -->
+      <path d="M-10 0 L-8 30 L8 30 L10 0 Z" fill="#b29567" opacity="0.9"/>
+      <rect x="-6" y="0" width="12" height="20" fill="#2a2665" opacity="0.9"/>
+    </g>
+    
+    <!-- Client figure -->
+    <g transform="translate(30, -40)">
+      <circle cx="0" cy="-15" r="15" fill="#b29567" opacity="0.9"/>
+      <path d="M-10 0 L-8 30 L8 30 L10 0 Z" fill="#b29567" opacity="0.9"/>
+    </g>
+    
+    <!-- Connection between consultant and client -->
+    <path d="M-15 -45 C-5 -60 5 -60 15 -45" stroke="#b29567" stroke-width="2" fill="none"/>
+  </g>
+  
+  <!-- Professional consultation elements around the scene -->
+  <g opacity="0.85">
+    <!-- Element 1: business analytics chart -->
+    <g transform="translate(150, 75)">
+      <rect x="-25" y="-25" width="50" height="50" rx="5" fill="#b29567"/>
+      <line x1="-15" y1="15" x2="-15" y2="-15" stroke="white" stroke-width="2"/>
+      <line x1="-15" y1="15" x2="15" y2="15" stroke="white" stroke-width="2"/>
+      <path d="M-10 5 L-5 -5 L0 10 L5 0 L10 -10" stroke="white" stroke-width="2" fill="none"/>
+    </g>
+    
+    <!-- Element 2: clipboard/checklist -->
+    <g transform="translate(450, 75)">
+      <rect x="-20" y="-30" width="40" height="60" rx="5" fill="#b29567"/>
+      <rect x="-15" y="-25" width="30" height="50" rx="3" fill="white"/>
+      <line x1="-10" y1="-15" x2="10" y2="-15" stroke="#2a2665" stroke-width="1.5"/>
+      <line x1="-10" y1="-5" x2="10" y2="-5" stroke="#2a2665" stroke-width="1.5"/>
+      <line x1="-10" y1="5" x2="10" y2="5" stroke="#2a2665" stroke-width="1.5"/>
+      <line x1="-10" y1="15" x2="10" y2="15" stroke="#2a2665" stroke-width="1.5"/>
+    </g>
+    
+    <!-- Element 3: target/goal icon -->
+    <g transform="translate(150, 225)">
+      <circle cx="0" cy="0" r="25" fill="#b29567"/>
+      <circle cx="0" cy="0" r="20" stroke="white" stroke-width="2" fill="none"/>
+      <circle cx="0" cy="0" r="15" stroke="white" stroke-width="2" fill="none"/>
+      <circle cx="0" cy="0" r="10" stroke="white" stroke-width="2" fill="none"/>
+      <circle cx="0" cy="0" r="5" fill="white"/>
+    </g>
+    
+    <!-- Element 4: consulting handshake icon -->
+    <g transform="translate(450, 225)">
+      <circle cx="0" cy="0" r="25" fill="#b29567"/>
+      <!-- Stylized handshake -->
+      <path d="M-15 -5 C-10 -10 -5 -10 0 -5 C5 -10 10 -10 15 -5" stroke="white" stroke-width="2.5" fill="none"/>
+      <path d="M-15 0 C-10 -5 -5 -5 0 0 C5 -5 10 -5 15 0" stroke="white" stroke-width="2.5" fill="none"/>
+      <path d="M-15 5 C-10 0 -5 0 0 5 C5 0 10 0 15 5" stroke="white" stroke-width="2.5" fill="none"/>
+    </g>
+  </g>
+  
+  <!-- Arabic-inspired decorative elements -->
+  <g transform="translate(300, 270)" opacity="0.4">
+    <path d="M-200 0 C-150 -20 -100 20 -50 0 C0 -20 50 20 100 0 C150 -20 200 20 200 0" stroke="#b29567" stroke-width="2" fill="none"/>
+  </g>
+  
+  <!-- Define gradients -->
+  <defs>
+    <linearGradient id="brand_gradient_pink" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#A46BAB"/>
+      <stop offset="100%" stop-color="#7E3F9D"/>
+    </linearGradient>
+  </defs>
+</svg>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="200" viewBox="0 0 400 200" fill="none">
+  <!-- Gradient background -->
+  <rect width="400" height="200" fill="url(#workshops-gradient)"/>
+  
+  <!-- Circular pattern in background representing workshop environment -->
+  <circle cx="200" cy="100" r="80" stroke="white" stroke-width="1" stroke-opacity="0.05" fill="none"/>
+  <circle cx="200" cy="100" r="60" stroke="white" stroke-width="1" stroke-opacity="0.1" fill="none"/>
+  <circle cx="200" cy="100" r="40" stroke="white" stroke-width="1" stroke-opacity="0.15" fill="none"/>
+  
+  <!-- People silhouettes in workshop -->
+  <circle cx="160" cy="80" r="10" fill="white" fill-opacity="0.2"/>
+  <path d="M160 90 L160 110" stroke="white" stroke-width="2" stroke-opacity="0.2"/>
+  <path d="M150 95 L160 90 L170 95" stroke="white" stroke-width="2" stroke-opacity="0.2" fill="none"/>
+  
+  <circle cx="190" cy="75" r="10" fill="white" fill-opacity="0.2"/>
+  <path d="M190 85 L190 105" stroke="white" stroke-width="2" stroke-opacity="0.2"/>
+  <path d="M180 90 L190 85 L200 90" stroke="white" stroke-width="2" stroke-opacity="0.2" fill="none"/>
+  
+  <circle cx="220" cy="80" r="10" fill="white" fill-opacity="0.2"/>
+  <path d="M220 90 L220 110" stroke="white" stroke-width="2" stroke-opacity="0.2"/>
+  <path d="M210 95 L220 90 L230 95" stroke="white" stroke-width="2" stroke-opacity="0.2" fill="none"/>
+  
+  <circle cx="250" cy="75" r="10" fill="white" fill-opacity="0.2"/>
+  <path d="M250 85 L250 105" stroke="white" stroke-width="2" stroke-opacity="0.2"/>
+  <path d="M240 90 L250 85 L260 90" stroke="white" stroke-width="2" stroke-opacity="0.2" fill="none"/>
+  
+  <!-- Workshop tools -->
+  <rect x="130" y="130" width="40" height="25" rx="3" fill="white" fill-opacity="0.15" stroke="white" stroke-width="1" stroke-opacity="0.3"/>
+  <circle cx="140" cy="142" r="4" fill="white" fill-opacity="0.3"/>
+  <circle cx="160" cy="142" r="4" fill="white" fill-opacity="0.3"/>
+  
+  <rect x="230" y="130" width="40" height="25" rx="3" fill="white" fill-opacity="0.15" stroke="white" stroke-width="1" stroke-opacity="0.3"/>
+  <line x1="240" y1="137" x2="260" y2="137" stroke="white" stroke-width="1" stroke-opacity="0.5"/>
+  <line x1="240" y1="142" x2="260" y2="142" stroke="white" stroke-width="1" stroke-opacity="0.5"/>
+  <line x1="240" y1="147" x2="260" y2="147" stroke="white" stroke-width="1" stroke-opacity="0.5"/>
+  
+  <!-- Connection lines -->
+  <line x1="160" y1="110" x2="160" y2="130" stroke="white" stroke-width="1" stroke-opacity="0.1" stroke-dasharray="2,2"/>
+  <line x1="250" y1="105" x2="250" y2="130" stroke="white" stroke-width="1" stroke-opacity="0.1" stroke-dasharray="2,2"/>
+  
+  <!-- Decorative elements -->
+  <path d="M50 40 L70 40 L70 60 L50 60 Z" stroke="white" stroke-width="1" stroke-opacity="0.3" fill="white" fill-opacity="0.05"/>
+  <path d="M330 40 L350 40 L350 60 L330 60 Z" stroke="white" stroke-width="1" stroke-opacity="0.3" fill="white" fill-opacity="0.05"/>
+  <path d="M50 140 L70 140 L70 160 L50 160 Z" stroke="white" stroke-width="1" stroke-opacity="0.3" fill="white" fill-opacity="0.05"/>
+  <path d="M330 140 L350 140 L350 160 L330 160 Z" stroke="white" stroke-width="1" stroke-opacity="0.3" fill="white" fill-opacity="0.05"/>
+  
+  <!-- Gradient definition -->
+  <defs>
+    <linearGradient id="workshops-gradient" x1="0" y1="0" x2="400" y2="200" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#446591"/>
+      <stop offset="1" stop-color="#5577a3"/>
+    </linearGradient>
+  </defs>
+</svg>

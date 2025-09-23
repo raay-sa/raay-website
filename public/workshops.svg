@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="300" height="200" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .people { fill: #2A2665; }
+    .accent { fill: #B29567; }
+    .light { fill: #DDE6FF; }
+    .medium { fill: #8892B0; }
+  </style>
+  
+  <!-- Presentation Screen -->
+  <rect x="120" y="40" width="120" height="70" rx="2" fill="white" stroke="#2A2665" stroke-width="3" />
+  <rect x="125" y="45" width="110" height="55" rx="1" fill="#F5F7FF" stroke="#B29567" stroke-width="1" />
+  
+  <!-- World Map on Screen -->
+  <ellipse cx="180" cy="70" rx="40" ry="25" fill="none" stroke="#2A2665" stroke-width="1.5" opacity="0.6" />
+  <path d="M160 60 Q 170 50, 180 60 Q 190 70, 200 65" fill="none" stroke="#2A2665" stroke-width="1.5" opacity="0.6" />
+  <path d="M150 75 Q 160 85, 180 80 Q 200 75, 205 85" fill="none" stroke="#2A2665" stroke-width="1.5" opacity="0.6" />
+  
+  <!-- Screen Stand -->
+  <rect x="165" y="110" width="30" height="10" rx="2" fill="#2A2665" />
+  <rect x="175" y="110" width="10" height="30" rx="2" fill="#2A2665" />
+  <ellipse cx="180" cy="140" rx="25" ry="5" fill="#2A2665" opacity="0.3" />
+  
+  <!-- Presenter -->
+  <circle cx="230" cy="100" r="15" class="people" />
+  <rect x="225" y="115" width="10" height="25" rx="5" class="people" />
+  <line x1="225" y1="125" x2="215" y2="135" stroke="#2A2665" stroke-width="4" stroke-linecap="round" />
+  <line x1="235" y1="125" x2="245" y2="135" stroke="#2A2665" stroke-width="4" stroke-linecap="round" />
+  <rect x="217" y="96" width="26" height="6" rx="3" fill="white" />
+  
+  <!-- Audience -->
+  <g transform="translate(110, 140)">
+    <circle cx="0" cy="0" r="10" class="people" />
+    <rect x="-5" y="10" width="10" height="20" rx="5" class="people" />
+  </g>
+  
+  <g transform="translate(140, 140)">
+    <circle cx="0" cy="0" r="10" class="people" />
+    <rect x="-5" y="10" width="10" height="20" rx="5" class="people" />
+  </g>
+  
+  <g transform="translate(170, 140)">
+    <circle cx="0" cy="0" r="10" class="people" />
+    <rect x="-5" y="10" width="10" height="20" rx="5" class="people" />
+  </g>
+  
+  <g transform="translate(200, 140)">
+    <circle cx="0" cy="0" r="10" class="people" />
+    <rect x="-5" y="10" width="10" height="20" rx="5" class="people" />
+  </g>
+  
+  <!-- Decoration -->
+  <rect x="90" y="70" width="15" height="90" rx="2" fill="#B29567" opacity="0.2" />
+  <circle cx="97.5" cy="75" r="5" fill="#B29567" opacity="0.6" />
+  
+  <rect x="250" y="70" width="15" height="90" rx="2" fill="#B29567" opacity="0.2" />
+  <circle cx="257.5" cy="75" r="5" fill="#B29567" opacity="0.6" />
+</svg>

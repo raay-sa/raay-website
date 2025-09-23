@@ -1,0 +1,70 @@
+<svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+  <!-- نمط خلفية التحول المؤسسي - هيكل تنظيمي وعناصر إدارية -->
+  <defs>
+    <linearGradient id="gradInst" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2a2665;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#2a2665;stop-opacity:0.3" />
+    </linearGradient>
+  </defs>
+  
+  <!-- الهيكل التنظيمي الهرمي -->
+  <!-- مستوى الإدارة العليا -->
+  <rect x="135" y="30" width="30" height="30" rx="5" fill="#b29567" opacity="0.7" />
+  <text x="145" y="50" font-family="Arial" font-size="14" fill="#ffffff" opacity="0.8" text-anchor="middle">C</text>
+  
+  <!-- خطوط اتصال المستوى الأول -->
+  <line x1="150" y1="60" x2="90" y2="90" stroke="#ffffff" stroke-width="1.5" opacity="0.4" />
+  <line x1="150" y1="60" x2="150" y2="90" stroke="#ffffff" stroke-width="1.5" opacity="0.4" />
+  <line x1="150" y1="60" x2="210" y2="90" stroke="#ffffff" stroke-width="1.5" opacity="0.4" />
+  
+  <!-- المستوى الإداري الثاني -->
+  <rect x="75" y="90" width="30" height="30" rx="5" fill="#b29567" opacity="0.6" />
+  <text x="90" y="110" font-family="Arial" font-size="14" fill="#ffffff" opacity="0.8" text-anchor="middle">D</text>
+  
+  <rect x="135" y="90" width="30" height="30" rx="5" fill="#b29567" opacity="0.6" />
+  <text x="150" y="110" font-family="Arial" font-size="14" fill="#ffffff" opacity="0.8" text-anchor="middle">D</text>
+  
+  <rect x="195" y="90" width="30" height="30" rx="5" fill="#b29567" opacity="0.6" />
+  <text x="210" y="110" font-family="Arial" font-size="14" fill="#ffffff" opacity="0.8" text-anchor="middle">D</text>
+  
+  <!-- خطوط اتصال المستوى الثاني -->
+  <line x1="90" y1="120" x2="60" y2="150" stroke="#ffffff" stroke-width="1" opacity="0.3" />
+  <line x1="90" y1="120" x2="90" y2="150" stroke="#ffffff" stroke-width="1" opacity="0.3" />
+  <line x1="90" y1="120" x2="120" y2="150" stroke="#ffffff" stroke-width="1" opacity="0.3" />
+  
+  <line x1="150" y1="120" x2="150" y2="150" stroke="#ffffff" stroke-width="1" opacity="0.3" />
+  <line x1="150" y1="120" x2="180" y2="150" stroke="#ffffff" stroke-width="1" opacity="0.3" />
+  
+  <line x1="210" y1="120" x2="210" y2="150" stroke="#ffffff" stroke-width="1" opacity="0.3" />
+  <line x1="210" y1="120" x2="240" y2="150" stroke="#ffffff" stroke-width="1" opacity="0.3" />
+  
+  <!-- المستوى الإداري الثالث -->
+  <rect x="45" y="150" width="30" height="30" rx="5" fill="#b29567" opacity="0.4" />
+  <rect x="75" y="150" width="30" height="30" rx="5" fill="#b29567" opacity="0.4" />
+  <rect x="105" y="150" width="30" height="30" rx="5" fill="#b29567" opacity="0.4" />
+  <rect x="135" y="150" width="30" height="30" rx="5" fill="#b29567" opacity="0.4" />
+  <rect x="165" y="150" width="30" height="30" rx="5" fill="#b29567" opacity="0.4" />
+  <rect x="195" y="150" width="30" height="30" rx="5" fill="#b29567" opacity="0.4" />
+  <rect x="225" y="150" width="30" height="30" rx="5" fill="#b29567" opacity="0.4" />
+  
+  <!-- خطوط ربط مستوى ثالث مع رابع -->
+  <line x1="60" y1="180" x2="60" y2="210" stroke="#ffffff" stroke-width="0.75" opacity="0.2" />
+  <line x1="90" y1="180" x2="90" y2="210" stroke="#ffffff" stroke-width="0.75" opacity="0.2" />
+  <line x1="120" y1="180" x2="120" y2="210" stroke="#ffffff" stroke-width="0.75" opacity="0.2" />
+  <line x1="150" y1="180" x2="150" y2="210" stroke="#ffffff" stroke-width="0.75" opacity="0.2" />
+  <line x1="180" y1="180" x2="180" y2="210" stroke="#ffffff" stroke-width="0.75" opacity="0.2" />
+  <line x1="210" y1="180" x2="210" y2="210" stroke="#ffffff" stroke-width="0.75" opacity="0.2" />
+  <line x1="240" y1="180" x2="240" y2="210" stroke="#ffffff" stroke-width="0.75" opacity="0.2" />
+  
+  <!-- المستوى الإداري الرابع -->
+  <rect x="45" y="210" width="30" height="15" rx="3" fill="#b29567" opacity="0.3" />
+  <rect x="75" y="210" width="30" height="15" rx="3" fill="#b29567" opacity="0.3" />
+  <rect x="105" y="210" width="30" height="15" rx="3" fill="#b29567" opacity="0.3" />
+  <rect x="135" y="210" width="30" height="15" rx="3" fill="#b29567" opacity="0.3" />
+  <rect x="165" y="210" width="30" height="15" rx="3" fill="#b29567" opacity="0.3" />
+  <rect x="195" y="210" width="30" height="15" rx="3" fill="#b29567" opacity="0.3" />
+  <rect x="225" y="210" width="30" height="15" rx="3" fill="#b29567" opacity="0.3" />
+  
+  <!-- إطار خارجي للهيكل -->
+  <rect x="30" y="20" width="240" height="230" rx="10" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.15" />
+</svg>

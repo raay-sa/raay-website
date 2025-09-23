@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- ورش العمل -->
+  <defs>
+    <linearGradient id="gradientPurple" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2a2665" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#3f3b8a" stop-opacity="0.6"/>
+    </linearGradient>
+  </defs>
+  
+  <g transform="translate(20, 20)">
+    <!-- خلفية دائرية -->
+    <circle cx="80" cy="80" r="75" fill="white" opacity="0.3"/>
+    
+    <!-- أيقونة ورشة العمل -->
+    <rect x="35" y="50" width="90" height="60" rx="5" ry="5" fill="white" stroke="#2a2665" stroke-width="2"/>
+    
+    <!-- أدوات العمل -->
+    <rect x="45" y="70" width="30" height="5" rx="1" ry="1" fill="#2a2665" opacity="0.8"/>
+    <rect x="85" y="70" width="30" height="5" rx="1" ry="1" fill="#2a2665" opacity="0.8"/>
+    <rect x="45" y="85" width="70" height="5" rx="1" ry="1" fill="#2a2665" opacity="0.8"/>
+    
+    <!-- أيقونة المطرقة -->
+    <path d="M 60,30 L 70,40 L 55,55 L 45,45 Z" fill="#b29567"/>
+    <rect x="53" y="42" width="25" height="5" rx="1" ry="1" transform="rotate(45 53 42)" fill="#b29567"/>
+    
+    <!-- أيقونة المفتاح -->
+    <circle cx="120" cy="40" r="10" fill="none" stroke="#b29567" stroke-width="3"/>
+    <rect x="120" y="50" width="3" height="20" fill="#b29567"/>
+    
+    <!-- محيط الورشة - دائرة -->
+    <circle cx="80" cy="80" r="60" fill="none" stroke="#2a2665" stroke-width="2" stroke-dasharray="4 2" opacity="0.6"/>
+    
+    <!-- النص -->
+    <text x="80" y="130" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#2a2665">
+      ورش العمل
+    </text>
+  </g>
+</svg>

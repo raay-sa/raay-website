@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="200" viewBox="0 0 400 200" fill="none">
+  <!-- Gradient background -->
+  <rect width="400" height="200" fill="url(#loyalty-gradient)"/>
+  
+  <!-- People icons -->
+  <circle cx="90" cy="80" r="15" fill="white" fill-opacity="0.7"/>
+  <path d="M90 95 L90 125" stroke="white" stroke-width="2" stroke-opacity="0.7"/>
+  <path d="M75 110 L90 105 L105 110" stroke="white" stroke-width="2" stroke-opacity="0.7" fill="none"/>
+  <path d="M80 135 L90 125 L100 135" stroke="white" stroke-width="2" stroke-opacity="0.7" fill="none"/>
+  
+  <circle cx="150" cy="80" r="15" fill="white" fill-opacity="0.7"/>
+  <path d="M150 95 L150 125" stroke="white" stroke-width="2" stroke-opacity="0.7"/>
+  <path d="M135 110 L150 105 L165 110" stroke="white" stroke-width="2" stroke-opacity="0.7" fill="none"/>
+  <path d="M140 135 L150 125 L160 135" stroke="white" stroke-width="2" stroke-opacity="0.7" fill="none"/>
+  
+  <circle cx="210" cy="80" r="15" fill="white" fill-opacity="0.7"/>
+  <path d="M210 95 L210 125" stroke="white" stroke-width="2" stroke-opacity="0.7"/>
+  <path d="M195 110 L210 105 L225 110" stroke="white" stroke-width="2" stroke-opacity="0.7" fill="none"/>
+  <path d="M200 135 L210 125 L220 135" stroke="white" stroke-width="2" stroke-opacity="0.7" fill="none"/>
+  
+  <!-- Connection heart -->
+  <path d="M120 60 C120 40, 140 40, 150 55 C160 40, 180 40, 180 60 C180 90, 150 100, 150 100 C150 100, 120 90, 120 60 Z" 
+        fill="white" fill-opacity="0.2" stroke="white" stroke-width="2" stroke-opacity="0.7"/>
+  
+  <!-- Graph elements -->
+  <line x1="250" y1="150" x2="250" y2="70" stroke="white" stroke-width="2" stroke-opacity="0.5"/>
+  <line x1="250" y1="150" x2="350" y2="150" stroke="white" stroke-width="2" stroke-opacity="0.5"/>
+  
+  <path d="M250 120 L270 115 L290 125 L310 100 L330 90 L350 70" stroke="white" stroke-width="3" stroke-opacity="0.8" fill="none"/>
+  
+  <!-- Text annotations -->
+  <rect x="260" y="130" width="30" height="10" fill="white" fill-opacity="0.6"/>
+  <rect x="300" y="130" width="30" height="10" fill="white" fill-opacity="0.6"/>
+  
+  <!-- Gradient definition -->
+  <defs>
+    <linearGradient id="loyalty-gradient" x1="0" y1="0" x2="400" y2="200" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#446591"/>
+      <stop offset="1" stop-color="#607d9f"/>
+    </linearGradient>
+  </defs>
+</svg>

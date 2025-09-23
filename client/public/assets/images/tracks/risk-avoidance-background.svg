@@ -1,0 +1,43 @@
+<svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+  <!-- نمط خلفية تجنب المخاطر - شكل رسم هندسي للمخاطر -->
+  <defs>
+    <linearGradient id="gradRisk" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2a2665;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#2a2665;stop-opacity:0.3" />
+    </linearGradient>
+  </defs>
+  
+  <!-- أشكال تحذير ومخاطر -->
+  <!-- رمز التحذير الرئيسي -->
+  <polygon points="150,50 250,230 50,230" 
+           fill="none" stroke="#b29567" stroke-width="2" opacity="0.5" />
+  <text x="150" y="160" font-family="Arial" font-size="60" text-anchor="middle" fill="#b29567" opacity="0.5">!</text>
+  
+  <!-- رموز المخاطر الفرعية -->
+  <circle cx="60" cy="80" r="20" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.2" />
+  <line x1="53" y1="73" x2="67" y2="87" stroke="#ffffff" stroke-width="1.5" opacity="0.2" />
+  <line x1="67" y1="73" x2="53" y2="87" stroke="#ffffff" stroke-width="1.5" opacity="0.2" />
+  
+  <circle cx="240" cy="80" r="20" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.2" />
+  <line x1="233" y1="73" x2="247" y2="87" stroke="#ffffff" stroke-width="1.5" opacity="0.2" />
+  <line x1="247" y1="73" x2="233" y2="87" stroke="#ffffff" stroke-width="1.5" opacity="0.2" />
+  
+  <rect x="70" y="250" width="40" height="30" rx="5" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.3" />
+  <line x1="80" y1="260" x2="100" y2="270" stroke="#ffffff" stroke-width="1" opacity="0.3" />
+  <line x1="100" y1="260" x2="80" y2="270" stroke="#ffffff" stroke-width="1" opacity="0.3" />
+  
+  <rect x="190" y="250" width="40" height="30" rx="5" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.3" />
+  <line x1="200" y1="260" x2="220" y2="270" stroke="#ffffff" stroke-width="1" opacity="0.3" />
+  <line x1="220" y1="260" x2="200" y2="270" stroke="#ffffff" stroke-width="1" opacity="0.3" />
+  
+  <!-- خطوط اتصال بين المخاطر -->
+  <line x1="60" y1="100" x2="120" y2="170" stroke="#ffffff" stroke-width="1" opacity="0.15" />
+  <line x1="240" y1="100" x2="180" y2="170" stroke="#ffffff" stroke-width="1" opacity="0.15" />
+  <line x1="90" y1="250" x2="120" y2="220" stroke="#ffffff" stroke-width="1" opacity="0.15" />
+  <line x1="210" y1="250" x2="180" y2="220" stroke="#ffffff" stroke-width="1" opacity="0.15" />
+  
+  <!-- دوائر ضوئية للتنبيه -->
+  <circle cx="150" cy="160" r="70" fill="none" stroke="#b29567" stroke-width="1" opacity="0.3" />
+  <circle cx="150" cy="160" r="90" fill="none" stroke="#b29567" stroke-width="1" opacity="0.2" />
+  <circle cx="150" cy="160" r="110" fill="none" stroke="#b29567" stroke-width="1" opacity="0.1" />
+</svg>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="380" viewBox="0 0 800 380" xmlns="http://www.w3.org/2000/svg">
+  <!-- خلفية التدرج -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a3a7a" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#2a2665" stop-opacity="0.6"/>
+    </linearGradient>
+    
+    <!-- نمط خط النقاط -->
+    <pattern id="dotPattern" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="10" cy="10" r="1" fill="#ffffff" opacity="0.3"/>
+    </pattern>
+  </defs>
+  
+  <!-- مستطيل الخلفية -->
+  <rect width="800" height="380" fill="url(#bgGradient)"/>
+  
+  <!-- خلفية النقاط -->
+  <rect width="800" height="380" fill="url(#dotPattern)"/>
+  
+  <!-- عناصر التحول الرقمي -->
+  <g>
+    <!-- رموز ومعلومات الرقمنة للشركات -->
+    <g transform="translate(400, 190)">
+      <!-- دائرة مركزية -->
+      <circle cx="0" cy="0" r="70" fill="#2a2665" stroke="#b29567" stroke-width="3"/>
+      
+      <!-- أيقونة التحول الرقمي - العالم الرقمي -->
+      <g transform="scale(0.7)">
+        <circle cx="0" cy="0" r="50" fill="none" stroke="#ffffff" stroke-width="3"/>
+        <!-- خطوط العرض -->
+        <ellipse cx="0" cy="0" rx="50" ry="20" fill="none" stroke="#ffffff" stroke-width="2"/>
+        <ellipse cx="0" cy="0" rx="50" ry="35" fill="none" stroke="#ffffff" stroke-width="2"/>
+        <!-- خطوط الطول -->
+        <line x1="-50" y1="0" x2="50" y2="0" stroke="#ffffff" stroke-width="2"/>
+        <line x1="0" y1="-50" x2="0" y2="50" stroke="#ffffff" stroke-width="2"/>
+        <path d="M-35,-35 A 50 50 0 0 1 35 -35" fill="none" stroke="#ffffff" stroke-width="2"/>
+        <path d="M-35,35 A 50 50 0 0 0 35 35" fill="none" stroke="#ffffff" stroke-width="2"/>
+        
+        <!-- نقاط بيانات -->
+        <circle cx="25" cy="15" r="4" fill="#b29567"/>
+        <circle cx="-20" cy="30" r="4" fill="#b29567"/>
+        <circle cx="-15" cy="-25" r="4" fill="#b29567"/>
+        <circle cx="30" cy="-15" r="4" fill="#b29567"/>
+        <circle cx="0" cy="0" r="4" fill="#b29567"/>
+      </g>
+      
+      <!-- عناصر الاتصال -->
+      <g stroke="#b29567" stroke-width="2">
+        <line x1="-120" y1="-120" x2="-50" y2="-50" opacity="0.5"/>
+        <line x1="120" y1="-120" x2="50" y2="-50" opacity="0.5"/>
+        <line x1="120" y1="120" x2="50" y2="50" opacity="0.5"/>
+        <line x1="-120" y1="120" x2="-50" y2="50" opacity="0.5"/>
+      </g>
+    </g>
+    
+    <!-- رموز المحيط -->
+    <g>
+      <!-- رمز الحوسبة السحابية -->
+      <g transform="translate(280, 70)">
+        <path d="M0,0 Q-20,-20 -40,-10 Q-60,-25 -80,-10 Q-90,0 -80,15 Q-90,30 -70,40 Q-50,45 -30,35 Q-20,50 0,45 Q20,55 40,40 Q50,25 40,10 Q50,-5 30,-10 Q20,-25 0,0"
+              fill="#2a2665" stroke="#b29567" stroke-width="2"/>
+        <text x="-25" y="20" font-family="Arial" font-size="14" fill="#ffffff">Cloud</text>
+      </g>
+      
+      <!-- رمز البيانات الضخمة -->
+      <g transform="translate(520, 70)">
+        <rect x="-40" y="-30" width="80" height="60" rx="5" ry="5" fill="#2a2665" stroke="#b29567" stroke-width="2"/>
+        <text x="-30" y="0" font-family="Arial" font-size="12" fill="#ffffff">Big Data</text>
+        <line x1="-25" y1="15" x2="25" y2="15" stroke="#b29567" stroke-width="2"/>
+        <line x1="-25" y1="20" x2="15" y2="20" stroke="#b29567" stroke-width="2"/>
+      </g>
+      
+      <!-- رمز الأجهزة الذكية -->
+      <g transform="translate(280, 310)">
+        <rect x="-25" y="-40" width="50" height="80" rx="5" ry="5" fill="#2a2665" stroke="#b29567" stroke-width="2"/>
+        <rect x="-15" y="-30" width="30" height="50" rx="2" ry="2" fill="none" stroke="#b29567" stroke-width="1"/>
+        <circle cx="0" cy="30" r="5" fill="none" stroke="#b29567" stroke-width="1"/>
+      </g>
+      
+      <!-- رمز التحليلات -->
+      <g transform="translate(520, 310)">
+        <rect x="-40" y="-30" width="80" height="60" rx="5" ry="5" fill="#2a2665" stroke="#b29567" stroke-width="2"/>
+        <polyline points="-25,-10 -15,0 -5,-15 5,5 15,-5 25,10" fill="none" stroke="#b29567" stroke-width="2" stroke-linejoin="round"/>
+      </g>
+    </g>
+  </g>
+  
+  <!-- خطوط متصلة تمثل التحول الرقمي -->
+  <g stroke="#b29567" stroke-width="1.5" opacity="0.6">
+    <path d="M100,50 C200,150 300,100 400,200 S500,150 700,200" fill="none"/>
+    <path d="M100,300 C200,250 300,300 500,200 S600,250 700,150" fill="none"/>
+    
+    <!-- نقاط البيانات -->
+    <g fill="#ffffff">
+      <circle cx="100" cy="50" r="3"/>
+      <circle cx="250" cy="125" r="3"/>
+      <circle cx="400" cy="200" r="3"/>
+      <circle cx="550" cy="175" r="3"/>
+      <circle cx="700" cy="200" r="3"/>
+      
+      <circle cx="100" cy="300" r="3"/>
+      <circle cx="250" cy="275" r="3"/>
+      <circle cx="500" cy="200" r="3"/>
+      <circle cx="650" cy="225" r="3"/>
+      <circle cx="700" cy="150" r="3"/>
+    </g>
+  </g>
+  
+  <!-- بعض الرموز الصغيرة الإضافية -->
+  <g fill="#ffffff" opacity="0.7">
+    <text x="150" y="40" font-family="Arial" font-size="10">01011</text>
+    <text x="650" y="40" font-family="Arial" font-size="10">10110</text>
+    <text x="150" y="350" font-family="Arial" font-size="10">10101</text>
+    <text x="650" y="350" font-family="Arial" font-size="10">01100</text>
+  </g>
+</svg>

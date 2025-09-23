@@ -1,0 +1,14 @@
+<svg width="200" height="80" viewBox="0 0 200 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Main Shape - The letter "ر" stylized -->
+  <path d="M50 20C50 15.5817 53.5817 12 58 12H80C84.4183 12 88 15.5817 88 20V40C88 44.4183 84.4183 48 80 48H58C53.5817 48 50 44.4183 50 40V20Z" fill="#075985"/>
+  
+  <!-- Stylized "ا" letter -->
+  <rect x="100" y="12" width="8" height="36" rx="4" fill="#075985"/>
+  
+  <!-- Stylized "ي" letter -->
+  <path d="M118 12H140C144.418 12 148 15.5817 148 20V30C148 34.4183 144.418 38 140 38H118C113.582 38 110 34.4183 110 30V20C110 15.5817 113.582 12 118 12Z" fill="#075985"/>
+  <path d="M120 38C120 38 118 46 125 46H135C142 46 140 38 140 38" stroke="#075985" stroke-width="4" stroke-linecap="round"/>
+  
+  <!-- Company Name Text -->
+  <text x="100" y="68" fill="#075985" font-family="Arial, sans-serif" font-weight="bold" font-size="12" text-anchor="middle">مركز راي للتدريب والاستشارات</text>
+</svg>

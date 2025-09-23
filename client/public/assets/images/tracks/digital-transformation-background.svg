@@ -1,0 +1,46 @@
+<svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+  <!-- نمط خلفية التحول الرقمي - شبكة متصلة برموز تقنية -->
+  <defs>
+    <linearGradient id="gradDigital" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2a2665;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#2a2665;stop-opacity:0.3" />
+    </linearGradient>
+  </defs>
+  
+  <!-- شبكة الأجهزة المتصلة -->
+  <!-- أجهزة رئيسية -->
+  <rect x="135" y="135" width="30" height="30" rx="5" fill="#b29567" opacity="0.5" />
+  <circle cx="70" cy="70" r="15" fill="#b29567" opacity="0.5" />
+  <circle cx="230" cy="70" r="15" fill="#b29567" opacity="0.5" />
+  <circle cx="70" cy="230" r="15" fill="#b29567" opacity="0.5" />
+  <circle cx="230" cy="230" r="15" fill="#b29567" opacity="0.5" />
+  
+  <!-- أجهزة ثانوية -->
+  <rect x="130" y="60" width="40" height="20" rx="5" fill="#b29567" opacity="0.3" />
+  <rect x="60" y="130" width="20" height="40" rx="5" fill="#b29567" opacity="0.3" />
+  <rect x="220" y="130" width="20" height="40" rx="5" fill="#b29567" opacity="0.3" />
+  <rect x="130" y="220" width="40" height="20" rx="5" fill="#b29567" opacity="0.3" />
+  
+  <!-- خطوط اتصال -->
+  <line x1="150" y1="135" x2="150" y2="80" stroke="#ffffff" stroke-width="1.5" opacity="0.4" />
+  <line x1="135" y1="150" x2="80" y2="150" stroke="#ffffff" stroke-width="1.5" opacity="0.4" />
+  <line x1="165" y1="150" x2="220" y2="150" stroke="#ffffff" stroke-width="1.5" opacity="0.4" />
+  <line x1="150" y1="165" x2="150" y2="220" stroke="#ffffff" stroke-width="1.5" opacity="0.4" />
+  
+  <line x1="70" y1="70" x2="130" y2="70" stroke="#ffffff" stroke-width="1" opacity="0.3" />
+  <line x1="170" y1="70" x2="230" y2="70" stroke="#ffffff" stroke-width="1" opacity="0.3" />
+  <line x1="70" y1="230" x2="130" y2="230" stroke="#ffffff" stroke-width="1" opacity="0.3" />
+  <line x1="170" y1="230" x2="230" y2="230" stroke="#ffffff" stroke-width="1" opacity="0.3" />
+  
+  <line x1="70" y1="70" x2="70" y2="130" stroke="#ffffff" stroke-width="1" opacity="0.3" />
+  <line x1="230" y1="70" x2="230" y2="130" stroke="#ffffff" stroke-width="1" opacity="0.3" />
+  <line x1="70" y1="170" x2="70" y2="230" stroke="#ffffff" stroke-width="1" opacity="0.3" />
+  <line x1="230" y1="170" x2="230" y2="230" stroke="#ffffff" stroke-width="1" opacity="0.3" />
+  
+  <!-- رموز تقنية ورقمية -->
+  <text x="145" y="155" font-family="monospace" font-size="10" fill="#ffffff" opacity="0.5">DT</text>
+  <text x="65" y="73" font-family="monospace" font-size="10" fill="#ffffff" opacity="0.5">01</text>
+  <text x="225" y="73" font-family="monospace" font-size="10" fill="#ffffff" opacity="0.5">10</text>
+  <text x="65" y="233" font-family="monospace" font-size="10" fill="#ffffff" opacity="0.5">11</text>
+  <text x="225" y="233" font-family="monospace" font-size="10" fill="#ffffff" opacity="0.5">00</text>
+</svg>

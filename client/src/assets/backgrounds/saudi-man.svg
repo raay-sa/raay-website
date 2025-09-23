@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800px" height="800px" viewBox="0 0 800 800" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <!-- رجل سعودي بالزي التقليدي -->
+  <g id="saudi-man">
+    <!-- خلفية شفافة -->
+    <rect width="800" height="800" fill="none"/>
+    
+    <!-- الجسم -->
+    <g id="body" transform="translate(100, 120)">
+      <!-- الثوب (الدشداشة) -->
+      <path d="M300,650 C300,600 250,350 250,350 L350,350 C350,350 300,600 300,650 Z" fill="#FFFFFF" stroke="#CCCCCC" stroke-width="3"/>
+      
+      <!-- الجزء العلوي من الثوب -->
+      <path d="M200,350 C200,250 250,200 300,200 C350,200 400,250 400,350 L200,350 Z" fill="#FFFFFF" stroke="#CCCCCC" stroke-width="3"/>
+      
+      <!-- الرأس -->
+      <circle cx="300" cy="150" r="80" fill="#F5D7B7"/>
+      
+      <!-- الوجه -->
+      <g id="face">
+        <!-- العينان -->
+        <ellipse cx="275" cy="140" rx="10" ry="5" fill="#4A2F27"/>
+        <ellipse cx="325" cy="140" rx="10" ry="5" fill="#4A2F27"/>
+        
+        <!-- الأنف -->
+        <path d="M300,145 L295,165 L305,165 Z" fill="#E5C7A7"/>
+        
+        <!-- الفم -->
+        <path d="M285,180 C285,180 300,190 315,180" fill="none" stroke="#8E5A4F" stroke-width="2" stroke-linecap="round"/>
+        
+        <!-- اللحية -->
+        <path d="M260,160 C260,160 290,210 340,160" fill="#111111" stroke="#111111" stroke-width="2"/>
+      </g>
+      
+      <!-- الشماغ -->
+      <path d="M220,150 C220,100 270,70 300,70 C330,70 380,100 380,150 L380,170 C380,170 350,190 300,190 C250,190 220,170 220,170 L220,150 Z" fill="#F8F8F8" stroke="#CCCCCC" stroke-width="2"/>
+      
+      <!-- العقال -->
+      <ellipse cx="300" cy="100" rx="80" ry="25" fill="#111111"/>
+      <ellipse cx="300" cy="115" rx="80" ry="25" fill="#111111"/>
+      
+      <!-- النمط على الشماغ -->
+      <path d="M220,100 L380,100" stroke="#910000" stroke-width="2" stroke-dasharray="5,5"/>
+      <path d="M220,120 L380,120" stroke="#910000" stroke-width="2" stroke-dasharray="5,5"/>
+      <path d="M220,140 L380,140" stroke="#910000" stroke-width="2" stroke-dasharray="5,5"/>
+      <path d="M220,160 L380,160" stroke="#910000" stroke-width="2" stroke-dasharray="5,5"/>
+      
+      <!-- نمط عمودي على الشماغ -->
+      <path d="M240,70 L240,190" stroke="#910000" stroke-width="2" stroke-dasharray="5,5"/>
+      <path d="M280,70 L280,190" stroke="#910000" stroke-width="2" stroke-dasharray="5,5"/>
+      <path d="M320,70 L320,190" stroke="#910000" stroke-width="2" stroke-dasharray="5,5"/>
+      <path d="M360,70 L360,190" stroke="#910000" stroke-width="2" stroke-dasharray="5,5"/>
+      
+      <!-- الزخارف على الثوب -->
+      <path d="M250,350 L250,500" stroke="#EEEEEE" stroke-width="10"/>
+      <path d="M350,350 L350,500" stroke="#EEEEEE" stroke-width="10"/>
+    </g>
+  </g>
+</svg>

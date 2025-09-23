@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="600" height="300" viewBox="0 0 600 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background with brand gradient -->
+  <rect width="600" height="300" fill="url(#brand_gradient)"/>
+  
+  <!-- Abstract pattern overlay -->
+  <g opacity="0.08">
+    <!-- Path patterns representing educational tracks -->
+    <path d="M0 50 C100 30 200 90 300 50 C400 10 500 70 600 50" stroke="white" stroke-width="6"/>
+    <path d="M0 100 C100 80 200 140 300 100 C400 60 500 120 600 100" stroke="white" stroke-width="6"/>
+    <path d="M0 150 C100 130 200 190 300 150 C400 110 500 170 600 150" stroke="white" stroke-width="6"/>
+    <path d="M0 200 C100 180 200 240 300 200 C400 160 500 220 600 200" stroke="white" stroke-width="6"/>
+    <path d="M0 250 C100 230 200 290 300 250 C400 210 500 270 600 250" stroke="white" stroke-width="6"/>
+  </g>
+  
+  <!-- Main elements -->
+  <g transform="translate(300, 150)">
+    <!-- Central circular emblem -->
+    <circle cx="0" cy="0" r="80" fill="#2a2665" opacity="0.85"/>
+    
+    <!-- Surrounding track elements -->
+    <g>
+      <!-- Track 1 - Leadership -->
+      <g transform="translate(-60, -60)">
+        <circle cx="0" cy="0" r="20" fill="#b29567" opacity="0.9"/>
+        <path d="M-8 -8 L8 8 M-8 8 L8 -8" stroke="white" stroke-width="2"/>
+      </g>
+      
+      <!-- Track 2 - Digital Transformation -->
+      <g transform="translate(60, -60)">
+        <circle cx="0" cy="0" r="20" fill="#b29567" opacity="0.9"/>
+        <rect x="-8" y="-8" width="16" height="16" stroke="white" stroke-width="2" fill="none"/>
+      </g>
+      
+      <!-- Track 3 - Cybersecurity -->
+      <g transform="translate(60, 60)">
+        <circle cx="0" cy="0" r="20" fill="#b29567" opacity="0.9"/>
+        <path d="M-8 0 L0 -8 L8 0 L0 8 Z" stroke="white" stroke-width="2" fill="none"/>
+      </g>
+      
+      <!-- Track 4 - AI -->
+      <g transform="translate(-60, 60)">
+        <circle cx="0" cy="0" r="20" fill="#b29567" opacity="0.9"/>
+        <circle cx="0" cy="0" r="8" stroke="white" stroke-width="2" fill="none"/>
+        <path d="M0 -12 L0 -8 M0 12 L0 8 M-12 0 L-8 0 M12 0 L8 0" stroke="white" stroke-width="2"/>
+      </g>
+    </g>
+    
+    <!-- Connection lines -->
+    <line x1="-40" y1="-40" x2="40" y2="-40" stroke="#b29567" stroke-width="1" stroke-dasharray="4 2"/>
+    <line x1="40" y1="-40" x2="40" y2="40" stroke="#b29567" stroke-width="1" stroke-dasharray="4 2"/>
+    <line x1="40" y1="40" x2="-40" y2="40" stroke="#b29567" stroke-width="1" stroke-dasharray="4 2"/>
+    <line x1="-40" y1="40" x2="-40" y2="-40" stroke="#b29567" stroke-width="1" stroke-dasharray="4 2"/>
+    
+    <!-- Center emblem -->
+    <circle cx="0" cy="0" r="30" fill="#b29567" opacity="0.9"/>
+    <g opacity="0.95">
+      <path d="M-15 -5 L0 -15 L15 -5 L10 10 L-10 10 Z" fill="white"/>
+      <path d="M-7 0 L0 -7 L7 0 L4 7 L-4 7 Z" fill="#2a2665"/>
+    </g>
+  </g>
+  
+  <!-- Arabic calligraphy style ornament -->
+  <g transform="translate(300, 270)" opacity="0.4">
+    <path d="M-200 0 C-150 -30 -100 30 -50 0 C0 -30 50 30 100 0 C150 -30 200 30 200 0" stroke="#b29567" stroke-width="2" fill="none"/>
+  </g>
+  
+  <!-- Define gradients -->
+  <defs>
+    <linearGradient id="brand_gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2a2665"/>
+      <stop offset="100%" stop-color="#2a2665" stop-opacity="0.85"/>
+    </linearGradient>
+  </defs>
+</svg>

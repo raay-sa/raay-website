@@ -1,0 +1,9 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="200" rx="10" fill="#15803d" opacity="0.1"/>
+  <path d="M60,90 L100,50 L140,90 L120,90 L120,140 L80,140 L80,90 Z" fill="#15803d" opacity="0.2" stroke="#15803d" stroke-width="2"/>
+  <path d="M75,160 L125,160" stroke="#15803d" stroke-width="2"/>
+  <path d="M85,170 L115,170" stroke="#15803d" stroke-width="2"/>
+  <text x="100" y="110" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#15803d">الأكاديمية</text>
+  <text x="100" y="130" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#15803d">العربية</text>
+  <text x="100" y="150" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#15803d">لأنشطة التدريب</text>
+</svg>

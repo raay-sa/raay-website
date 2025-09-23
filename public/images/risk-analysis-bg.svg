@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background with light texture -->
+  <rect width="800" height="600" fill="#f8f9fa" />
+  
+  <!-- Subtle geometric patterns inspired by Islamic design -->
+  <g opacity="0.07">
+    <path d="M0,0 L800,0 L800,600 L0,600 L0,0 Z" fill="#2a2665" />
+  </g>
+  
+  <!-- Risk analysis visual elements with Arab aesthetic influences -->
+  <g opacity="0.15">
+    <!-- Shield representing protection - common Saudi symbol for security -->
+    <path d="M400,200 L300,250 L300,350 C300,400 350,450 400,470 C450,450 500,400 500,350 L500,250 L400,200 Z" fill="#2a2665" />
+    <path d="M400,230 L330,265 L330,340 C330,380 365,420 400,435 C435,420 470,380 470,340 L470,265 L400,230 Z" fill="#f8f9fa" />
+    
+    <!-- Stylized checkmark inside shield - represents secure validation -->
+    <path d="M370,340 L390,360 L430,320" stroke="#b29567" stroke-width="12" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+    
+    <!-- Decorative Arabic-inspired border pattern -->
+    <g transform="translate(250, 150)" stroke="#b29567" stroke-width="2" fill="none">
+      <path d="M0,0 L300,0 L300,250 L0,250 Z" />
+      <path d="M20,20 L280,20 L280,230 L20,230 Z" />
+      
+      <!-- Arabesque corner decorations -->
+      <path d="M0,0 C10,10 20,10 30,0" />
+      <path d="M270,0 C280,10 290,10 300,0" />
+      <path d="M0,250 C10,240 20,240 30,250" />
+      <path d="M270,250 C280,240 290,240 300,250" />
+    </g>
+  </g>
+  
+  <!-- Risk analysis elements -->
+  <g opacity="0.2">
+    <!-- Warning triangles symbolizing risk (stylized with Arabian decorative influence) -->
+    <g transform="translate(200, 450)">
+      <path d="M0,40 L40,0 L80,40 Z" fill="#b29567" />
+      <path d="M40,10 L40,25" stroke="#f8f9fa" stroke-width="4" stroke-linecap="round" />
+      <circle cx="40" cy="32" r="2" fill="#f8f9fa" />
+    </g>
+    
+    <g transform="translate(600, 450)">
+      <path d="M0,40 L40,0 L80,40 Z" fill="#b29567" />
+      <path d="M40,10 L40,25" stroke="#f8f9fa" stroke-width="4" stroke-linecap="round" />
+      <circle cx="40" cy="32" r="2" fill="#f8f9fa" />
+    </g>
+    
+    <!-- Risk analysis graph elements - trend line with decorative Saudi-inspired pattern -->
+    <g transform="translate(150, 100)">
+      <path d="M0,200 L100,150 L200,180 L300,120 L400,80 L500,100" stroke="#2a2665" stroke-width="3" fill="none" />
+      
+      <!-- Data points with Arabian star decorations -->
+      <g fill="#b29567">
+        <path d="M0,200 L5,190 L10,200 L0,195 L10,195 Z" />
+        <path d="M100,150 L105,140 L110,150 L100,145 L110,145 Z" />
+        <path d="M200,180 L205,170 L210,180 L200,175 L210,175 Z" />
+        <path d="M300,120 L305,110 L310,120 L300,115 L310,115 Z" />
+        <path d="M400,80 L405,70 L410,80 L400,75 L410,75 Z" />
+        <path d="M500,100 L505,90 L510,100 L500,95 L510,95 Z" />
+      </g>
+    </g>
+  </g>
+  
+  <!-- Decorative corner elements -->
+  <g opacity="0.15">
+    <!-- Top left -->
+    <path d="M0,0 L150,0 A150,150 0 0,0 0,150 Z" fill="#b29567" />
+    
+    <!-- Bottom right -->
+    <path d="M800,600 L650,600 A150,150 0 0,0 800,450 Z" fill="#2a2665" />
+    
+    <!-- Traditional Saudi geometric pattern overlay -->
+    <g transform="translate(40, 40)" fill="#2a2665">
+      <path d="M0,0 L20,0 L20,20 L0,20 Z" />
+      <path d="M40,0 L60,0 L60,20 L40,20 Z" />
+      <path d="M20,20 L40,20 L40,40 L20,40 Z" />
+      <path d="M0,40 L20,40 L20,60 L0,60 Z" />
+      <path d="M40,40 L60,40 L60,60 L40,60 Z" />
+    </g>
+    
+    <g transform="translate(700, 500)" fill="#b29567">
+      <path d="M0,0 L20,0 L20,20 L0,20 Z" />
+      <path d="M40,0 L60,0 L60,20 L40,20 Z" />
+      <path d="M20,20 L40,20 L40,40 L20,40 Z" />
+      <path d="M0,40 L20,40 L20,60 L0,60 Z" />
+      <path d="M40,40 L60,40 L60,60 L40,60 Z" />
+    </g>
+  </g>
+</svg>

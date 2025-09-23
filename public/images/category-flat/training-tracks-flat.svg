@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="600" height="220" viewBox="0 0 600 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- خلفية البطاقة -->
+  <rect width="600" height="220" fill="#2a2665"/>
+  
+  <!-- العناصر الزخرفية الفلات فيكتور -->
+  <!-- مسار 1: القيادة -->
+  <g opacity="0.15">
+    <circle cx="100" cy="110" r="30" fill="#ffffff"/>
+    <rect x="85" y="95" width="30" height="30" fill="#ffffff"/>
+  </g>
+  
+  <!-- مسار 2: التحول الرقمي -->
+  <g opacity="0.15">
+    <path d="M200 80 L230 110 L200 140 L170 110 Z" fill="#ffffff"/>
+    <circle cx="200" cy="110" r="15" fill="#ffffff"/>
+  </g>
+  
+  <!-- مسار 3: الأمن السيبراني -->
+  <g opacity="0.15">
+    <rect x="270" y="95" width="30" height="30" rx="15" fill="#ffffff"/>
+    <path d="M285 85 L285 65 M275 75 L295 75" stroke="#ffffff" stroke-width="3"/>
+  </g>
+  
+  <!-- مسار 4: الذكاء الاصطناعي -->
+  <g opacity="0.15">
+    <circle cx="355" cy="110" r="25" fill="#ffffff"/>
+    <path d="M340 110 L370 110 M355 95 L355 125" stroke="#ffffff" stroke-width="3"/>
+  </g>
+  
+  <!-- مسار 5: تجنب المخاطر -->
+  <g opacity="0.15">
+    <path d="M430 85 L460 85 L445 135 Z" fill="#ffffff"/>
+    <circle cx="445" cy="75" r="10" fill="#ffffff"/>
+  </g>
+  
+  <!-- عناصر ربط للمسارات -->
+  <path d="M130 110 L170 110 L230 110 L270 110 L325 110 L385 110 L430 110" stroke="#ffffff" stroke-width="2" stroke-dasharray="5 5" opacity="0.15"/>
+  
+  <!-- زخرفة في الخلفية -->
+  <g opacity="0.1">
+    <rect x="50" y="40" width="500" height="2" fill="#ffffff"/>
+    <rect x="50" y="180" width="500" height="2" fill="#ffffff"/>
+    <rect x="50" y="40" width="2" height="142" fill="#ffffff"/>
+    <rect x="550" y="40" width="2" height="142" fill="#ffffff"/>
+  </g>
+  
+  <!-- زخرفة إسلامية مبسطة -->
+  <path d="M50 160 Q150 140 300 160 Q450 180 550 160" stroke="#ffffff" stroke-width="2" opacity="0.1"/>
+</svg>

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background with light texture -->
+  <rect width="800" height="600" fill="#f8f9fa" />
+  
+  <!-- Subtle geometric patterns inspired by Islamic design (light) -->
+  <g opacity="0.07">
+    <path d="M0,0 L800,0 L800,600 L0,600 L0,0 Z" fill="#2a2665" />
+    
+    <!-- Geometric pattern inspired by traditional Saudi architecture -->
+    <g fill="#2a2665">
+      <path d="M50,50 L100,50 L100,100 L50,100 Z" />
+      <path d="M150,50 L200,50 L200,100 L150,100 Z" />
+      <path d="M250,50 L300,50 L300,100 L250,100 Z" />
+      <path d="M350,50 L400,50 L400,100 L350,100 Z" />
+      <path d="M450,50 L500,50 L500,100 L450,100 Z" />
+      <path d="M550,50 L600,50 L600,100 L550,100 Z" />
+      <path d="M650,50 L700,50 L700,100 L650,100 Z" />
+      
+      <path d="M100,150 L150,150 L150,200 L100,200 Z" />
+      <path d="M200,150 L250,150 L250,200 L200,200 Z" />
+      <path d="M300,150 L350,150 L350,200 L300,200 Z" />
+      <path d="M400,150 L450,150 L450,200 L400,200 Z" />
+      <path d="M500,150 L550,150 L550,200 L500,200 Z" />
+      <path d="M600,150 L650,150 L650,200 L600,200 Z" />
+      
+      <path d="M50,250 L100,250 L100,300 L50,300 Z" />
+      <path d="M150,250 L200,250 L200,300 L150,300 Z" />
+      <path d="M250,250 L300,250 L300,300 L250,300 Z" />
+      <path d="M350,250 L400,250 L400,300 L350,300 Z" />
+      <path d="M450,250 L500,250 L500,300 L450,300 Z" />
+      <path d="M550,250 L600,250 L600,300 L550,300 Z" />
+      <path d="M650,250 L700,250 L700,300 L650,300 Z" />
+      
+      <path d="M100,350 L150,350 L150,400 L100,400 Z" />
+      <path d="M200,350 L250,350 L250,400 L200,400 Z" />
+      <path d="M300,350 L350,350 L350,400 L300,400 Z" />
+      <path d="M400,350 L450,350 L450,400 L400,400 Z" />
+      <path d="M500,350 L550,350 L550,400 L500,400 Z" />
+      <path d="M600,350 L650,350 L650,400 L600,400 Z" />
+      
+      <path d="M50,450 L100,450 L100,500 L50,500 Z" />
+      <path d="M150,450 L200,450 L200,500 L150,500 Z" />
+      <path d="M250,450 L300,450 L300,500 L250,500 Z" />
+      <path d="M350,450 L400,450 L400,500 L350,500 Z" />
+      <path d="M450,450 L500,450 L500,500 L450,500 Z" />
+      <path d="M550,450 L600,450 L600,500 L550,500 Z" />
+      <path d="M650,450 L700,450 L700,500 L650,500 Z" />
+    </g>
+  </g>
+  
+  <!-- Symbolic elements for leadership -->
+  <g transform="translate(400, 300)" opacity="0.15">
+    <!-- Stylized Crown - symbolic of leadership in Arab culture -->
+    <path d="M-80,-40 L-60,-60 L-40,-40 L-20,-60 L0,-40 L20,-60 L40,-40 L60,-60 L80,-40 L60,0 L-60,0 Z" fill="#b29567" />
+    <path d="M-55,0 L-55,20 L55,20 L55,0 Z" fill="#b29567" />
+    
+    <!-- Abstract representation of people (leaders and followers) -->
+    <g fill="#2a2665">
+      <!-- Central figure (leader) -->
+      <circle cx="0" cy="-120" r="25" />
+      <path d="M0,-95 L0,-50" stroke="#2a2665" stroke-width="10" />
+      <path d="M0,-70 L-30,-40" stroke="#2a2665" stroke-width="8" />
+      <path d="M0,-70 L30,-40" stroke="#2a2665" stroke-width="8" />
+      <path d="M0,-50 L-20,0" stroke="#2a2665" stroke-width="10" />
+      <path d="M0,-50 L20,0" stroke="#2a2665" stroke-width="10" />
+      
+      <!-- Surrounding figures (team) -->
+      <g transform="translate(-100, -60)">
+        <circle cx="0" cy="0" r="15" />
+        <path d="M0,15 L0,50" stroke="#2a2665" stroke-width="6" />
+        <path d="M0,25 L-15,45" stroke="#2a2665" stroke-width="5" />
+        <path d="M0,25 L15,45" stroke="#2a2665" stroke-width="5" />
+        <path d="M0,50 L-10,80" stroke="#2a2665" stroke-width="6" />
+        <path d="M0,50 L10,80" stroke="#2a2665" stroke-width="6" />
+      </g>
+      
+      <g transform="translate(100, -60)">
+        <circle cx="0" cy="0" r="15" />
+        <path d="M0,15 L0,50" stroke="#2a2665" stroke-width="6" />
+        <path d="M0,25 L-15,45" stroke="#2a2665" stroke-width="5" />
+        <path d="M0,25 L15,45" stroke="#2a2665" stroke-width="5" />
+        <path d="M0,50 L-10,80" stroke="#2a2665" stroke-width="6" />
+        <path d="M0,50 L10,80" stroke="#2a2665" stroke-width="6" />
+      </g>
+      
+      <g transform="translate(-60, 60)">
+        <circle cx="0" cy="0" r="15" />
+        <path d="M0,15 L0,50" stroke="#2a2665" stroke-width="6" />
+        <path d="M0,25 L-15,45" stroke="#2a2665" stroke-width="5" />
+        <path d="M0,25 L15,45" stroke="#2a2665" stroke-width="5" />
+        <path d="M0,50 L-10,80" stroke="#2a2665" stroke-width="6" />
+        <path d="M0,50 L10,80" stroke="#2a2665" stroke-width="6" />
+      </g>
+      
+      <g transform="translate(60, 60)">
+        <circle cx="0" cy="0" r="15" />
+        <path d="M0,15 L0,50" stroke="#2a2665" stroke-width="6" />
+        <path d="M0,25 L-15,45" stroke="#2a2665" stroke-width="5" />
+        <path d="M0,25 L15,45" stroke="#2a2665" stroke-width="5" />
+        <path d="M0,50 L-10,80" stroke="#2a2665" stroke-width="6" />
+        <path d="M0,50 L10,80" stroke="#2a2665" stroke-width="6" />
+      </g>
+    </g>
+  </g>
+  
+  <!-- Decorative corner elements -->
+  <g opacity="0.2">
+    <!-- Top left -->
+    <path d="M0,0 L150,0 A150,150 0 0,0 0,150 Z" fill="#b29567" />
+    
+    <!-- Bottom right -->
+    <path d="M800,600 L650,600 A150,150 0 0,0 800,450 Z" fill="#b29567" />
+  </g>
+</svg>

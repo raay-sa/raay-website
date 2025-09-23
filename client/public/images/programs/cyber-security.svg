@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="200" viewBox="0 0 400 200" fill="none">
+  <!-- Gradient background -->
+  <rect width="400" height="200" fill="url(#security-gradient)"/>
+  
+  <!-- Shield shape -->
+  <path d="M200 40 L260 60 C260 140, 200 170, 200 170 C200 170, 140 140, 140 60 L200 40 Z" 
+        fill="white" fill-opacity="0.1" stroke="white" stroke-width="2" stroke-opacity="0.7"/>
+  
+  <!-- Lock icon -->
+  <rect x="180" y="90" width="40" height="30" rx="5" fill="white" fill-opacity="0.2" stroke="white" stroke-width="2"/>
+  <rect x="190" y="70" width="20" height="20" rx="10" fill="none" stroke="white" stroke-width="2"/>
+  <circle cx="200" cy="100" r="5" fill="white" fill-opacity="0.8"/>
+  <line x1="200" y1="100" x2="200" y2="110" stroke="white" stroke-width="2"/>
+  
+  <!-- Binary data elements -->
+  <text x="140" y="60" fill="white" font-family="monospace" font-size="8" fill-opacity="0.7">10110</text>
+  <text x="240" y="60" fill="white" font-family="monospace" font-size="8" fill-opacity="0.7">01001</text>
+  <text x="150" y="140" fill="white" font-family="monospace" font-size="8" fill-opacity="0.7">10001</text>
+  <text x="230" y="140" fill="white" font-family="monospace" font-size="8" fill-opacity="0.7">01110</text>
+  
+  <!-- Circuit board patterns -->
+  <line x1="100" y1="80" x2="140" y2="80" stroke="white" stroke-width="1" stroke-opacity="0.5"/>
+  <line x1="100" y1="100" x2="140" y2="100" stroke="white" stroke-width="1" stroke-opacity="0.5"/>
+  <line x1="100" y1="120" x2="140" y2="120" stroke="white" stroke-width="1" stroke-opacity="0.5"/>
+  <line x1="100" y1="80" x2="100" y2="120" stroke="white" stroke-width="1" stroke-opacity="0.5"/>
+  
+  <line x1="260" y1="80" x2="300" y2="80" stroke="white" stroke-width="1" stroke-opacity="0.5"/>
+  <line x1="260" y1="100" x2="300" y2="100" stroke="white" stroke-width="1" stroke-opacity="0.5"/>
+  <line x1="260" y1="120" x2="300" y2="120" stroke="white" stroke-width="1" stroke-opacity="0.5"/>
+  <line x1="300" y1="80" x2="300" y2="120" stroke="white" stroke-width="1" stroke-opacity="0.5"/>
+  
+  <!-- Connection nodes -->
+  <circle cx="100" cy="80" r="2" fill="white" fill-opacity="0.8"/>
+  <circle cx="100" cy="100" r="2" fill="white" fill-opacity="0.8"/>
+  <circle cx="100" cy="120" r="2" fill="white" fill-opacity="0.8"/>
+  <circle cx="140" cy="80" r="2" fill="white" fill-opacity="0.8"/>
+  <circle cx="140" cy="100" r="2" fill="white" fill-opacity="0.8"/>
+  <circle cx="140" cy="120" r="2" fill="white" fill-opacity="0.8"/>
+  
+  <circle cx="260" cy="80" r="2" fill="white" fill-opacity="0.8"/>
+  <circle cx="260" cy="100" r="2" fill="white" fill-opacity="0.8"/>
+  <circle cx="260" cy="120" r="2" fill="white" fill-opacity="0.8"/>
+  <circle cx="300" cy="80" r="2" fill="white" fill-opacity="0.8"/>
+  <circle cx="300" cy="100" r="2" fill="white" fill-opacity="0.8"/>
+  <circle cx="300" cy="120" r="2" fill="white" fill-opacity="0.8"/>
+  
+  <!-- Gradient definition -->
+  <defs>
+    <linearGradient id="security-gradient" x1="0" y1="0" x2="400" y2="200" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#212165"/>
+      <stop offset="1" stop-color="#444aa3"/>
+    </linearGradient>
+  </defs>
+</svg>

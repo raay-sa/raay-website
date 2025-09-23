@@ -1,0 +1,7 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="200" rx="10" fill="#1a5fb4" opacity="0.1"/>
+  <path d="M100,50 L140,70 L140,110 C140,130 120,150 100,160 C80,150 60,130 60,110 L60,70 L100,50 Z" fill="#1a5fb4" opacity="0.2" stroke="#1a5fb4" stroke-width="3"/>
+  <path d="M85,100 L95,110 L115,90" stroke="#1a5fb4" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="100" y="130" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#1a5fb4">DIGITAL</text>
+  <text x="100" y="150" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#1a5fb4">SAFETY</text>
+</svg>

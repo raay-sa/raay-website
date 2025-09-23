@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="300" height="200" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .people { fill: #2A2665; }
+    .accent { fill: #B29567; }
+    .light { fill: #FFE6F7; }
+    .medium { fill: #8892B0; }
+  </style>
+  
+  <!-- Teacher -->
+  <circle cx="120" cy="80" r="18" class="people" />
+  <rect x="115" y="98" width="10" height="30" rx="5" class="people" />
+  <line x1="115" y1="110" x2="100" y2="120" stroke="#2A2665" stroke-width="4" stroke-linecap="round" />
+  <line x1="125" y1="110" x2="140" y2="120" stroke="#2A2665" stroke-width="4" stroke-linecap="round" />
+  
+  <!-- Presentation Board -->
+  <rect x="170" y="50" width="70" height="50" rx="2" fill="white" stroke="#2A2665" stroke-width="2" />
+  
+  <!-- Code on Board -->
+  <rect x="175" y="58" width="60" height="3" rx="1" fill="#B29567" opacity="0.7" />
+  <rect x="175" y="65" width="40" height="3" rx="1" fill="#B29567" opacity="0.7" />
+  <rect x="175" y="72" width="55" height="3" rx="1" fill="#B29567" opacity="0.7" />
+  <rect x="175" y="79" width="30" height="3" rx="1" fill="#B29567" opacity="0.7" />
+  <rect x="175" y="86" width="50" height="3" rx="1" fill="#B29567" opacity="0.7" />
+  
+  <!-- Computers and Students -->
+  <g transform="translate(160, 150)">
+    <!-- Computer -->
+    <rect x="-15" y="-20" width="30" height="20" rx="2" fill="#2A2665" />
+    <rect x="-12" y="-17" width="24" height="14" rx="1" fill="white" />
+    <rect x="-5" y="0" width="10" height="3" rx="1" fill="#2A2665" />
+    <!-- Person -->
+    <circle cx="0" cy="-30" r="8" class="people" />
+  </g>
+  
+  <g transform="translate(200, 150)">
+    <!-- Computer -->
+    <rect x="-15" y="-20" width="30" height="20" rx="2" fill="#2A2665" />
+    <rect x="-12" y="-17" width="24" height="14" rx="1" fill="white" />
+    <rect x="-5" y="0" width="10" height="3" rx="1" fill="#2A2665" />
+    <!-- Person -->
+    <circle cx="0" cy="-30" r="8" class="people" />
+  </g>
+  
+  <g transform="translate(240, 150)">
+    <!-- Computer -->
+    <rect x="-15" y="-20" width="30" height="20" rx="2" fill="#2A2665" />
+    <rect x="-12" y="-17" width="24" height="14" rx="1" fill="white" />
+    <rect x="-5" y="0" width="10" height="3" rx="1" fill="#2A2665" />
+    <!-- Person -->
+    <circle cx="0" cy="-30" r="8" class="people" />
+  </g>
+  
+  <!-- Decorations -->
+  <circle cx="70" cy="60" r="15" class="accent" opacity="0.3" />
+  <circle cx="80" cy="50" r="8" class="accent" opacity="0.5" />
+  
+  <circle cx="250" cy="70" r="12" class="accent" opacity="0.3" />
+  <circle cx="260" cy="60" r="6" class="accent" opacity="0.5" />
+  
+  <!-- Code Symbols -->
+  <text x="108" y="75" font-family="Arial" font-size="14" fill="#B29567" font-weight="bold">&lt;/&gt;</text>
+</svg>

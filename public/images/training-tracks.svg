@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- مسارات التدريب -->
+  <defs>
+    <linearGradient id="gradientBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2a2665" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#2a2665" stop-opacity="0.6"/>
+    </linearGradient>
+  </defs>
+  
+  <g transform="translate(20, 20)">
+    <!-- خلفية دائرية -->
+    <circle cx="80" cy="80" r="75" fill="white" opacity="0.3"/>
+    
+    <!-- الدوائر المتداخلة -->
+    <circle cx="80" cy="80" r="60" fill="none" stroke="#2a2665" stroke-width="3" opacity="0.6"/>
+    <circle cx="80" cy="80" r="45" fill="none" stroke="#2a2665" stroke-width="2" opacity="0.5"/>
+    <circle cx="80" cy="80" r="30" fill="none" stroke="#2a2665" stroke-width="1.5" opacity="0.4"/>
+    
+    <!-- أيقونة المسار التدريبي - خط متدرج -->
+    <path d="M 30,80 H 50 C 60,80 60,60 70,60 H 90 C 100,60 100,80 110,80 H 130" 
+          fill="none" stroke="url(#gradientBlue)" stroke-width="5" stroke-linecap="round"/>
+    
+    <!-- نقاط المسار -->
+    <circle cx="40" cy="80" r="7" fill="#2a2665" opacity="0.9"/>
+    <circle cx="80" cy="60" r="7" fill="#2a2665" opacity="0.9"/>
+    <circle cx="120" cy="80" r="7" fill="#2a2665" opacity="0.9"/>
+    
+    <!-- علامة المعالم على المسار -->
+    <path d="M 80,30 L 80,10 L 90,20 L 80,30 Z" fill="#b29567"/>
+    <path d="M 130,80 L 150,80 L 140,90 L 130,80 Z" fill="#b29567"/>
+    <path d="M 30,80 L 10,80 L 20,70 L 30,80 Z" fill="#b29567"/>
+    
+    <!-- النص -->
+    <text x="80" y="120" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#2a2665">
+      المسارات التدريبية
+    </text>
+  </g>
+</svg>

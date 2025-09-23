@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="400" fill="#f8f9fa" />
+  
+  <!-- Subtle gradient overlay -->
+  <rect width="800" height="400" fill="url(#grad1)" opacity="0.6" />
+  
+  <!-- Subtle digital pattern -->
+  <g opacity="0.08">
+    <path d="M0,0 L800,0 L800,400 L0,400 Z" fill="#2a2665" />
+    
+    <!-- Circuit-like pattern -->
+    <g stroke="#2a2665" stroke-width="1.5" fill="none">
+      <path d="M0,100 L800,100" />
+      <path d="M0,200 L800,200" />
+      <path d="M0,300 L800,300" />
+      
+      <path d="M100,0 L100,400" />
+      <path d="M300,0 L300,400" />
+      <path d="M500,0 L500,400" />
+      <path d="M700,0 L700,400" />
+      
+      <!-- Connection nodes -->
+      <circle cx="100" cy="100" r="5" fill="#b29567" />
+      <circle cx="300" cy="100" r="5" fill="#b29567" />
+      <circle cx="500" cy="100" r="5" fill="#b29567" />
+      <circle cx="700" cy="100" r="5" fill="#b29567" />
+      
+      <circle cx="100" cy="200" r="5" fill="#b29567" />
+      <circle cx="300" cy="200" r="5" fill="#b29567" />
+      <circle cx="500" cy="200" r="5" fill="#b29567" />
+      <circle cx="700" cy="200" r="5" fill="#b29567" />
+      
+      <circle cx="100" cy="300" r="5" fill="#b29567" />
+      <circle cx="300" cy="300" r="5" fill="#b29567" />
+      <circle cx="500" cy="300" r="5" fill="#b29567" />
+      <circle cx="700" cy="300" r="5" fill="#b29567" />
+    </g>
+  </g>
+  
+  <!-- Saudi characters engaging with technology -->
+  <g transform="translate(400, 200)">
+    <!-- Main character - Saudi businessman with traditional thobe and tech -->
+    <g>
+      <!-- Head with shemagh -->
+      <circle cx="0" cy="-80" r="30" fill="#e8d8c7" />
+      <path d="M-30,-80 C-30,-50 30,-50 30,-80" fill="#ffffff" />
+      <path d="M-30,-85 L30,-85 L30,-110 L-30,-110 Z" fill="#ffffff" />
+      <path d="M-30,-85 C-5,-75 5,-75 30,-85" fill="#ffffff" />
+      <path d="M-30,-85 L-33,-110 L30,-110 L33,-85 Z" fill="#b29567" />
+      
+      <!-- Face -->
+      <circle cx="-10" cy="-80" r="3" fill="#2a2665" />
+      <circle cx="10" cy="-80" r="3" fill="#2a2665" />
+      <path d="M-5,-70 C-2,-67 2,-67 5,-70" stroke="#2a2665" stroke-width="1.5" fill="none" />
+      
+      <!-- Body with thobe -->
+      <path d="M0,-50 L-40,80 L40,80 Z" fill="#ffffff" />
+      <path d="M-15,-50 L-15,40" stroke="#f0f0f0" stroke-width="1" />
+      <path d="M15,-50 L15,40" stroke="#f0f0f0" stroke-width="1" />
+      
+      <!-- Arms -->
+      <path d="M-20,-30 L-90,0" stroke="#ffffff" stroke-width="15" stroke-linecap="round" />
+      <path d="M20,-30 L60,20" stroke="#ffffff" stroke-width="15" stroke-linecap="round" />
+      
+      <!-- Hands -->
+      <circle cx="-90" cy="0" r="8" fill="#e8d8c7" />
+      <circle cx="60" cy="20" r="8" fill="#e8d8c7" />
+      
+      <!-- Holographic display/tablet -->
+      <g transform="translate(-50, -20)">
+        <rect x="-40" y="-20" width="80" height="50" rx="3" fill="#2a2665" opacity="0.2" />
+        <rect x="-37" y="-17" width="74" height="44" rx="2" fill="#f8f9fa" opacity="0.9" />
+        
+        <!-- Digital elements on screen -->
+        <g opacity="0.7">
+          <rect x="-30" y="-10" width="20" height="5" rx="1" fill="#2a2665" />
+          <rect x="-30" y="0" width="30" height="5" rx="1" fill="#2a2665" />
+          <rect x="-30" y="10" width="25" height="5" rx="1" fill="#2a2665" />
+          <rect x="-30" y="20" width="40" height="5" rx="1" fill="#2a2665" />
+          
+          <rect x="15" y="-10" width="20" height="30" rx="1" fill="#b29567" opacity="0.5" />
+          <rect x="17" y="-8" width="16" height="4" rx="1" fill="#2a2665" />
+          <rect x="17" y="0" width="16" height="4" rx="1" fill="#2a2665" />
+          <rect x="17" y="8" width="16" height="4" rx="1" fill="#2a2665" />
+          <rect x="17" y="16" width="16" height="4" rx="1" fill="#2a2665" />
+        </g>
+      </g>
+      
+      <!-- Legs -->
+      <path d="M-20,80 L-30,130" stroke="#ffffff" stroke-width="18" stroke-linecap="round" />
+      <path d="M20,80 L30,130" stroke="#ffffff" stroke-width="18" stroke-linecap="round" />
+      
+      <!-- Feet -->
+      <path d="M-38,130 L-22,130" stroke="#5d4037" stroke-width="5" stroke-linecap="round" />
+      <path d="M22,130 L38,130" stroke="#5d4037" stroke-width="5" stroke-linecap="round" />
+    </g>
+    
+    <!-- Second character - Woman in hijab/abaya with tech device -->
+    <g transform="translate(120, 0) scale(0.8)">
+      <!-- Head with hijab -->
+      <circle cx="0" cy="-80" r="28" fill="#e8d8c7" />
+      <path d="M-28,-80 C-28,-52 28,-52 28,-80" fill="#000000" />
+      <path d="M-35,-80 L35,-80 L35,-120 L-35,-120 Z" fill="#000000" />
+      
+      <!-- Face -->
+      <circle cx="-10" cy="-80" r="3" fill="#2a2665" />
+      <circle cx="10" cy="-80" r="3" fill="#2a2665" />
+      <path d="M-5,-70 C-2,-67 2,-67 5,-70" stroke="#2a2665" stroke-width="1.5" fill="none" />
+      
+      <!-- Body with abaya -->
+      <path d="M-35,-50 L-45,80 L45,80 L35,-50 Z" fill="#000000" />
+      
+      <!-- Arms -->
+      <path d="M-20,-30 L-50,20" stroke="#000000" stroke-width="15" stroke-linecap="round" />
+      <path d="M20,-30 L50,20" stroke="#000000" stroke-width="15" stroke-linecap="round" />
+      
+      <!-- Hands -->
+      <circle cx="-50" cy="20" r="8" fill="#e8d8c7" />
+      <circle cx="50" cy="20" r="8" fill="#e8d8c7" />
+      
+      <!-- Smart device/phone -->
+      <rect x="-15" y="10" width="30" height="50" rx="3" fill="#2a2665" />
+      <rect x="-12" y="13" width="24" height="44" rx="2" fill="#f8f9fa" />
+      <circle cx="0" cy="48" r="3" fill="#2a2665" opacity="0.3" />
+      
+      <!-- Device screen content -->
+      <g transform="translate(0, 25)">
+        <rect x="-8" y="-8" width="16" height="3" rx="1" fill="#2a2665" opacity="0.5" />
+        <rect x="-8" y="-3" width="16" height="3" rx="1" fill="#2a2665" opacity="0.5" />
+        <rect x="-8" y="2" width="16" height="3" rx="1" fill="#2a2665" opacity="0.5" />
+        <rect x="-8" y="7" width="16" height="3" rx="1" fill="#2a2665" opacity="0.5" />
+      </g>
+    </g>
+    
+    <!-- Digital transformation visual elements -->
+    <g transform="translate(-160, -30) scale(0.6)">
+      <!-- Traditional to modern transformation visualization -->
+      <g opacity="0.8">
+        <!-- Traditional building (stylized Arabian house/mosque) -->
+        <path d="M-60,-80 L0,-120 L60,-80 L60,40 L-60,40 Z" fill="#b29567" opacity="0.6" />
+        <path d="M-40,-60 L-40,0 A40,40 0 0,0 40,0 L40,-60" fill="#f8f9fa" opacity="0.7" />
+        <rect x="-30" y="0" width="60" height="40" fill="#b29567" opacity="0.4" />
+        
+        <!-- Digital transformation elements -->
+        <g transform="translate(0, -40)">
+          <!-- Binary data flowing around building -->
+          <g fill="#2a2665" opacity="0.7">
+            <circle cx="-80" cy="-20" r="3" />
+            <circle cx="-70" cy="-40" r="3" />
+            <circle cx="-50" cy="-60" r="3" />
+            <circle cx="-20" cy="-80" r="3" />
+            <circle cx="20" cy="-80" r="3" />
+            <circle cx="50" cy="-60" r="3" />
+            <circle cx="70" cy="-40" r="3" />
+            <circle cx="80" cy="-20" r="3" />
+            <circle cx="80" cy="10" r="3" />
+            <circle cx="80" cy="40" r="3" />
+            <circle cx="80" cy="70" r="3" />
+            <circle cx="60" cy="90" r="3" />
+            <circle cx="30" cy="100" r="3" />
+            <circle cx="0" cy="110" r="3" />
+            <circle cx="-30" cy="100" r="3" />
+            <circle cx="-60" cy="90" r="3" />
+            <circle cx="-80" cy="70" r="3" />
+            <circle cx="-80" cy="40" r="3" />
+            <circle cx="-80" cy="10" r="3" />
+          </g>
+          
+          <!-- Connection lines -->
+          <path d="M-80,-20 L-70,-40 L-50,-60 L-20,-80 L20,-80 L50,-60 L70,-40 L80,-20 L80,10 L80,40 L80,70 L60,90 L30,100 L0,110 L-30,100 L-60,90 L-80,70 L-80,40 L-80,10 Z" 
+                stroke="#2a2665" stroke-width="1" fill="none" opacity="0.5" />
+        </g>
+      </g>
+    </g>
+  </g>
+  
+  <!-- Decorative corner elements -->
+  <g opacity="0.15">
+    <!-- Top right -->
+    <path d="M800,0 L650,0 A150,150 0 0,0 800,150 Z" fill="#2a2665" />
+    
+    <!-- Bottom left -->
+    <path d="M0,400 L150,400 A150,150 0 0,1 0,250 Z" fill="#b29567" />
+  </g>
+  
+  <!-- Gradients -->
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2a2665;stop-opacity:0.07" />
+      <stop offset="100%" style="stop-color:#b29567;stop-opacity:0.07" />
+    </linearGradient>
+  </defs>
+</svg>

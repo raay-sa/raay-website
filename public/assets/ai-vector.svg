@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="400" fill="#f8f9fa" />
+  
+  <!-- Subtle gradient overlay -->
+  <rect width="800" height="400" fill="url(#grad1)" opacity="0.6" />
+  
+  <!-- Abstract AI network pattern -->
+  <g opacity="0.07">
+    <path d="M0,0 L800,0 L800,400 L0,400 Z" fill="#2a2665" />
+    
+    <!-- Neural network nodes -->
+    <g fill="#2a2665">
+      <circle cx="100" cy="50" r="5" />
+      <circle cx="200" cy="30" r="5" />
+      <circle cx="300" cy="70" r="5" />
+      <circle cx="400" cy="40" r="5" />
+      <circle cx="500" cy="60" r="5" />
+      <circle cx="600" cy="20" r="5" />
+      <circle cx="700" cy="50" r="5" />
+      
+      <circle cx="120" cy="150" r="5" />
+      <circle cx="220" cy="130" r="5" />
+      <circle cx="320" cy="170" r="5" />
+      <circle cx="420" cy="140" r="5" />
+      <circle cx="520" cy="160" r="5" />
+      <circle cx="620" cy="120" r="5" />
+      <circle cx="720" cy="150" r="5" />
+      
+      <circle cx="100" cy="250" r="5" />
+      <circle cx="200" cy="230" r="5" />
+      <circle cx="300" cy="270" r="5" />
+      <circle cx="400" cy="240" r="5" />
+      <circle cx="500" cy="260" r="5" />
+      <circle cx="600" cy="220" r="5" />
+      <circle cx="700" cy="250" r="5" />
+      
+      <circle cx="120" cy="350" r="5" />
+      <circle cx="220" cy="330" r="5" />
+      <circle cx="320" cy="370" r="5" />
+      <circle cx="420" cy="340" r="5" />
+      <circle cx="520" cy="360" r="5" />
+      <circle cx="620" cy="320" r="5" />
+      <circle cx="720" cy="350" r="5" />
+    </g>
+    
+    <!-- Neural connections -->
+    <g stroke="#2a2665" stroke-width="0.5">
+      <!-- Horizontal connections -->
+      <path d="M100,50 L200,30 L300,70 L400,40 L500,60 L600,20 L700,50" />
+      <path d="M120,150 L220,130 L320,170 L420,140 L520,160 L620,120 L720,150" />
+      <path d="M100,250 L200,230 L300,270 L400,240 L500,260 L600,220 L700,250" />
+      <path d="M120,350 L220,330 L320,370 L420,340 L520,360 L620,320 L720,350" />
+      
+      <!-- Vertical connections -->
+      <path d="M100,50 L120,150 L100,250 L120,350" />
+      <path d="M200,30 L220,130 L200,230 L220,330" />
+      <path d="M300,70 L320,170 L300,270 L320,370" />
+      <path d="M400,40 L420,140 L400,240 L420,340" />
+      <path d="M500,60 L520,160 L500,260 L520,360" />
+      <path d="M600,20 L620,120 L600,220 L620,320" />
+      <path d="M700,50 L720,150 L700,250 L720,350" />
+      
+      <!-- Diagonal connections -->
+      <path d="M100,50 L220,130" />
+      <path d="M200,30 L320,170" />
+      <path d="M300,70 L420,140" />
+      <path d="M400,40 L520,160" />
+      <path d="M500,60 L620,120" />
+      <path d="M600,20 L720,150" />
+      
+      <path d="M120,150 L200,230" />
+      <path d="M220,130 L300,270" />
+      <path d="M320,170 L400,240" />
+      <path d="M420,140 L500,260" />
+      <path d="M520,160 L600,220" />
+      <path d="M620,120 L700,250" />
+      
+      <path d="M100,250 L220,330" />
+      <path d="M200,230 L320,370" />
+      <path d="M300,270 L420,340" />
+      <path d="M400,240 L520,360" />
+      <path d="M500,260 L620,320" />
+      <path d="M600,220 L720,350" />
+    </g>
+  </g>
+  
+  <!-- Main scene with Saudi characters interacting with AI -->
+  <g transform="translate(400, 200)">
+    <!-- Main Saudi character interacting with holographic AI -->
+    <g>
+      <!-- Head with shemagh -->
+      <circle cx="0" cy="-70" r="28" fill="#e8d8c7" />
+      <path d="M-28,-70 C-28,-42 28,-42 28,-70" fill="#ffffff" />
+      <path d="M-28,-75 L28,-75 L28,-100 L-28,-100 Z" fill="#ffffff" />
+      <path d="M-28,-75 C-5,-65 5,-65 28,-75" fill="#ffffff" />
+      <path d="M-28,-75 L-31,-100 L28,-100 L31,-75 Z" fill="#b29567" />
+      
+      <!-- Face -->
+      <circle cx="-10" cy="-70" r="3" fill="#2a2665" />
+      <circle cx="10" cy="-70" r="3" fill="#2a2665" />
+      <path d="M-5,-60 C-2,-57 2,-57 5,-60" stroke="#2a2665" stroke-width="1.5" fill="none" />
+      
+      <!-- Body with thobe -->
+      <path d="M0,-42 L-40,70 L40,70 Z" fill="#ffffff" />
+      <path d="M-15,-42 L-15,40" stroke="#f0f0f0" stroke-width="1" />
+      <path d="M15,-42 L15,40" stroke="#f0f0f0" stroke-width="1" />
+      
+      <!-- Arms -->
+      <path d="M-20,-20 L-50,20" stroke="#ffffff" stroke-width="15" stroke-linecap="round" />
+      <path d="M20,-20 L50,20" stroke="#ffffff" stroke-width="15" stroke-linecap="round" />
+      
+      <!-- Hands -->
+      <circle cx="-50" cy="20" r="8" fill="#e8d8c7" />
+      <circle cx="50" cy="20" r="8" fill="#e8d8c7" />
+      
+      <!-- Holographic AI interface -->
+      <g transform="translate(0, 0)">
+        <!-- Base platform -->
+        <ellipse cx="0" cy="70" rx="60" ry="10" fill="#2a2665" opacity="0.2" />
+        
+        <!-- Holographic projector -->
+        <path d="M-10,60 L10,60 L5,70 L-5,70 Z" fill="#2a2665" opacity="0.6" />
+        
+        <!-- Holographic AI projection -->
+        <g opacity="0.6">
+          <!-- AI brain visualization -->
+          <path d="M0,0 C-20,-30 -30,-10 -20,10 C-40,20 -30,40 -10,40 C0,50 10,50 20,40 C40,40 50,20 30,10 C40,-10 30,-30 10,-30 C0,-40 -10,-20 0,0" fill="none" stroke="#b29567" stroke-width="2" />
+          
+          <!-- Neural connections inside brain -->
+          <g fill="#b29567">
+            <circle cx="-15" cy="-15" r="3" />
+            <circle cx="15" cy="-15" r="3" />
+            <circle cx="-25" cy="0" r="3" />
+            <circle cx="0" cy="0" r="3" />
+            <circle cx="25" cy="0" r="3" />
+            <circle cx="-15" cy="15" r="3" />
+            <circle cx="15" cy="15" r="3" />
+          </g>
+          
+          <!-- Neural connections -->
+          <g stroke="#b29567" stroke-width="1">
+            <path d="M-15,-15 L15,-15" />
+            <path d="M-15,-15 L-25,0" />
+            <path d="M-15,-15 L0,0" />
+            <path d="M15,-15 L25,0" />
+            <path d="M15,-15 L0,0" />
+            <path d="M-25,0 L-15,15" />
+            <path d="M-25,0 L0,0" />
+            <path d="M0,0 L-15,15" />
+            <path d="M0,0 L15,15" />
+            <path d="M25,0 L15,15" />
+            <path d="M25,0 L0,0" />
+            <path d="M-15,15 L15,15" />
+          </g>
+          
+          <!-- Holographic data stream effect -->
+          <g stroke="#b29567" stroke-width="0.5" stroke-dasharray="2,2">
+            <path d="M0,-40 L0,-100" />
+            <path d="M-20,-30 L-40,-80" />
+            <path d="M20,-30 L40,-80" />
+            <path d="M-30,0 L-60,-40" />
+            <path d="M30,0 L60,-40" />
+            <path d="M-20,30 L-40,60" />
+            <path d="M20,30 L40,60" />
+          </g>
+        </g>
+      </g>
+      
+      <!-- Legs -->
+      <path d="M-20,70 L-25,110" stroke="#ffffff" stroke-width="18" stroke-linecap="round" />
+      <path d="M20,70 L25,110" stroke="#ffffff" stroke-width="18" stroke-linecap="round" />
+      
+      <!-- Feet -->
+      <path d="M-33,110 L-17,110" stroke="#5d4037" stroke-width="5" stroke-linecap="round" />
+      <path d="M17,110 L33,110" stroke="#5d4037" stroke-width="5" stroke-linecap="round" />
+    </g>
+    
+    <!-- Secondary characters and AI elements -->
+    <g transform="translate(-160, 0)">
+      <!-- Saudi woman data scientist -->
+      <g transform="scale(0.7)">
+        <!-- Head with hijab -->
+        <circle cx="0" cy="-80" r="28" fill="#e8d8c7" />
+        <path d="M-28,-80 C-28,-52 28,-52 28,-80" fill="#000000" />
+        <path d="M-35,-80 L35,-80 L35,-120 L-35,-120 Z" fill="#000000" />
+        
+        <!-- Face -->
+        <circle cx="-10" cy="-80" r="3" fill="#2a2665" />
+        <circle cx="10" cy="-80" r="3" fill="#2a2665" />
+        <path d="M-5,-70 C-2,-67 2,-67 5,-70" stroke="#2a2665" stroke-width="1.5" fill="none" />
+        
+        <!-- Body with abaya -->
+        <path d="M-35,-50 L-45,80 L45,80 L35,-50 Z" fill="#000000" />
+        
+        <!-- Arms -->
+        <path d="M-20,-30 L-60,0" stroke="#000000" stroke-width="12" stroke-linecap="round" />
+        <path d="M20,-30 L60,0" stroke="#000000" stroke-width="12" stroke-linecap="round" />
+        
+        <!-- Hands -->
+        <circle cx="-60" cy="0" r="7" fill="#e8d8c7" />
+        <circle cx="60" cy="0" r="7" fill="#e8d8c7" />
+        
+        <!-- Tablet with AI analytics -->
+        <g transform="translate(0, 20)">
+          <rect x="-40" y="-30" width="80" height="60" rx="5" fill="#2a2665" />
+          <rect x="-35" y="-25" width="70" height="50" rx="3" fill="#f8f9fa" />
+          
+          <!-- Screen content - AI analytics -->
+          <g opacity="0.7">
+            <!-- Bar graph visualization -->
+            <rect x="-30" y="15" width="10" height="-10" fill="#2a2665" opacity="0.3" />
+            <rect x="-15" y="15" width="10" height="-20" fill="#2a2665" opacity="0.5" />
+            <rect x="0" y="15" width="10" height="-15" fill="#2a2665" opacity="0.4" />
+            <rect x="15" y="15" width="10" height="-25" fill="#2a2665" opacity="0.6" />
+            
+            <!-- Graph axes -->
+            <path d="M-30,15 L30,15" stroke="#2a2665" stroke-width="1" />
+            <path d="M-30,-20 L-30,15" stroke="#2a2665" stroke-width="1" />
+            
+            <!-- AI logo/icon -->
+            <g transform="translate(-20, -10)">
+              <circle cx="0" cy="0" r="8" fill="#b29567" opacity="0.3" />
+              <text x="0" y="3" text-anchor="middle" font-family="Arial" font-size="10" fill="#2a2665">AI</text>
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+    
+    <g transform="translate(160, -20)">
+      <!-- AI robot/humanoid visualization -->
+      <g transform="scale(0.8)">
+        <!-- Robot body with Arabic/Islamic geometric design elements -->
+        <rect x="-30" y="-60" width="60" height="120" rx="10" fill="#2a2665" opacity="0.2" />
+        
+        <!-- Robot head -->
+        <rect x="-25" y="-90" width="50" height="40" rx="5" fill="#2a2665" opacity="0.3" />
+        
+        <!-- Robot face - simple with Arabian design elements -->
+        <g transform="translate(0, -70)">
+          <!-- Eyes -->
+          <rect x="-15" y="-5" width="10" height="5" rx="2" fill="#b29567" />
+          <rect x="5" y="-5" width="10" height="5" rx="2" fill="#b29567" />
+          
+          <!-- Decorative geometric pattern -->
+          <path d="M-10,10 L10,10" stroke="#b29567" stroke-width="2" />
+          <path d="M-15,5 L15,5" stroke="#b29567" stroke-width="1" />
+          <path d="M-15,15 L15,15" stroke="#b29567" stroke-width="1" />
+        </g>
+        
+        <!-- Robot body details -->
+        <g opacity="0.7">
+          <!-- Chest panel -->
+          <rect x="-20" y="-40" width="40" height="30" rx="3" fill="#f8f9fa" />
+          
+          <!-- Control lights/buttons with Arabian geometric patterns -->
+          <circle cx="-10" cy="-30" r="5" fill="#b29567" opacity="0.5" />
+          <circle cx="10" cy="-30" r="5" fill="#b29567" opacity="0.5" />
+          <circle cx="-10" cy="-15" r="5" fill="#b29567" opacity="0.3" />
+          <circle cx="10" cy="-15" r="5" fill="#b29567" opacity="0.3" />
+          
+          <!-- Arabic-inspired pattern on chest -->
+          <path d="M-15,-25 L15,-25" stroke="#2a2665" stroke-width="1" />
+          <path d="M-15,-20 L15,-20" stroke="#2a2665" stroke-width="1" />
+        </g>
+        
+        <!-- Robot arms -->
+        <path d="M-30,-40 L-60,-10" stroke="#2a2665" stroke-width="8" fill="none" opacity="0.3" />
+        <path d="M30,-40 L60,-10" stroke="#2a2665" stroke-width="8" fill="none" opacity="0.3" />
+        
+        <!-- Robot hands -->
+        <circle cx="-60" cy="-10" r="8" fill="#2a2665" opacity="0.3" />
+        <circle cx="60" cy="-10" r="8" fill="#2a2665" opacity="0.3" />
+        
+        <!-- Robot legs -->
+        <path d="M-15,60 L-20,110" stroke="#2a2665" stroke-width="10" fill="none" opacity="0.3" />
+        <path d="M15,60 L20,110" stroke="#2a2665" stroke-width="10" fill="none" opacity="0.3" />
+        
+        <!-- Robot feet -->
+        <rect x="-30" y="110" width="20" height="10" rx="3" fill="#2a2665" opacity="0.3" />
+        <rect x="10" y="110" width="20" height="10" rx="3" fill="#2a2665" opacity="0.3" />
+        
+        <!-- Data/energy flow visualization around robot -->
+        <g stroke="#b29567" stroke-width="0.5" stroke-dasharray="3,3" opacity="0.8">
+          <ellipse cx="0" cy="0" rx="70" ry="130" />
+          <ellipse cx="0" cy="0" rx="60" ry="120" />
+        </g>
+      </g>
+    </g>
+  </g>
+  
+  <!-- Decorative corner elements -->
+  <g opacity="0.15">
+    <!-- Top left -->
+    <path d="M0,0 L150,0 A150,150 0 0,0 0,150 Z" fill="#b29567" />
+    
+    <!-- Bottom right -->
+    <path d="M800,400 L650,400 A150,150 0 0,0 800,250 Z" fill="#2a2665" />
+  </g>
+  
+  <!-- Gradients -->
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2a2665;stop-opacity:0.07" />
+      <stop offset="100%" style="stop-color:#b29567;stop-opacity:0.07" />
+    </linearGradient>
+  </defs>
+</svg>

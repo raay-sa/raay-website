@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="200" viewBox="0 0 400 200" fill="none">
+  <!-- Gradient background -->
+  <rect width="400" height="200" fill="url(#training-paths-gradient)"/>
+  
+  <!-- Abstract path pattern -->
+  <path d="M20 180 Q50 150 80 180 Q110 210 140 180 Q170 150 200 180 Q230 210 260 180 Q290 150 320 180 Q350 210 380 180" 
+        stroke="white" stroke-width="2" stroke-opacity="0.3" fill="none"/>
+  
+  <path d="M20 170 Q50 140 80 170 Q110 200 140 170 Q170 140 200 170 Q230 200 260 170 Q290 140 320 170 Q350 200 380 170" 
+        stroke="white" stroke-width="2" stroke-opacity="0.2" fill="none"/>
+  
+  <path d="M20 160 Q50 130 80 160 Q110 190 140 160 Q170 130 200 160 Q230 190 260 160 Q290 130 320 160 Q350 190 380 160" 
+        stroke="white" stroke-width="2" stroke-opacity="0.1" fill="none"/>
+  
+  <!-- Milestone dots (training stages) -->
+  <circle cx="50" cy="50" r="8" fill="white" fill-opacity="0.5"/>
+  <circle cx="130" cy="50" r="8" fill="white" fill-opacity="0.5"/>
+  <circle cx="210" cy="50" r="8" fill="white" fill-opacity="0.5"/>
+  <circle cx="290" cy="50" r="8" fill="white" fill-opacity="0.5"/>
+  <circle cx="370" cy="50" r="8" fill="white" fill-opacity="0.5"/>
+  
+  <!-- Connection lines representing training path -->
+  <line x1="50" y1="50" x2="130" y2="50" stroke="white" stroke-width="2" stroke-opacity="0.5" stroke-dasharray="2,2"/>
+  <line x1="130" y1="50" x2="210" y2="50" stroke="white" stroke-width="2" stroke-opacity="0.5" stroke-dasharray="2,2"/>
+  <line x1="210" y1="50" x2="290" y2="50" stroke="white" stroke-width="2" stroke-opacity="0.5" stroke-dasharray="2,2"/>
+  <line x1="290" y1="50" x2="370" y2="50" stroke="white" stroke-width="2" stroke-opacity="0.5" stroke-dasharray="2,2"/>
+  
+  <!-- Growth chart icon -->
+  <line x1="90" y1="120" x2="90" y2="80" stroke="white" stroke-width="1.5" stroke-opacity="0.4"/>
+  <line x1="90" y1="120" x2="130" y2="120" stroke="white" stroke-width="1.5" stroke-opacity="0.4"/>
+  <path d="M90 110 L100 105 L110 95 L120 85 L130 80" stroke="white" stroke-width="1.5" stroke-opacity="0.4" fill="none"/>
+  <circle cx="130" cy="80" r="3" fill="white" fill-opacity="0.6"/>
+  
+  <!-- Certificate icon -->
+  <rect x="310" y="90" width="30" height="40" rx="2" stroke="white" stroke-width="1.5" stroke-opacity="0.4" fill="none"/>
+  <line x1="315" y1="100" x2="335" y2="100" stroke="white" stroke-width="1.5" stroke-opacity="0.4"/>
+  <line x1="315" y1="110" x2="335" y2="110" stroke="white" stroke-width="1.5" stroke-opacity="0.4"/>
+  <line x1="315" y1="120" x2="335" y2="120" stroke="white" stroke-width="1.5" stroke-opacity="0.4"/>
+  
+  <!-- Leadership icon -->
+  <circle cx="190" cy="100" r="10" stroke="white" stroke-width="1.5" stroke-opacity="0.4" fill="none"/>
+  <path d="M190 110 L190 130" stroke="white" stroke-width="1.5" stroke-opacity="0.4"/>
+  <path d="M180 115 L190 110 L200 115" stroke="white" stroke-width="1.5" stroke-opacity="0.4" fill="none"/>
+  <path d="M175 125 L190 120 L205 125" stroke="white" stroke-width="1.5" stroke-opacity="0.4" fill="none"/>
+  
+  <!-- Gradient definition -->
+  <defs>
+    <linearGradient id="training-paths-gradient" x1="0" y1="0" x2="400" y2="200" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2a2665"/>
+      <stop offset="1" stop-color="#3a3678"/>
+    </linearGradient>
+  </defs>
+</svg>

@@ -1,0 +1,54 @@
+<svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+  <!-- نمط خلفية علم البيانات - رسوم بيانية ورموز إحصائية -->
+  <defs>
+    <linearGradient id="gradData" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2a2665;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#2a2665;stop-opacity:0.3" />
+    </linearGradient>
+  </defs>
+  
+  <!-- محاور الرسم البياني -->
+  <line x1="50" y1="250" x2="250" y2="250" stroke="#ffffff" stroke-width="1.5" opacity="0.5" />
+  <line x1="50" y1="50" x2="50" y2="250" stroke="#ffffff" stroke-width="1.5" opacity="0.5" />
+  
+  <!-- علامات محور السينات -->
+  <line x1="90" y1="245" x2="90" y2="255" stroke="#ffffff" stroke-width="1" opacity="0.4" />
+  <line x1="130" y1="245" x2="130" y2="255" stroke="#ffffff" stroke-width="1" opacity="0.4" />
+  <line x1="170" y1="245" x2="170" y2="255" stroke="#ffffff" stroke-width="1" opacity="0.4" />
+  <line x1="210" y1="245" x2="210" y2="255" stroke="#ffffff" stroke-width="1" opacity="0.4" />
+  
+  <!-- علامات محور الصادات -->
+  <line x1="45" y1="210" x2="55" y2="210" stroke="#ffffff" stroke-width="1" opacity="0.4" />
+  <line x1="45" y1="170" x2="55" y2="170" stroke="#ffffff" stroke-width="1" opacity="0.4" />
+  <line x1="45" y1="130" x2="55" y2="130" stroke="#ffffff" stroke-width="1" opacity="0.4" />
+  <line x1="45" y1="90" x2="55" y2="90" stroke="#ffffff" stroke-width="1" opacity="0.4" />
+  
+  <!-- رسم بياني خطي -->
+  <polyline points="50,190 90,150 130,180 170,110 210,130 250,90" 
+            fill="none" stroke="#b29567" stroke-width="2" opacity="0.5" />
+  
+  <!-- نقاط البيانات -->
+  <circle cx="50" cy="190" r="4" fill="#b29567" opacity="0.7" />
+  <circle cx="90" cy="150" r="4" fill="#b29567" opacity="0.7" />
+  <circle cx="130" cy="180" r="4" fill="#b29567" opacity="0.7" />
+  <circle cx="170" cy="110" r="4" fill="#b29567" opacity="0.7" />
+  <circle cx="210" cy="130" r="4" fill="#b29567" opacity="0.7" />
+  <circle cx="250" cy="90" r="4" fill="#b29567" opacity="0.7" />
+  
+  <!-- رسم بياني عمودي -->
+  <rect x="60" y="220" width="20" height="30" fill="#b29567" opacity="0.3" />
+  <rect x="100" y="190" width="20" height="60" fill="#b29567" opacity="0.3" />
+  <rect x="140" y="170" width="20" height="80" fill="#b29567" opacity="0.3" />
+  <rect x="180" y="210" width="20" height="40" fill="#b29567" opacity="0.3" />
+  <rect x="220" y="180" width="20" height="70" fill="#b29567" opacity="0.3" />
+  
+  <!-- دائرة نسبية -->
+  <path d="M130,60 A30,30 0 0,1 160,90" fill="none" stroke="#b29567" stroke-width="2" opacity="0.5" />
+  <path d="M160,90 A30,30 0 0,1 130,120" fill="none" stroke="#b29567" stroke-width="2" opacity="0.5" />
+  <path d="M130,120 A30,30 0 0,1 100,90" fill="none" stroke="#b29567" stroke-width="2" opacity="0.5" />
+  <path d="M100,90 A30,30 0 0,1 130,60" fill="none" stroke="#b29567" stroke-width="2" opacity="0.5" />
+  <line x1="130" y1="90" x2="160" y2="90" stroke="#b29567" stroke-width="1" opacity="0.5" />
+  <line x1="130" y1="90" x2="130" y2="60" stroke="#b29567" stroke-width="1" opacity="0.5" />
+  <line x1="130" y1="90" x2="100" y2="90" stroke="#b29567" stroke-width="1" opacity="0.5" />
+  <line x1="130" y1="90" x2="130" y2="120" stroke="#b29567" stroke-width="1" opacity="0.5" />
+</svg>

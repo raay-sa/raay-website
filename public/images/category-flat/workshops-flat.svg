@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="600" height="220" viewBox="0 0 600 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- خلفية البطاقة -->
+  <rect width="600" height="220" fill="#446591"/>
+  
+  <!-- العناصر الزخرفية الفلات فيكتور لورش العمل -->
+  <!-- طاولة مستديرة للعمل الجماعي -->
+  <g opacity="0.15">
+    <circle cx="300" cy="110" r="60" fill="#ffffff"/>
+    <circle cx="300" cy="110" r="55" fill="#446591"/>
+  </g>
+  
+  <!-- أشخاص حول الطاولة (مبسطة) -->
+  <g opacity="0.15">
+    <!-- شخص 1 -->
+    <circle cx="250" cy="80" r="15" fill="#ffffff"/>
+    <rect x="242" y="95" width="16" height="20" rx="8" fill="#ffffff"/>
+    
+    <!-- شخص 2 -->
+    <circle cx="280" cy="65" r="15" fill="#ffffff"/>
+    <rect x="272" y="80" width="16" height="20" rx="8" fill="#ffffff"/>
+    
+    <!-- شخص 3 -->
+    <circle cx="320" cy="65" r="15" fill="#ffffff"/>
+    <rect x="312" y="80" width="16" height="20" rx="8" fill="#ffffff"/>
+    
+    <!-- شخص 4 -->
+    <circle cx="350" cy="80" r="15" fill="#ffffff"/>
+    <rect x="342" y="95" width="16" height="20" rx="8" fill="#ffffff"/>
+    
+    <!-- شخص 5 -->
+    <circle cx="350" cy="140" r="15" fill="#ffffff"/>
+    <rect x="342" y="155" width="16" height="20" rx="8" fill="#ffffff"/>
+    
+    <!-- شخص 6 -->
+    <circle cx="250" cy="140" r="15" fill="#ffffff"/>
+    <rect x="242" y="155" width="16" height="20" rx="8" fill="#ffffff"/>
+  </g>
+  
+  <!-- أدوات ورشة العمل -->
+  <g opacity="0.15">
+    <!-- سبورة -->
+    <rect x="160" y="70" width="60" height="40" rx="2" fill="#ffffff"/>
+    <line x1="170" y1="85" x2="210" y2="85" stroke="#446591" stroke-width="2"/>
+    <line x1="170" y1="95" x2="200" y2="95" stroke="#446591" stroke-width="2"/>
+    
+    <!-- لابتوب -->
+    <rect x="400" y="100" width="40" height="30" rx="2" fill="#ffffff"/>
+    <rect x="400" y="130" width="40" height="4" rx="2" fill="#ffffff"/>
+    
+    <!-- ملاحظات -->
+    <rect x="380" y="70" width="30" height="20" rx="2" fill="#ffffff"/>
+    <line x1="385" y1="75" x2="405" y2="75" stroke="#446591" stroke-width="1"/>
+    <line x1="385" y1="80" x2="400" y2="80" stroke="#446591" stroke-width="1"/>
+    <line x1="385" y1="85" x2="405" y2="85" stroke="#446591" stroke-width="1"/>
+    
+    <!-- أدوات -->
+    <rect x="170" y="130" width="30" height="5" rx="2" fill="#ffffff"/>
+    <circle cx="185" cy="150" r="8" fill="#ffffff"/>
+  </g>
+  
+  <!-- خطوط تمثل علاقات التواصل بين المشاركين -->
+  <path d="M250 80 L280 65 L320 65 L350 80 M350 140 L300 110 L250 140" stroke="#ffffff" stroke-width="1" stroke-dasharray="5 5" opacity="0.15"/>
+  
+  <!-- زخرفة الخلفية -->
+  <g opacity="0.1">
+    <rect x="50" y="40" width="500" height="2" fill="#ffffff"/>
+    <rect x="50" y="180" width="500" height="2" fill="#ffffff"/>
+    <rect x="50" y="40" width="2" height="142" fill="#ffffff"/>
+    <rect x="550" y="40" width="2" height="142" fill="#ffffff"/>
+  </g>
+  
+  <!-- زخرفة إسلامية مبسطة -->
+  <path d="M50 160 Q150 140 300 160 Q450 180 550 160" stroke="#ffffff" stroke-width="2" opacity="0.1"/>
+</svg>

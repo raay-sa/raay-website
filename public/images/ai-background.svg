@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1600" height="800" viewBox="0 0 1600 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- خلفية رئيسية متدرجة -->
+  <rect width="1600" height="800" fill="url(#gradient_bg)"/>
+  
+  <!-- العناصر المرتبطة بالذكاء الاصطناعي -->
+  
+  <!-- شبكة عصبية - خطوط متصلة -->
+  <g opacity="0.2">
+    <!-- نقاط الاتصال -->
+    <circle cx="200" cy="200" r="8" fill="white"/>
+    <circle cx="300" cy="150" r="8" fill="white"/>
+    <circle cx="400" cy="200" r="8" fill="white"/>
+    <circle cx="250" cy="300" r="8" fill="white"/>
+    <circle cx="350" cy="350" r="8" fill="white"/>
+    <circle cx="500" cy="300" r="8" fill="white"/>
+    <circle cx="550" cy="200" r="8" fill="white"/>
+    <circle cx="600" cy="350" r="8" fill="white"/>
+    <circle cx="700" cy="250" r="8" fill="white"/>
+    <circle cx="800" cy="300" r="8" fill="white"/>
+    <circle cx="900" cy="200" r="8" fill="white"/>
+    <circle cx="1000" cy="350" r="8" fill="white"/>
+    <circle cx="1100" cy="250" r="8" fill="white"/>
+    <circle cx="1200" cy="300" r="8" fill="white"/>
+    <circle cx="1300" cy="200" r="8" fill="white"/>
+    <circle cx="1400" cy="250" r="8" fill="white"/>
+    
+    <!-- الخطوط المتصلة -->
+    <line x1="200" y1="200" x2="300" y2="150" stroke="white" stroke-width="1.5"/>
+    <line x1="300" y1="150" x2="400" y2="200" stroke="white" stroke-width="1.5"/>
+    <line x1="400" y1="200" x2="250" y2="300" stroke="white" stroke-width="1.5"/>
+    <line x1="250" y1="300" x2="350" y2="350" stroke="white" stroke-width="1.5"/>
+    <line x1="400" y1="200" x2="500" y2="300" stroke="white" stroke-width="1.5"/>
+    <line x1="500" y1="300" x2="350" y2="350" stroke="white" stroke-width="1.5"/>
+    <line x1="400" y1="200" x2="550" y2="200" stroke="white" stroke-width="1.5"/>
+    <line x1="550" y1="200" x2="600" y2="350" stroke="white" stroke-width="1.5"/>
+    <line x1="600" y1="350" x2="500" y2="300" stroke="white" stroke-width="1.5"/>
+    <line x1="550" y1="200" x2="700" y2="250" stroke="white" stroke-width="1.5"/>
+    <line x1="700" y1="250" x2="800" y2="300" stroke="white" stroke-width="1.5"/>
+    <line x1="800" y1="300" x2="600" y2="350" stroke="white" stroke-width="1.5"/>
+    <line x1="700" y1="250" x2="900" y2="200" stroke="white" stroke-width="1.5"/>
+    <line x1="900" y1="200" x2="1000" y2="350" stroke="white" stroke-width="1.5"/>
+    <line x1="1000" y1="350" x2="800" y2="300" stroke="white" stroke-width="1.5"/>
+    <line x1="900" y1="200" x2="1100" y2="250" stroke="white" stroke-width="1.5"/>
+    <line x1="1100" y1="250" x2="1200" y2="300" stroke="white" stroke-width="1.5"/>
+    <line x1="1200" y1="300" x2="1000" y2="350" stroke="white" stroke-width="1.5"/>
+    <line x1="1100" y1="250" x2="1300" y2="200" stroke="white" stroke-width="1.5"/>
+    <line x1="1300" y1="200" x2="1400" y2="250" stroke="white" stroke-width="1.5"/>
+    <line x1="1400" y1="250" x2="1200" y2="300" stroke="white" stroke-width="1.5"/>
+  </g>
+  
+  <!-- رموز الذكاء الاصطناعي -->
+  <g opacity="0.15">
+    <!-- أيقونة روبوت -->
+    <rect x="1350" y="400" width="40" height="60" rx="10" fill="white"/>
+    <circle cx="1370" cy="380" r="15" fill="white"/>
+    <rect x="1360" y="420" width="5" height="15" fill="#2a2665"/>
+    <rect x="1375" y="420" width="5" height="15" fill="#2a2665"/>
+    <rect x="1362" y="445" width="16" height="5" fill="#2a2665"/>
+    
+    <!-- أيقونة دماغ -->
+    <path d="M1200 500 C1230 470 1270 470 1300 500 C1330 530 1330 570 1300 600 C1270 630 1230 630 1200 600 C1170 570 1170 530 1200 500" stroke="white" stroke-width="3" fill="none"/>
+    <path d="M1250 480 C1250 480 1250 530 1280 550" stroke="white" stroke-width="2" fill="none"/>
+    <path d="M1250 480 C1250 480 1250 530 1220 550" stroke="white" stroke-width="2" fill="none"/>
+    
+    <!-- مصفوفة بيانات/كود -->
+    <rect x="200" y="500" width="200" height="120" rx="5" fill="white" opacity="0.2"/>
+    <line x1="200" y1="520" x2="400" y2="520" stroke="white" stroke-width="1"/>
+    <line x1="200" y1="540" x2="400" y2="540" stroke="white" stroke-width="1"/>
+    <line x1="200" y1="560" x2="400" y2="560" stroke="white" stroke-width="1"/>
+    <line x1="200" y1="580" x2="400" y2="580" stroke="white" stroke-width="1"/>
+    <line x1="200" y1="600" x2="400" y2="600" stroke="white" stroke-width="1"/>
+    
+    <!-- أيقونة معالج -->
+    <rect x="500" y="550" width="60" height="60" fill="white" opacity="0.2"/>
+    <line x1="500" y1="570" x2="560" y2="570" stroke="white" stroke-width="1"/>
+    <line x1="500" y1="590" x2="560" y2="590" stroke="white" stroke-width="1"/>
+    <line x1="520" y1="550" x2="520" y2="610" stroke="white" stroke-width="1"/>
+    <line x1="540" y1="550" x2="540" y2="610" stroke="white" stroke-width="1"/>
+    
+    <!-- أيقونات وحدات المعالجة -->
+    <rect x="650" y="500" width="80" height="40" rx="5" fill="white" opacity="0.2"/>
+    <rect x="650" y="550" width="80" height="40" rx="5" fill="white" opacity="0.2"/>
+    <rect x="650" y="600" width="80" height="40" rx="5" fill="white" opacity="0.2"/>
+    
+    <!-- رمز خوارزمية -->
+    <rect x="800" y="500" width="150" height="100" rx="5" fill="white" opacity="0.2"/>
+    <line x1="820" y1="520" x2="930" y2="520" stroke="white" stroke-width="1"/>
+    <line x1="820" y1="540" x2="900" y2="540" stroke="white" stroke-width="1"/>
+    <line x1="820" y1="560" x2="920" y2="560" stroke="white" stroke-width="1"/>
+    <line x1="820" y1="580" x2="880" y2="580" stroke="white" stroke-width="1"/>
+    
+    <!-- أيقونة شبكة -->
+    <circle cx="1050" cy="550" r="40" fill="white" opacity="0.2"/>
+    <circle cx="1020" cy="520" r="5" fill="white"/>
+    <circle cx="1080" cy="520" r="5" fill="white"/>
+    <circle cx="1020" cy="580" r="5" fill="white"/>
+    <circle cx="1080" cy="580" r="5" fill="white"/>
+    <circle cx="1050" cy="550" r="5" fill="white"/>
+    <line x1="1020" y1="520" x2="1050" y2="550" stroke="white" stroke-width="1"/>
+    <line x1="1080" y1="520" x2="1050" y2="550" stroke="white" stroke-width="1"/>
+    <line x1="1020" y1="580" x2="1050" y2="550" stroke="white" stroke-width="1"/>
+    <line x1="1080" y1="580" x2="1050" y2="550" stroke="white" stroke-width="1"/>
+  </g>
+  
+  <!-- رموز قائمة بيانات ومخطط خوارزمية -->
+  <g opacity="0.1">
+    <rect x="100" y="50" width="250" height="150" rx="5" fill="white"/>
+    <rect x="120" y="70" width="150" height="10" fill="#2a2665"/>
+    <rect x="120" y="90" width="180" height="10" fill="#2a2665"/>
+    <rect x="120" y="110" width="120" height="10" fill="#2a2665"/>
+    <rect x="120" y="130" width="200" height="10" fill="#2a2665"/>
+    <rect x="120" y="150" width="160" height="10" fill="#2a2665"/>
+    <rect x="120" y="170" width="140" height="10" fill="#2a2665"/>
+    
+    <rect x="1000" y="50" width="150" height="150" rx="5" fill="white"/>
+    <circle cx="1075" cy="75" r="15" fill="#2a2665"/>
+    <rect x="1045" y="100" width="60" height="5" fill="#2a2665"/>
+    <rect x="1025" y="115" width="100" height="5" fill="#2a2665"/>
+    <rect x="1045" y="130" width="60" height="5" fill="#2a2665"/>
+    <rect x="1060" y="145" width="30" height="5" fill="#2a2665"/>
+    <rect x="1025" y="160" width="100" height="5" fill="#2a2665"/>
+    <rect x="1045" y="175" width="60" height="5" fill="#2a2665"/>
+  </g>
+  
+  <!-- التعريفات -->
+  <defs>
+    <linearGradient id="gradient_bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b5bdb"/>
+      <stop offset="100%" stop-color="#2a2665"/>
+    </linearGradient>
+  </defs>
+</svg>

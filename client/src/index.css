@@ -1,0 +1,354 @@
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Default language (Arabic) */
+  html[dir="rtl"] body {
+    font-family: 'Tajawal', sans-serif;
+  }
+  
+  /* English language */
+  html[dir="ltr"] body {
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  /* RTL specific adjustments */
+  html[dir="rtl"] {
+    text-align: right;
+  }
+  
+  /* LTR specific adjustments */
+  html[dir="ltr"] {
+    text-align: left;
+  }
+  
+  /* Transition for smooth language switching */
+  body {
+    transition: all 0.3s ease-in-out;
+  }
+  
+  /* Fix for rtl/ltr specific margins and paddings */
+  html[dir="rtl"] .rtl-flip {
+    transform: scaleX(-1);
+  }
+  
+  html[dir="rtl"] .rtl-margin {
+    margin-right: 0;
+    margin-left: auto;
+  }
+  
+  html[dir="ltr"] .rtl-margin {
+    margin-left: 0;
+    margin-right: auto;
+  }
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 20 14.3% 4.1%;
+    --muted: 60 4.8% 95.9%;
+    --muted-foreground: 25 5.3% 44.7%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 20 14.3% 4.1%;
+    --card: 0 0% 100%;
+    --card-foreground: 20 14.3% 4.1%;
+    --border: 20 5.9% 90%;
+    --input: 20 5.9% 90%;
+    --primary: 172 100% 18%; /* #005E54 */
+    --primary-foreground: 210 40% 98%;
+    --secondary: 45 65% 52%; /* #D4AF37 */
+    --secondary-foreground: 24 9.8% 10%;
+    --accent: 45 65% 52%;
+    --accent-foreground: 24 9.8% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 60 9.1% 97.8%;
+    --ring: 24 5.4% 63.9%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 20 14.3% 4.1%;
+    --foreground: 60 9.1% 97.8%;
+    --muted: 12 6.5% 15.1%;
+    --muted-foreground: 24 5.4% 63.9%;
+    --popover: 20 14.3% 4.1%;
+    --popover-foreground: 60 9.1% 97.8%;
+    --card: 20 14.3% 4.1%;
+    --card-foreground: 60 9.1% 97.8%;
+    --border: 12 6.5% 15.1%;
+    --input: 12 6.5% 15.1%;
+    --primary: 172 100% 18%; 
+    --primary-foreground: 210 40% 98%;
+    --secondary: 45 65% 52%;
+    --secondary-foreground: 60 9.1% 97.8%;
+    --accent: 12 6.5% 15.1%;
+    --accent-foreground: 60 9.1% 97.8%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --ring: 24 5.4% 63.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Tajawal', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cairo', sans-serif;
+  }
+}
+
+/* Custom styles */
+.section-heading::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background-color: hsl(var(--secondary));
+  margin: 10px auto 0;
+}
+
+.custom-shadow {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.testimonial-card {
+  position: relative;
+}
+
+.testimonial-card::before {
+  content: '\201D';
+  font-family: Arial, sans-serif;
+  position: absolute;
+  top: -15px;
+  right: 20px;
+  font-size: 60px;
+  color: rgba(212, 175, 55, 0.2);
+}
+
+/* RTL and LTR specific animations */
+@keyframes slideInRight {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideInLeft {
+  from { transform: translateX(-100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+html[dir="rtl"] .animate-slide-in {
+  animation: slideInLeft 0.5s ease-out forwards;
+}
+
+html[dir="ltr"] .animate-slide-in {
+  animation: slideInRight 0.5s ease-out forwards;
+}
+
+/* Fix for icon directions in different language modes */
+html[dir="rtl"] .icon-rtl-flip {
+  transform: scaleX(-1);
+}
+
+/* Language-specific spacing classes */
+html[dir="rtl"] .space-rtl-reverse {
+  flex-direction: row-reverse;
+}
+
+html[dir="ltr"] .space-rtl-reverse {
+  flex-direction: row;
+}
+
+/* Fix for text alignment in different language modes */
+html[dir="rtl"] .text-alignment-dynamic {
+  text-align: right;
+}
+
+html[dir="ltr"] .text-alignment-dynamic {
+  text-align: left;
+}
+
+/* Methodology section language-specific styles */
+html[dir="rtl"] .methodology-grid {
+  direction: rtl;
+}
+
+html[dir="ltr"] .methodology-grid {
+  direction: ltr;
+}
+
+html[dir="rtl"] .methodology-grid > div {
+  text-align: right;
+}
+
+html[dir="ltr"] .methodology-grid > div {
+  text-align: left;
+}
+
+/* Methodology items direction */
+html[dir="rtl"] .methodology-item {
+  display: flex;
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+html[dir="ltr"] .methodology-item {
+  display: flex;
+  flex-direction: row;
+  text-align: left;
+}
+
+/* Tab order */
+html[dir="rtl"] .methodology-tabs-list {
+  flex-direction: row-reverse;
+}
+
+html[dir="ltr"] .methodology-tabs-list {
+  flex-direction: row;
+}
+
+/* List styling */
+html[dir="rtl"] ul.list-disc {
+  padding-right: 1.5rem;
+  padding-left: 0;
+}
+
+html[dir="ltr"] ul.list-disc {
+  padding-left: 1.5rem;
+  padding-right: 0;
+}
+
+html[dir="rtl"] .methodology-list-item {
+  display: list-item;
+  text-align: right;
+}
+
+html[dir="ltr"] .methodology-list-item {
+  display: list-item;
+  text-align: left;
+}
+
+/* Value Circles Styles */
+.value-circle {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  background-color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid #006954;
+  z-index: 5;
+}
+
+.value-circle-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120px;
+  height: 120px;
+  background-color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  border: 2px solid #006954;
+  z-index: 10;
+}
+
+.value-container {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  height: 400px;
+  margin: 0 auto;
+}
+
+.circle-connector {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  border: 2px dashed rgba(0, 105, 84, 0.3);
+  transform: translate(-50%, -50%);
+}
+
+
+/* ----- Visible, professional horizontal scrollbar ----- */
+.nice-scrollbar {
+  scrollbar-gutter: stable both-edges;
+  scrollbar-width: thin;          
+  scrollbar-color: #BBB #EEE;     
+}
+
+/* WebKit (Chrome, Edge, Safari) */
+.nice-scrollbar::-webkit-scrollbar {
+  height: 10px; /* horizontal bar height */
+}
+.nice-scrollbar::-webkit-scrollbar-track {
+  background: #eee;
+  border-radius: 9999px;
+}
+.nice-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #b7b7b7, #9d9d9d);
+  border-radius: 9999px;
+  border: 2px solid #eee; /* gives the thumb a pill look and a gap to the track */
+}
+.nice-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #a7a7a7, #888);
+}
+
+/* smooth snapping feel */
+.nice-scrollbar > * {
+  scroll-snap-align: start;
+}
+
+/* edge gradient with CSS mask (modern browsers) */
+.mask-fade-x {
+  /* fallback: do nothing if mask-image unsupported */
+  -webkit-mask-image: linear-gradient(to right, transparent 0, black 24px, black calc(100% - 24px), transparent 100%);
+          mask-image: linear-gradient(to right, transparent 0, black 24px, black calc(100% - 24px), transparent 100%);
+}
+
+/* arrow buttons */
+.scroller-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 32px;
+  width: 32px;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #2a2665;
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(42, 38, 101, 0.25);
+  transition: opacity 0.2s ease;
+  z-index: 2;
+}
+.scroller-arrow:hover { filter: brightness(1.05); }
+.scroller-arrow:active { transform: translateY(-50%) scale(0.98); }
+
+/* prevent ugly text selection while dragging */
+.nice-scrollbar.dragging { cursor: grabbing; }
+.nice-scrollbar.dragging * { cursor: grabbing !important; }
+
+/* optional: hide default scrollbar in touch devices to keep super clean look */
+@media (pointer: coarse) {
+  .nice-scrollbar::-webkit-scrollbar { height: 8px; }
+}
