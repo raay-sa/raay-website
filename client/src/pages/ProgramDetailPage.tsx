@@ -18,6 +18,27 @@ import { useProgram, useProgramsByCategory } from "@/features/programs/queries";
 import ProgramCard from "@/components/ui/program-card";
 import type { Program } from "@/lib/api/types";
 import { buildSsoLoginUrl } from "@/lib/api/sso";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 // ---- helpers ----
 const getLevelName = (level: string | undefined, language: string) => {
@@ -104,6 +125,27 @@ function toStringArray(value: unknown): string[] {
   return [];
 }
 
+/* ---------- Form schema ---------- */
+const formSchema = z.object({
+  name: z
+    .string()
+    .min(2, { message: "الاسم يجب أن يحتوي على حرفين على الأقل" }),
+  email: z.string().email({ message: "البريد الإلكتروني غير صحيح" }),
+  phone: z
+    .string()
+    .min(10, { message: "رقم الهاتف يجب أن يحتوي على 10 أرقام على الأقل" }),
+  organization: z
+    .string()
+    .min(2, { message: "اسم المنظمة يجب أن يحتوي على حرفين على الأقل" }),
+  position: z
+    .string()
+    .min(2, { message: "المسمى الوظيفي يجب أن يحتوي على حرفين على الأقل" }),
+  programId: z.number(),
+  message: z.string().optional(),
+  location: z.string().min(1, { message: "يرجى اختيار موقع التدريب" }),
+  attendees: z.string().min(1, { message: "يرجى تحديد عدد المتدربين" }),
+});
+
 export default function ProgramDetailPage({
   params,
 }: {
@@ -128,6 +170,24 @@ export default function ProgramDetailPage({
     window.addEventListener("storage", readAuth);
     return () => window.removeEventListener("storage", readAuth);
   }, []);
+
+  // Registration dialog state
+  const [registrationOpen, setRegistrationOpen] = useState(false);
+
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      phone: "",
+      organization: "",
+      position: "",
+      programId: 0,
+      message: "",
+      location: "",
+      attendees: "",
+    },
+  });
 
   const programId = Number(params?.id);
   const {
@@ -241,6 +301,75 @@ export default function ProgramDetailPage({
     }
     const ssoUrl = buildSsoLoginUrl(token, `/student/courses/${program.id}`);
     window.location.href = ssoUrl;
+  };
+
+  // Registration form submit
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    try {
+      const API_BASE =
+        (import.meta as any)?.env?.VITE_API_BASE_URL ??
+        "https://backend.raay.sa/api";
+
+      const payload = {
+        name: values.name,
+        email: values.email,
+        phone: values.phone,
+        company: values.organization,
+        job_title: values.position,
+        trainers_count: Number.isNaN(parseInt(values.attendees, 10))
+          ? undefined
+          : parseInt(values.attendees, 10),
+        notes:
+          (language === "ar"
+            ? "موقع التدريب المفضل: "
+            : "Preferred location: ") +
+          (values.location || (language === "ar" ? "غير محدد" : "N/A")) +
+          (values.message ? `\n${values.message}` : ""),
+        program: values.location || null,
+      };
+
+      const res = await fetch(`${API_BASE}/public/company_request`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(err?.message || `HTTP ${res.status}`);
+      }
+
+      toast({
+        title:
+          language === "ar"
+            ? "تم إرسال طلب التسجيل بنجاح"
+            : "Registration request sent successfully",
+        description:
+          language === "ar"
+            ? "سيتم التواصل معك قريباً لتأكيد التسجيل وتفاصيل الدفع"
+            : "We will contact you soon to confirm registration and payment details",
+        variant: "default",
+      });
+
+      setRegistrationOpen(false);
+      form.reset();
+    } catch (e: any) {
+      toast({
+        title: language === "ar" ? "حدث خطأ" : "Error",
+        description:
+          (e?.message as string) ||
+          (language === "ar" ? "تعذر إرسال الطلب" : "Failed to submit request"),
+        variant: "destructive",
+      });
+    }
+  };
+
+  // Handle registration button click
+  const handleRegistrationClick = () => {
+    if (program) {
+      form.setValue("programId", program.id);
+      setRegistrationOpen(true);
+    }
   };
 
   return (
@@ -547,6 +676,16 @@ export default function ProgramDetailPage({
                         ? "استفسر عن البرنامج"
                         : "Inquire About the Program"}
                     </Button>
+
+                    <Button
+                      variant="outline"
+                      className="w-full border-[#b29567] text-[#b29567] hover:bg-[#b29567] hover:text-white"
+                      onClick={handleRegistrationClick}
+                    >
+                      {language === "ar"
+                        ? "طلب تسجيل مجموعه"
+                        : "Group Registration Request"}
+                    </Button>
                   </div>
                 </CardContent>
               </Card>
@@ -639,6 +778,246 @@ export default function ProgramDetailPage({
           </div>
         </div>
       </section>
+
+      {/* Registration Dialog */}
+      <Dialog open={registrationOpen} onOpenChange={setRegistrationOpen}>
+        <DialogContent className="max-w-4xl w-[90%]">
+          <DialogHeader>
+            <DialogTitle className="text-2xl text-[#2a2665]">
+              {language === "ar"
+                ? `طلب تسجيل مجموعه: ${program?.title ?? ""}`
+                : `Group Registration Request: ${program?.title ?? ""}`}
+            </DialogTitle>
+            <DialogDescription>
+              {language === "ar"
+                ? "يرجى تعبئة النموذج التالي للتسجيل في البرنامج. سيتم التواصل معك قريباً لتأكيد التسجيل وتفاصيل الدفع."
+                : "Please fill out the following form to register for the program. We will contact you soon to confirm registration and payment details."}
+            </DialogDescription>
+          </DialogHeader>
+
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+              <div className="grid md:grid-cols-2 gap-6">
+                <FormField
+                  control={form.control}
+                  name="name"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>
+                        {language === "ar" ? "الاسم الكامل" : "Full Name"}
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          placeholder={
+                            language === "ar"
+                              ? "أدخل الاسم الكامل"
+                              : "Enter full name"
+                          }
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="email"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>
+                        {language === "ar" ? "البريد الإلكتروني" : "Email"}
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          placeholder={
+                            language === "ar"
+                              ? "أدخل البريد الإلكتروني"
+                              : "Enter email"
+                          }
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="phone"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>
+                        {language === "ar" ? "رقم الهاتف" : "Phone Number"}
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          placeholder={
+                            language === "ar"
+                              ? "أدخل رقم الهاتف"
+                              : "Enter phone number"
+                          }
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="organization"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>
+                        {language === "ar"
+                          ? "المنظمة/الشركة"
+                          : "Organization/Company"}
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          placeholder={
+                            language === "ar"
+                              ? "أدخل اسم المنظمة"
+                              : "Enter organization name"
+                          }
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="position"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>
+                        {language === "ar" ? "المسمى الوظيفي" : "Job Title"}
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          placeholder={
+                            language === "ar"
+                              ? "أدخل المسمى الوظيفي"
+                              : "Enter job title"
+                          }
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="location"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>
+                        {language === "ar"
+                          ? "موقع التدريب المفضل"
+                          : "Preferred Training Location"}
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          placeholder={
+                            language === "ar"
+                              ? `اختر من: ${
+                                  program?.category?.title ?? "—"
+                                }`
+                              : `Choose from: ${
+                                  program?.category?.title ?? "—"
+                                }`
+                          }
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+
+              <FormField
+                control={form.control}
+                name="attendees"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>
+                      {language === "ar"
+                        ? "عدد المتدربين"
+                        : "Number of Attendees"}
+                    </FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder={
+                          language === "ar"
+                            ? "أدخل عدد المتدربين"
+                            : "Enter number of attendees"
+                        }
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="message"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>
+                      {language === "ar"
+                        ? "ملاحظات إضافية"
+                        : "Additional Notes"}
+                    </FormLabel>
+                    <FormControl>
+                      <Textarea
+                        placeholder={
+                          language === "ar"
+                            ? "أدخل أي ملاحظات إضافية"
+                            : "Enter any additional notes"
+                        }
+                        className="min-h-[120px]"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <DialogFooter>
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={() => setRegistrationOpen(false)}
+                  className="border-[#2a2665] text-[#2a2665]"
+                >
+                  {language === "ar" ? "إلغاء" : "Cancel"}
+                </Button>
+                <Button
+                  type="submit"
+                  className="bg-[#2a2665] hover:bg-[#1a1545] text-white"
+                >
+                  {language === "ar"
+                    ? "إرسال طلب التسجيل"
+                    : "Submit Registration Request"}
+                </Button>
+              </DialogFooter>
+            </form>
+          </Form>
+        </DialogContent>
+      </Dialog>
     </>
   );
 }

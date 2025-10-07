@@ -10,9 +10,10 @@ export interface AuthUser {
 
 interface AuthState {
   token: string | null;
+  refreshToken: string | null;
   user: AuthUser | null;
   isAuthenticated: boolean;
-  setSession: (token: string | null, user: AuthUser | null) => void;
+  setSession: (token: string | null, refreshToken: string | null, user: AuthUser | null) => void;
   logout: () => void;
   hydrate: () => void; // load from localStorage
 }
@@ -21,25 +22,26 @@ const STORAGE_KEY = "raay-auth";
 
 export const useAuthStore = create<AuthState>((set) => ({
   token: null,
+  refreshToken: null,
   user: null,
   isAuthenticated: false,
-  setSession: (token, user) => {
+  setSession: (token, refreshToken, user) => {
     if (token || user) {
       try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify({ token, user }));
+        localStorage.setItem(STORAGE_KEY, JSON.stringify({ token, refreshToken, user }));
       } catch {}
     } else {
       try {
         localStorage.removeItem(STORAGE_KEY);
       } catch {}
     }
-    set({ token: token ?? null, user: user ?? null, isAuthenticated: !!token });
+    set({ token: token ?? null, refreshToken: refreshToken ?? null, user: user ?? null, isAuthenticated: !!token });
   },
   logout: () => {
     try {
       localStorage.removeItem(STORAGE_KEY);
     } catch {}
-    set({ token: null, user: null, isAuthenticated: false });
+    set({ token: null, refreshToken: null, user: null, isAuthenticated: false });
   },
   hydrate: () => {
     try {
@@ -48,6 +50,7 @@ export const useAuthStore = create<AuthState>((set) => ({
         const parsed = JSON.parse(raw);
         set({
           token: parsed?.token ?? null,
+          refreshToken: parsed?.refreshToken ?? parsed?.refresh_token ?? null,
           user: parsed?.user ?? null,
           isAuthenticated: !!parsed?.token,
         });

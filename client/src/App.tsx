@@ -5,12 +5,14 @@ import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
 import { useEffect } from "react";
 import { useI18nStore } from "@/lib/i18n";
+import { useAuthInit } from "@/lib/auth/useAuthInit";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import ProgramDetailPage from "@/pages/ProgramDetailPage";
 import ProgramCategoryPage from "@/pages/ProgramCategoryPage";
 import OnsiteTrainingPage from "@/pages/OnsiteTrainingPage";
 import OnlineTrainingPage from "@/pages/OnlineTrainingPage";
+import RegisteredTrainingPage from "@/pages/RegisteredTrainingPage";
 import JoinUsPage from "@/pages/JoinUsPage";
 import ConsultingPage from "@/pages/ConsultingPage";
 import WorkshopsPage from "@/pages/WorkshopsPage";
@@ -101,6 +103,7 @@ function Router() {
           <Route path="/skill-assessment" component={SkillAssessmentPage} />
           <Route path="/onsite-training" component={OnsiteTrainingPage} />
           <Route path="/online-training" component={OnlineTrainingPage} />
+          <Route path="/registered-training" component={RegisteredTrainingPage} />
           <Route path="/consulting" component={ConsultingPage} />
           <Route path="/workshops" component={WorkshopsPage} />
           <Route path="/join-us" component={JoinUsPage} />
@@ -126,6 +129,9 @@ function Router() {
 
 function App() {
   const { language, setLanguage, forceRefresh } = useI18nStore();
+  
+  // Initialize authentication state and handle token refresh on app startup
+  useAuthInit();
 
   // Check for forced language change
   useEffect(() => {

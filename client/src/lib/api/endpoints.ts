@@ -1,5 +1,6 @@
 // src/lib/api/endpoints.ts
 import { httpJson } from "./http";
+import { httpJsonWithAuth } from "./httpWithAuth";
 import type {
   ApiListResponse,
   ApiProgram,
@@ -80,8 +81,28 @@ export async function fetchOnlinePrograms(params: {
   categoryId?: number | null;
   language?: string;
 }): Promise<{ items: Program[]; nextPage: number | null }> {
-  const res = await httpJson<ApiPaginatedResponse<ApiProgram>>(
+  const res = await httpJsonWithAuth<ApiPaginatedResponse<ApiProgram>>(
     "public/online_programs",
+    {
+      query: { page: params.page, category_id: params.categoryId ?? undefined },
+    }
+  );
+
+  const pag = res?.data;
+  const items = Array.isArray(pag?.data) ? pag.data.map(p => mapApiProgram(p, params.language)) : [];
+  const nextPage = pageFromUrl(pag?.next_page_url);
+
+  return { items, nextPage };
+}
+
+// --- GET /public/onsite_programs (supports ?page=&category_id=) ---
+export async function fetchOnsitePrograms(params: {
+  page?: number;
+  categoryId?: number | null;
+  language?: string;
+}): Promise<{ items: Program[]; nextPage: number | null }> {
+  const res = await httpJsonWithAuth<ApiPaginatedResponse<ApiProgram>>(
+    "public/onsite_programs",
     {
       query: { page: params.page, category_id: params.categoryId ?? undefined },
     }

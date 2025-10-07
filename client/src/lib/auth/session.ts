@@ -1,5 +1,5 @@
 // src/lib/auth/session.ts
-export type StoredAuth = { token: string; user: any } | null;
+export type StoredAuth = { token: string; refreshToken?: string; user: any } | null;
 
 const KEY = "raay-auth";
 

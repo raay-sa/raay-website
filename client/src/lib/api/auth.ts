@@ -1,4 +1,6 @@
-import { httpJson, httpFormData } from "./http";
+import { httpJson, httpFormData, HttpError } from "./http";
+import { httpJsonWithAuth } from "./httpWithAuth";
+import { authenticatedPost, authenticatedDelete } from "./authUtils";
 
 export interface BackendErrorResponse {
   success?: boolean;
@@ -106,4 +108,44 @@ export async function postRefreshToken(refresh_token: string) {
     method: "POST",
     body: { refresh_token },
   });
+}
+
+// ---- Program Interest APIs ----
+export interface ProgramInterestResponse {
+  success: boolean;
+  message?: string;
+  data?: {
+    program_id: number;
+    program_title?: string;
+    interested_count: number;
+  };
+}
+
+async function makeAuthenticatedRequest<T>(
+  url: string,
+  method: "POST" | "DELETE",
+  token: string
+): Promise<T> {
+  // Use the utility functions that automatically handle token refresh
+  if (method === "POST") {
+    return authenticatedPost<T>(url, token);
+  } else {
+    return authenticatedDelete<T>(url, token);
+  }
+}
+
+export async function postRegisterProgramInterest(programId: number, token: string) {
+  return makeAuthenticatedRequest<ProgramInterestResponse>(
+    `public/programs/${programId}/register-interest`,
+    "POST",
+    token
+  );
+}
+
+export async function deleteRemoveProgramInterest(programId: number, token: string) {
+  return makeAuthenticatedRequest<ProgramInterestResponse>(
+    `public/programs/${programId}/remove-interest`,
+    "DELETE",
+    token
+  );
 }

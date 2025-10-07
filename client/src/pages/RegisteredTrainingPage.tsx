@@ -1,4 +1,4 @@
-// src/pages/OnsiteTrainingPage.tsx
+// src/pages/RegisteredTrainingPage.tsx
 import React, { useEffect, useMemo, useState } from "react";
 import { Helmet } from "react-helmet";
 import { motion } from "framer-motion";
@@ -17,60 +17,21 @@ import { buildSsoLoginUrl, getValidTokenForSSO } from "@/lib/api/sso";
 import { useI18nStore } from "@/lib/i18n";
 import HorizontalScroller from "@/components/ui/HorizontalScroller";
 import { useCategories as useCategoriesQuery } from "@/features/categories/queries";
-import { useOnsiteProgramsInfinite } from "@/features/programs/queries";
-import { postRegisterProgramInterest, deleteRemoveProgramInterest } from "@/lib/api/auth";
-import { HttpError } from "@/lib/api/http";
 import type { Program } from "@/lib/api/types";
+import { mapApiProgram } from "@/lib/api/utils";
 
 /* ---------- API Types ---------- */
-type ApiProgram = {
-  id: number;
-  image: string | null;
-  price: number | null;
-  category_id: number | null;
-  address: string | null;
-  url: string | null;
-  program_duration: string | null;
-  date_from: string | null;
-  date_to: string | null;
-  is_interested: boolean;
-  category?: {
-    id: number;
-    translations: Array<{
-      locale: string;
-      title: string;
-      parent_id: number;
-      created_at: string;
-      updated_at: string;
-    }>;
-  };
-  teacher?: unknown;
-  translations: Array<{
-    locale: string;
-    title: string;
-    description: string;
-    learning: string[];
-    requirement: string[];
-    parent_id: number;
-    created_at: string;
-    updated_at: string;
-  }>;
-};
+import type { ApiProgram } from "@/lib/api/types";
 
 
 /* ---------- Helpers ---------- */
-function formatDate(d?: string | null) {
-  if (!d) return "—";
-  try {
-    const dt = new Date(d);
-    if (Number.isNaN(dt.getTime())) return d;
-    return dt.toLocaleDateString('en-GB', {
-      year: 'numeric',
-      month: '2-digit',
-      day: '2-digit'
-    });
-  } catch {
-    return d;
+function formatDurationDays(lang: string, duration?: number | null) {
+  if (!duration || duration <= 0) return lang === "ar" ? "غير محدد" : "N/A";
+  
+  if (lang === "ar") {
+    return `${duration} ${duration === 1 ? "يوم" : "أيام"}`;
+  } else {
+    return `${duration} ${duration === 1 ? "day" : "days"}`;
   }
 }
 
@@ -119,14 +80,15 @@ const getCategoryColor = (id?: number | null) => {
 };
 
 
-export default function OnsiteTrainingPage() {
+export default function RegisteredTrainingPage() {
   const { language } = useI18nStore();
   const dir: "rtl" | "ltr" = language === "ar" ? "rtl" : "ltr";
   const { toast } = useToast();
 
   const [token, setToken] = useState<string | null>(null);
-  const [interestedPrograms, setInterestedPrograms] = useState<Set<number>>(new Set());
-  const [loadingInterest, setLoadingInterest] = useState<Set<number>>(new Set());
+  const [programs, setPrograms] = useState<Program[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [loadErr, setLoadErr] = useState<string | null>(null);
 
   // Selected category id (null = All)
   const [selectedCat, setSelectedCat] = useState<number | null>(null);
@@ -147,30 +109,75 @@ export default function OnsiteTrainingPage() {
     return () => window.removeEventListener("storage", readAuth);
   }, []);
 
-  // Use the new authenticated API hook
-  const {
-    data,
-    isLoading,
-    isError,
-    error,
-    refetch,
-  } = useOnsiteProgramsInfinite(selectedCat);
-
-  const programs: Program[] = useMemo(
-    () => (data?.pages ?? []).flatMap((p) => p.items),
-    [data]
-  );
-
-  // Initialize interested programs from API data
+  /**
+   * Fetch REGISTERED programs from server using the new API endpoint.
+   * IMPORTANT: we call the API again whenever selectedCat changes,
+   * passing ?category_id=<id> when a category is selected.
+   */
   useEffect(() => {
-    const interestedIds = new Set<number>();
-    programs.forEach(program => {
-      if (program.isInterested) {
-        interestedIds.add(program.id);
+    let cancelled = false;
+
+    async function load(categoryId: number | null) {
+      setLoading(true);
+      setLoadErr(null);
+      try {
+        const API_BASE =
+          (import.meta as any)?.env?.VITE_API_BASE_URL ??
+          "https://backend.raay.sa/api";
+
+        const url = new URL(
+          `${API_BASE.replace(/\/$/, "")}/public/registered_programs`
+        );
+        // first page is enough for this page (no infinite scrolling here)
+        url.searchParams.set("page", "1");
+        if (categoryId != null)
+          url.searchParams.set("category_id", String(categoryId));
+
+        // Get token for optional authentication
+        let authHeaders: HeadersInit = {};
+        try {
+          const raw = localStorage.getItem("raay-auth");
+          const parsed = raw ? JSON.parse(raw) : null;
+          const token = parsed?.token ?? null;
+          if (token) {
+            authHeaders = {
+              Authorization: `Bearer ${token}`,
+            };
+          }
+        } catch {}
+
+        const res = await fetch(url.toString(), {
+          headers: {
+            "Content-Type": "application/json",
+            ...authHeaders,
+          },
+        });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
+        const json = await res.json();
+        const items: ApiProgram[] = json?.data?.data ?? [];
+
+        const programs: Program[] = items.map((p) => mapApiProgram(p, language));
+
+        if (!cancelled) {
+          setPrograms(programs);
+          
+          
+          setLoading(false);
+        }
+      } catch (e: any) {
+        if (!cancelled) {
+          setLoadErr(e?.message || "Failed to load");
+          setLoading(false);
+        }
       }
-    });
-    setInterestedPrograms(interestedIds);
-  }, [programs]);
+    }
+
+    load(selectedCat);
+    return () => {
+      cancelled = true;
+    };
+  }, [selectedCat, language]);
 
   // Fetch categories from API for the slider
   const {
@@ -198,87 +205,6 @@ export default function OnsiteTrainingPage() {
     window.location.href = `/program/${program.id}`;
   };
 
-  // Handle program interest registration/removal
-  const handleInterestClick = async (program: Program) => {
-    // Get token directly from localStorage without auto-refresh
-    let currentToken: string | null = null;
-    try {
-      const raw = localStorage.getItem("raay-auth");
-      const parsed = raw ? JSON.parse(raw) : null;
-      currentToken = parsed?.token ?? null;
-    } catch {}
-
-    if (!currentToken) {
-      toast({
-        title: language === "ar" ? "الرجاء تسجيل الدخول" : "Please log in",
-        description: language === "ar" 
-          ? "يجب تسجيل الدخول لتسجيل اهتمامك بالبرنامج"
-          : "You need to log in to register interest in this program",
-        variant: "destructive",
-      });
-      window.location.href = "/auth";
-      return;
-    }
-
-    const isInterested = interestedPrograms.has(program.id);
-    setLoadingInterest(prev => new Set(prev).add(program.id));
-
-    try {
-      if (isInterested) {
-        await deleteRemoveProgramInterest(program.id, currentToken);
-        setInterestedPrograms(prev => {
-          const newSet = new Set(prev);
-          newSet.delete(program.id);
-          return newSet;
-        });
-        toast({
-          title: language === "ar" ? "تم إلغاء الاهتمام" : "Interest Removed",
-          description: language === "ar" 
-            ? "تم إلغاء تسجيل اهتمامك بالبرنامج"
-            : "Your interest in this program has been removed",
-        });
-      } else {
-        await postRegisterProgramInterest(program.id, currentToken);
-        setInterestedPrograms(prev => new Set(prev).add(program.id));
-        toast({
-          title: language === "ar" ? "تم تسجيل الاهتمام" : "Interest Registered",
-          description: language === "ar" 
-            ? "تم تسجيل اهتمامك بالبرنامج بنجاح"
-            : "Your interest in this program has been registered successfully",
-        });
-      }
-    } catch (error) {
-      if (error instanceof HttpError) {
-        if (error.status === 403) {
-          toast({
-            title: language === "ar" ? "خطأ في الصلاحيات" : "Access Denied",
-            description: language === "ar" 
-              ? "يجب أن تكون طالباً لتسجيل الاهتمام"
-              : "You must be a student to register interest",
-            variant: "destructive",
-          });
-        } else {
-          toast({
-            title: language === "ar" ? "حدث خطأ" : "Error",
-            description: error.data?.message || (language === "ar" ? "تعذر تسجيل الاهتمام" : "Failed to register interest"),
-            variant: "destructive",
-          });
-        }
-      } else {
-        toast({
-          title: language === "ar" ? "حدث خطأ" : "Error",
-          description: language === "ar" ? "تعذر تسجيل الاهتمام" : "Failed to register interest",
-          variant: "destructive",
-        });
-      }
-    } finally {
-      setLoadingInterest(prev => {
-        const newSet = new Set(prev);
-        newSet.delete(program.id);
-        return newSet;
-      });
-    }
-  };
 
   // helper
   const joinList = (arr: string[]) =>
@@ -289,8 +215,8 @@ export default function OnsiteTrainingPage() {
       <Helmet>
         <title>
           {language === "ar"
-            ? "التدريب الحضوري | مركز راي للتدريب والاستشارات"
-            : "Onsite Training | Ray Training & Consulting Center"}
+            ? "التدريب المسجل | مركز راي للتدريب والاستشارات"
+            : "Registered Training | Ray Training & Consulting Center"}
         </title>
       </Helmet>
 
@@ -313,7 +239,7 @@ export default function OnsiteTrainingPage() {
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center">
             <h1 className="text-5xl font-bold text-white mb-6">
-              {language === "ar" ? "التدريب الحضوري" : "Onsite Training"}
+              {language === "ar" ? "التدريب المسجل" : "Registered Training"}
             </h1>
             <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
               {language === "ar"
@@ -333,8 +259,8 @@ export default function OnsiteTrainingPage() {
             </h2>
             <p className="text-gray-700">
               {language === "ar"
-                ? "يقدم مركز راي مسارات تدريبية حضورية مصممة لبناء وتطوير المهارات الاحترافية، يقدمها نخبة من المدربين المعتمدين."
-                : "Raay Center offers in-person training programs designed to build professional skills, delivered by certified expert trainers."}
+                ? "يقدم مركز راي مسارات تدريبية مسجلة مصممة لبناء وتطوير المهارات الاحترافية، يقدمها نخبة من المدربين المعتمدين."
+                : "Raay Center offers registered training programs designed to build professional skills, delivered by certified expert trainers."}
             </p>
           </div>
 
@@ -378,7 +304,7 @@ export default function OnsiteTrainingPage() {
           </HorizontalScroller>
 
           {/* Loading / Error */}
-          {isLoading && (
+          {loading && (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {Array.from({ length: 6 }).map((_, i) => (
                 <div
@@ -402,7 +328,7 @@ export default function OnsiteTrainingPage() {
               ))}
             </div>
           )}
-          {!isLoading && isError && (
+          {!loading && loadErr && (
             <div className="text-center py-8 text-red-600">
               {language === "ar"
                 ? "تعذر تحميل البرامج."
@@ -411,7 +337,7 @@ export default function OnsiteTrainingPage() {
           )}
 
           {/* Programs Grid */}
-          {!isLoading && !isError && (
+          {!loading && !loadErr && (
             <>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {filteredPrograms.map((program) => (
@@ -437,7 +363,12 @@ export default function OnsiteTrainingPage() {
                               <span className="inline-block bg-[#2a2665]/10 text-[#2a2665] px-2 py-1 rounded text-xs">
                                 {program.category?.title || "—"}
                               </span>
-  
+                              <span className="mx-2">•</span>
+                              <span>
+                                {language === "ar"
+                                  ? `المدة: ${formatDurationDays(language, program.durationHours)}`
+                                  : `Duration: ${formatDurationDays(language, program.durationHours)}`}
+                              </span>
                             </CardDescription>
                           </div>
                           <span className="font-bold text-[#b29567]">
@@ -456,27 +387,6 @@ export default function OnsiteTrainingPage() {
                         </p>
 
                         <div className="space-y-3 text-sm">
-                          {program.dateFrom && (
-                            <div className="flex items-start">
-                              <span className="text-[#2a2665] font-medium min-w-[120px]">
-                                {language === "ar" ? "تاريخ البداية:" : "Start Date:"}
-                              </span>
-                              <span className="text-gray-700">
-                                {formatDate(program.dateFrom)}
-                              </span>
-                            </div>
-                          )}
-
-                          {program.dateTo && (
-                            <div className="flex items-start">
-                              <span className="text-[#2a2665] font-medium min-w-[120px]">
-                                {language === "ar" ? "تاريخ النهاية:" : "End Date:"}
-                              </span>
-                              <span className="text-gray-700">
-                                {formatDate(program.dateTo)}
-                              </span>
-                            </div>
-                          )}
 
                           <div className="flex items-start">
                             <span className="text-[#2a2665] font-medium min-w-[120px]">
@@ -502,7 +412,7 @@ export default function OnsiteTrainingPage() {
                         </div>
                       </CardContent>
 
-                      <CardFooter className={`border-t pt-4 grid gap-2 ${token ? "grid-cols-3" : "grid-cols-2"}`}>
+                      <CardFooter className={`border-t pt-4 grid gap-2 ${token ? "grid-cols-2" : "grid-cols-1"}`}>
                         {token && (
                           <Button
                             className="bg-[#2a2665] hover:bg-[#1a1545] text-white"
@@ -521,21 +431,6 @@ export default function OnsiteTrainingPage() {
                           {language === "ar"
                             ? "تفاصيل البرنامج"
                             : "View Details"}
-                        </Button>
-                        <Button
-                          variant="outline"
-                          className={`border-[#b29567] text-[#b29567] hover:bg-[#b29567] hover:text-white ${
-                            interestedPrograms.has(program.id) ? "bg-[#b29567] text-white" : ""
-                          }`}
-                          onClick={() => handleInterestClick(program)}
-                          disabled={loadingInterest.has(program.id)}
-                        >
-                          {loadingInterest.has(program.id) 
-                            ? (language === "ar" ? "جاري..." : "Loading...")
-                            : interestedPrograms.has(program.id)
-                            ? (language === "ar" ? "إلغاء الاهتمام" : "Remove Interest")
-                            : (language === "ar" ? "سجل اهتمامك" : "Register Interest")
-                          }
                         </Button>
                       </CardFooter>
                     </Card>

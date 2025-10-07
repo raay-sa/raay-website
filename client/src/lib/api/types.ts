@@ -39,6 +39,7 @@ export interface ApiProgram {
   type?: ProgramType;
   level?: string;
   have_certificate?: 0 | 1;
+  is_interested?: boolean;
   date_from?: string | null;
   date_to?: string | null;
   time?: string | null;
@@ -90,6 +91,7 @@ export interface Program {
   durationHours?: number | null;
   subscriptionsCount?: number;
   category?: { id: number; title: string } | null;
+  isInterested?: boolean;
 }
 
 // ===== Contact Us =====

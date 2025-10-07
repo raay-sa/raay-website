@@ -74,11 +74,12 @@ export default function OtpPage() {
       // include auth_method in verification
       const resp = await postVerifyOtp({ email, code, auth_method: method });
       const token = resp?.data?.token ?? (resp as any)?.token ?? "";
+      const refreshToken = resp?.data?.refresh_token ?? (resp as any)?.refresh_token ?? null;
       const user = resp?.data?.user ?? (resp as any)?.user ?? null;
 
       if (token && user) {
         try {
-          localStorage.setItem("raay-auth", JSON.stringify({ token, user }));
+          localStorage.setItem("raay-auth", JSON.stringify({ token, refreshToken, user }));
         } catch {}
         clearOtpSession();
         toast({

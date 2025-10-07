@@ -10,6 +10,7 @@ import {
   fetchRegisteredProgramsPage,
   fetchProgramById,
   fetchOnlinePrograms,
+  fetchOnsitePrograms,
   fetchCategories,
   fetchProgramsPage, // NEW
 } from "@/lib/api/endpoints";
@@ -24,6 +25,8 @@ export const QUERY_KEYS = {
   categories: (language: string) => ["categories", language] as const,
   online: (categoryId: number | null | undefined, language: string) =>
     ["programs", "online", categoryId ?? "all", language] as const,
+  onsite: (categoryId: number | null | undefined, language: string) =>
+    ["programs", "onsite", categoryId ?? "all", language] as const,
   all: (categoryId: number | null | undefined, language: string) =>
     ["programs", "all", categoryId ?? "all", language] as const, // NEW
 };
@@ -97,6 +100,25 @@ export function useOnlineProgramsInfinite(categoryId?: number | null) {
       initialPageParam: 1,
       queryFn: ({ pageParam }) =>
         fetchOnlinePrograms({
+          page: Number(pageParam ?? 1),
+          categoryId: categoryId ?? null,
+          language,
+        }),
+      getNextPageParam: (lastPage) => lastPage.nextPage ?? undefined,
+      staleTime: 1000 * 60,
+    }
+  );
+}
+
+// New: infinite onsite programs
+export function useOnsiteProgramsInfinite(categoryId?: number | null) {
+  const { language } = useI18nStore();
+  return useInfiniteQuery<{ items: Program[]; nextPage: number | null }, Error>(
+    {
+      queryKey: QUERY_KEYS.onsite(categoryId ?? null, language),
+      initialPageParam: 1,
+      queryFn: ({ pageParam }) =>
+        fetchOnsitePrograms({
           page: Number(pageParam ?? 1),
           categoryId: categoryId ?? null,
           language,

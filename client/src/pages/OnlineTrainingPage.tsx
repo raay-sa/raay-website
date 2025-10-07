@@ -2,10 +2,6 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Helmet } from "react-helmet";
 import { motion } from "framer-motion";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-
 import { useI18nStore } from "@/lib/i18n";
 import { useToast } from "@/hooks/use-toast";
 
@@ -18,25 +14,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
 
 import {
   useCategories as useCategoriesQuery,
@@ -47,6 +24,8 @@ import type { Program } from "@/lib/api/types";
 import HorizontalScroller from "@/components/ui/HorizontalScroller";
 import raayVideo from "../assets/videos/raay-center-video.mp4";
 import { buildSsoLoginUrl, getValidTokenForSSO } from "@/lib/api/sso";
+import { postRegisterProgramInterest, deleteRemoveProgramInterest } from "@/lib/api/auth";
+import { HttpError } from "@/lib/api/http";
 
 // -------- helpers --------
 const t = (lang: string, ar: string, en: string) => (lang === "ar" ? ar : en);
@@ -99,25 +78,6 @@ function getColorByCategoryId(id?: number) {
   return BORDER_BG_CLASSES[id % BORDER_BG_CLASSES.length];
 }
 
-// -------- registration form schema --------
-const formSchema = z.object({
-  name: z
-    .string()
-    .min(2, { message: "الاسم يجب أن يحتوي على حرفين على الأقل" }),
-  email: z.string().email({ message: "البريد الإلكتروني غير صحيح" }),
-  phone: z
-    .string()
-    .min(10, { message: "رقم الهاتف يجب أن يحتوي على 10 أرقام على الأقل" }),
-  organization: z
-    .string()
-    .min(2, { message: "اسم المنظمة يجب أن يحتوي على حرفين على الأقل" }),
-  position: z
-    .string()
-    .min(2, { message: "المسمى الوظيفي يجب أن يحتوي على حرفين على الأقل" }),
-  programId: z.number(),
-  message: z.string().optional(),
-  attendees: z.string().min(1, { message: "يرجى تحديد عدد المتدربين" }),
-});
 
 export default function OnlineTrainingPage() {
   const { language } = useI18nStore();
@@ -128,6 +88,10 @@ export default function OnlineTrainingPage() {
   const [isAuthed, setIsAuthed] = useState(false);
   const [token, setToken] = useState<string | null>(null);
   const [role, setRole] = useState<string | null>(null);
+  
+  // Interest state
+  const [interestedPrograms, setInterestedPrograms] = useState<Set<number>>(new Set());
+  const [loadingInterest, setLoadingInterest] = useState<Set<number>>(new Set());
 
   useEffect(() => {
     try {
@@ -183,6 +147,17 @@ export default function OnlineTrainingPage() {
     [data]
   );
 
+  // Initialize interested programs from API data
+  useEffect(() => {
+    const interestedIds = new Set<number>();
+    programs.forEach(program => {
+      if (program.isInterested) {
+        interestedIds.add(program.id);
+      }
+    });
+    setInterestedPrograms(interestedIds);
+  }, [programs]);
+
   // infinite scroll sentinel
   const loadMoreRef = useRef<HTMLDivElement | null>(null);
   useEffect(() => {
@@ -200,77 +175,7 @@ export default function OnlineTrainingPage() {
     return () => obs.disconnect();
   }, [fetchNextPage, hasNextPage, isFetchingNextPage, selectedCat]);
 
-  // registration dialog
-  const [registrationOpen, setRegistrationOpen] = useState(false);
-  const [selectedProgram, setSelectedProgram] = useState<Program | null>(null);
 
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      name: "",
-      email: "",
-      phone: "",
-      organization: "",
-      position: "",
-      programId: 0,
-      message: "",
-      attendees: "",
-    },
-  });
-
-  const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    try {
-      const API_BASE =
-        (import.meta as any)?.env?.VITE_API_BASE_URL ??
-        "https://backend.raay.sa/api";
-
-      const payload = {
-        name: values.name,
-        email: values.email,
-        phone: values.phone,
-        company: values.organization,
-        job_title: values.position,
-        trainers_count: Number.isNaN(parseInt(values.attendees, 10))
-          ? undefined
-          : parseInt(values.attendees, 10),
-        notes: values.message || "",
-      };
-
-      const res = await fetch(`${API_BASE}/public/company_request`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-
-      if (!res.ok) {
-        const err = await res.json().catch(() => ({}));
-        throw new Error(err?.message || `HTTP ${res.status}`);
-      }
-
-      toast({
-        title:
-          language === "ar"
-            ? "تم إرسال طلب التسجيل بنجاح"
-            : "Registration request sent successfully",
-        description:
-          language === "ar"
-            ? "سيتم التواصل معك قريباً لتأكيد التسجيل وتفاصيل الدفع"
-            : "We will contact you soon to confirm registration and payment details",
-        variant: "default",
-      });
-
-      setRegistrationOpen(false);
-      form.reset();
-    } catch (e: any) {
-      toast({
-        title: language === "ar" ? "حدث خطأ" : "Error",
-        description:
-          (e?.message as string) ||
-          (language === "ar" ? "تعذر إرسال الطلب" : "Failed to submit request"),
-        variant: "destructive",
-      });
-    }
-  };
 
   // SSO redirect builder
   const SSO_BASE =
@@ -293,9 +198,90 @@ export default function OnlineTrainingPage() {
       await goToDashboardCourse(program.id); 
       return;
     }
-    setSelectedProgram(program);
-    form.setValue("programId", program.id);
-    setRegistrationOpen(true);
+    // Redirect to program details page for group registration
+    window.location.href = `/program/${program.id}`;
+  };
+
+  // Handle program interest registration/removal
+  const handleInterestClick = async (program: Program) => {
+    // Get token directly from localStorage without auto-refresh
+    let currentToken: string | null = null;
+    try {
+      const raw = localStorage.getItem("raay-auth");
+      const parsed = raw ? JSON.parse(raw) : null;
+      currentToken = parsed?.token ?? null;
+    } catch {}
+
+    if (!currentToken) {
+      toast({
+        title: language === "ar" ? "الرجاء تسجيل الدخول" : "Please log in",
+        description: language === "ar" 
+          ? "يجب تسجيل الدخول لتسجيل اهتمامك بالبرنامج"
+          : "You need to log in to register interest in this program",
+        variant: "destructive",
+      });
+      window.location.href = "/auth";
+      return;
+    }
+
+    const isInterested = interestedPrograms.has(program.id);
+    setLoadingInterest(prev => new Set(prev).add(program.id));
+
+    try {
+      if (isInterested) {
+        await deleteRemoveProgramInterest(program.id, currentToken);
+        setInterestedPrograms(prev => {
+          const newSet = new Set(prev);
+          newSet.delete(program.id);
+          return newSet;
+        });
+        toast({
+          title: language === "ar" ? "تم إلغاء الاهتمام" : "Interest Removed",
+          description: language === "ar" 
+            ? "تم إلغاء تسجيل اهتمامك بالبرنامج"
+            : "Your interest in this program has been removed",
+        });
+      } else {
+        await postRegisterProgramInterest(program.id, currentToken);
+        setInterestedPrograms(prev => new Set(prev).add(program.id));
+        toast({
+          title: language === "ar" ? "تم تسجيل الاهتمام" : "Interest Registered",
+          description: language === "ar" 
+            ? "تم تسجيل اهتمامك بالبرنامج بنجاح"
+            : "Your interest in this program has been registered successfully",
+        });
+      }
+    } catch (error) {
+      if (error instanceof HttpError) {
+        if (error.status === 403) {
+          toast({
+            title: language === "ar" ? "خطأ في الصلاحيات" : "Access Denied",
+            description: language === "ar" 
+              ? "يجب أن تكون طالباً لتسجيل الاهتمام"
+              : "You must be a student to register interest",
+            variant: "destructive",
+          });
+        } else {
+          toast({
+            title: language === "ar" ? "حدث خطأ" : "Error",
+            description: error.data?.message || (language === "ar" ? "تعذر تسجيل الاهتمام" : "Failed to register interest"),
+            variant: "destructive",
+          });
+        }
+      } else {
+        toast({
+          title: language === "ar" ? "حدث خطأ" : "Error",
+          description: language === "ar" ? "تعذر تسجيل الاهتمام" : "Failed to register interest",
+          variant: "destructive",
+        });
+      }
+    } finally {
+      setLoadingInterest(prev => {
+        const newSet = new Set(prev);
+        newSet.delete(program.id);
+        return newSet;
+      });
+    }
   };
 
   return (
@@ -494,13 +480,15 @@ export default function OnlineTrainingPage() {
                           </div>
                         </CardContent>
 
-                        <CardFooter className="border-t pt-4 grid grid-cols-2 gap-2">
-                          <Button
-                            className="bg-[#2a2665] hover:bg-[#1a1545] text-white"
-                            onClick={() => handleRegisterClick(program)}
-                          >
-                            {t(language, "سجل الآن", "Register Now")}
-                          </Button>
+                        <CardFooter className={`border-t pt-4 grid gap-2 ${isAuthed ? "grid-cols-3" : "grid-cols-2"}`}>
+                          {isAuthed && (
+                            <Button
+                              className="bg-[#2a2665] hover:bg-[#1a1545] text-white"
+                              onClick={() => handleRegisterClick(program)}
+                            >
+                              {t(language, "سجل الآن", "Register Now")}
+                            </Button>
+                          )}
                           <Button
                             variant="outline"
                             className="border-[#2a2665] text-[#2a2665] hover:bg-[#2a2665] hover:text-white"
@@ -509,6 +497,21 @@ export default function OnlineTrainingPage() {
                             }
                           >
                             {t(language, "تفاصيل البرنامج", "View Details")}
+                          </Button>
+                          <Button
+                            variant="outline"
+                            className={`border-[#b29567] text-[#b29567] hover:bg-[#b29567] hover:text-white ${
+                              interestedPrograms.has(program.id) ? "bg-[#b29567] text-white" : ""
+                            }`}
+                            onClick={() => handleInterestClick(program)}
+                            disabled={loadingInterest.has(program.id)}
+                          >
+                            {loadingInterest.has(program.id) 
+                              ? (language === "ar" ? "جاري..." : "Loading...")
+                              : interestedPrograms.has(program.id)
+                              ? (language === "ar" ? "إلغاء الاهتمام" : "Remove Interest")
+                              : (language === "ar" ? "سجل اهتمامك" : "Register Interest")
+                            }
                           </Button>
                         </CardFooter>
                       </Card>
@@ -618,218 +621,6 @@ export default function OnlineTrainingPage() {
         </div>
       </section>
 
-      {/* Registration Dialog */}
-      <Dialog open={registrationOpen} onOpenChange={setRegistrationOpen}>
-        <DialogContent className="max-w-4xl w-[90%]">
-          <DialogHeader>
-            <DialogTitle className="text-2xl text-[#2a2665]">
-              {selectedProgram
-                ? t(
-                    language,
-                    `التسجيل في برنامج: ${selectedProgram.title}`,
-                    `Register for: ${selectedProgram.title}`
-                  )
-                : t(language, "التسجيل في البرنامج", "Program Registration")}
-            </DialogTitle>
-            <DialogDescription>
-              {t(
-                language,
-                "يرجى تعبئة النموذج التالي للتسجيل. سنتواصل معك لتأكيد التسجيل وتفاصيل الدفع.",
-                "Fill the form to register. We’ll contact you to confirm and share payment details."
-              )}
-            </DialogDescription>
-          </DialogHeader>
-
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-6">
-                <FormField
-                  control={form.control}
-                  name="name"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>
-                        {t(language, "الاسم الكامل", "Full Name")}
-                      </FormLabel>
-                      <FormControl>
-                        <Input
-                          placeholder={t(
-                            language,
-                            "أدخل الاسم الكامل",
-                            "Enter full name"
-                          )}
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-
-                <FormField
-                  control={form.control}
-                  name="email"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>
-                        {t(language, "البريد الإلكتروني", "Email")}
-                      </FormLabel>
-                      <FormControl>
-                        <Input
-                          placeholder={t(
-                            language,
-                            "أدخل البريد الإلكتروني",
-                            "Enter email"
-                          )}
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-
-                <FormField
-                  control={form.control}
-                  name="phone"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>
-                        {t(language, "رقم الهاتف", "Phone Number")}
-                      </FormLabel>
-                      <FormControl>
-                        <Input
-                          placeholder={t(
-                            language,
-                            "أدخل رقم الهاتف",
-                            "Enter phone number"
-                          )}
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-
-                <FormField
-                  control={form.control}
-                  name="organization"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>
-                        {t(language, "المنظمة/الشركة", "Organization/Company")}
-                      </FormLabel>
-                      <FormControl>
-                        <Input
-                          placeholder={t(
-                            language,
-                            "أدخل اسم المنظمة",
-                            "Enter organization name"
-                          )}
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-
-                <FormField
-                  control={form.control}
-                  name="position"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>
-                        {t(language, "المسمى الوظيفي", "Job Title")}
-                      </FormLabel>
-                      <FormControl>
-                        <Input
-                          placeholder={t(
-                            language,
-                            "أدخل المسمى الوظيفي",
-                            "Enter job title"
-                          )}
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-
-                <FormField
-                  control={form.control}
-                  name="attendees"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>
-                        {t(language, "عدد المتدربين", "Number of Attendees")}
-                      </FormLabel>
-                      <FormControl>
-                        <Input
-                          placeholder={t(
-                            language,
-                            "أدخل عدد المتدربين",
-                            "Enter number of attendees"
-                          )}
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
-
-              <FormField
-                control={form.control}
-                name="message"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>
-                      {t(language, "ملاحظات إضافية", "Additional Notes")}
-                    </FormLabel>
-                    <FormControl>
-                      <Textarea
-                        placeholder={t(
-                          language,
-                          "أدخل أي ملاحظات إضافية",
-                          "Enter any additional notes"
-                        )}
-                        className="min-h-[120px]"
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-
-              <DialogFooter>
-                <Button
-                  type="button"
-                  variant="outline"
-                  onClick={() => setRegistrationOpen(false)}
-                  className="border-[#2a2665] text-[#2a2665]"
-                >
-                  {t(language, "إلغاء", "Cancel")}
-                </Button>
-                <Button
-                  type="submit"
-                  className="bg-[#2a2665] hover:bg-[#1a1545] text-white"
-                >
-                  {t(
-                    language,
-                    "إرسال طلب التسجيل",
-                    "Submit Registration Request"
-                  )}
-                </Button>
-              </DialogFooter>
-            </form>
-          </Form>
-        </DialogContent>
-      </Dialog>
     </>
   );
 }

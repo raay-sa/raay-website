@@ -98,6 +98,11 @@ export default function Header() {
       labelAr: "التدريب عن بعد",
       labelEn: "Online Training",
     },
+    {
+      href: "/registered-training",
+      labelAr: "التدريب المسجل",
+      labelEn: "Registered Training",
+    },
     { href: "/consulting", labelAr: "الاستشارات", labelEn: "Consulting" },
     { href: "/join-us", labelAr: "انضم إلينا", labelEn: "Join Us" },
   ];
