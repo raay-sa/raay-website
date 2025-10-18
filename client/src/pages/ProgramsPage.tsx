@@ -180,7 +180,7 @@ function ProgramCard({ program, language }: { program: Program; language: "ar" |
   }, [program.durationHours, language]);
 
   return (
-    <div className="bg-white rounded overflow-hidden shadow-sm border border-gray-100">
+    <div className="bg-indigo-50 rounded overflow-hidden shadow-sm border border-gray-100">
       {/* Image/Header */}
       <div className="relative h-[140px]">
         <div

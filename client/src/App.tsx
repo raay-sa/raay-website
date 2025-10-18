@@ -48,6 +48,9 @@ import AuthPage from "@/pages/AuthPage";
 
 import PoliciesPage from "@/pages/PoliciesPage";
 import OtpPage from "./pages/OtpPage";
+import ForgotPasswordPage from "./pages/ForgotPasswordPage";
+import ResetPasswordPage from "./pages/ResetPasswordPage";
+import UnderDevelopmentPage from "./pages/UnderDevelopmentPage";
 
 function Router() {
   return (
@@ -72,8 +75,12 @@ function Router() {
 
           {/* صفحات منصة راي للتدريب */}
           <Route path="/training-platform" component={TrainingPlatformPage} />
+
+          {/* <Route path="/tracks" component={UnderDevelopmentPage} />
+          <Route path="/programs" component={UnderDevelopmentPage} /> */}
           <Route path="/tracks" component={TracksPage} />
           <Route path="/programs" component={ProgramsPage} />
+
           <Route path="/artificial-intelligence" component={AIPage} />
           <Route path="/online-learning" component={OnlineLearningPage} />
           <Route
@@ -117,6 +124,10 @@ function Router() {
           <Route path="/auth" component={AuthPage} />
 
           <Route path="/otp" component={OtpPage} />
+
+          {/* Forgot Password Flow */}
+          <Route path="/forgot-password" component={ForgotPasswordPage} />
+          <Route path="/reset-password" component={ResetPasswordPage} />
 
           {/* صفحة 404 */}
           <Route component={NotFound} />

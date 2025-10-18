@@ -231,7 +231,7 @@ export default function ProgramCategoryPage() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.5 }}
                   >
-                    <Card className="h-full hover:shadow-lg transition-all border-t-4 border-[#2a2665]">
+                    <Card className="h-full bg-indigo-50 hover:shadow-lg transition-all border-t-4 border-[#2a2665]">
                       <CardHeader>
                         <CardTitle className="text-[#2a2665] text-2xl">
                           {program.title}

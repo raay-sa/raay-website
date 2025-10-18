@@ -59,23 +59,8 @@ function formatDurationHours(lang: string, hours?: number | null) {
   return `${hours} hrs`;
 }
 
-// deterministic tailwind color set
-const BORDER_BG_CLASSES = [
-  { border: "border-blue-500", bg: "bg-blue-50" },
-  { border: "border-purple-500", bg: "bg-purple-50" },
-  { border: "border-green-500", bg: "bg-green-50" },
-  { border: "border-orange-500", bg: "bg-orange-50" },
-  { border: "border-red-500", bg: "bg-red-50" },
-  { border: "border-amber-500", bg: "bg-amber-50" },
-  { border: "border-emerald-500", bg: "bg-emerald-50" },
-  { border: "border-sky-500", bg: "bg-sky-50" },
-  { border: "border-rose-500", bg: "bg-rose-50" },
-  { border: "border-teal-500", bg: "bg-teal-50" },
-  { border: "border-indigo-500", bg: "bg-indigo-50" },
-];
 function getColorByCategoryId(id?: number) {
-  if (!id || id < 0) return BORDER_BG_CLASSES[0];
-  return BORDER_BG_CLASSES[id % BORDER_BG_CLASSES.length];
+  return "border-indigo-500";
 }
 
 
@@ -413,7 +398,7 @@ export default function OnlineTrainingPage() {
             <>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {programs.map((program) => {
-                  const color = getColorByCategoryId(program.category?.id);
+                  const borderColor = getColorByCategoryId(program.category?.id);
                   return (
                     <motion.div
                       key={program.id}
@@ -423,7 +408,7 @@ export default function OnlineTrainingPage() {
                       transition={{ duration: 0.5 }}
                     >
                       <Card
-                        className={`h-full border-t-4 ${color.border} ${color.bg} hover:shadow-lg transition-all`}
+                        className={`h-full border-t-4 bg-indigo-50 ${borderColor} hover:shadow-lg transition-all`}
                       >
                         <CardHeader>
                           <div className="flex justify-between items-start">

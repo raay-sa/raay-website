@@ -18,7 +18,13 @@ export interface ApiCategory {
   translations: ApiCategoryTranslation[];
 }
 
-export type ProgramType = "live" | "registered";
+export type ProgramType = "live" | "registered" | "onsite";
+
+export interface ApiTeacher {
+  id: number;
+  name: string;
+  image?: string | null;
+}
 
 export interface ApiProgramTranslation {
   locale: string;
@@ -50,7 +56,7 @@ export interface ApiProgram {
   category_id?: number;
   teacher_id?: number;
   category?: ApiCategory | null;
-  teacher?: unknown | null;
+  teacher?: ApiTeacher | null;
   translations: ApiProgramTranslation[];
 }
 
@@ -69,6 +75,12 @@ export interface Category {
   id: number;
   title: string;
   imageUrl: string; // absolute
+}
+
+export interface Teacher {
+  id: number;
+  name: string;
+  imageUrl?: string | null; // absolute
 }
 
 export interface Program {
@@ -91,6 +103,7 @@ export interface Program {
   durationHours?: number | null;
   subscriptionsCount?: number;
   category?: { id: number; title: string } | null;
+  teacher?: Teacher | null;
   isInterested?: boolean;
 }
 
@@ -101,6 +114,7 @@ export interface ContactUsPayload {
   phone: string;
   subject: string;
   message: string;
+  program_id?: number;
 }
 export interface ContactUsResponse {
   success?: boolean;

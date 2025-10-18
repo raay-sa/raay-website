@@ -49,7 +49,7 @@ export default function CallToAction() {
               />
             </Button>
           </a>
-          <a href="#contact">
+          <a href="contact">
             <Button variant="outline" className="bg-transparent hover:bg-white hover:text-[#2a2665] text-white border border-white font-bold py-3 px-8 rounded-lg transition duration-300 text-lg w-full sm:w-auto">
               <TranslatedText 
                 textKey="callToAction.contactUs" 

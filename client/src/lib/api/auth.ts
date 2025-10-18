@@ -78,13 +78,13 @@ export async function postRegister(payload: RegisterPayload) {
 // ---- OTP APIs (email-based) ----
 export type SendOtpPayload = {
   email: string;
-  auth_method: "register" | "login";
+  auth_method: "register" | "login" | "forgot_password";
 };
 
 export type VerifyOtpPayload = {
   email: string;
   code: string;
-  auth_method: "register" | "login";
+  auth_method: "register" | "login" | "forgot_password";
 };
 
 export async function postSendOtp(payload: SendOtpPayload) {
@@ -107,6 +107,20 @@ export async function postRefreshToken(refresh_token: string) {
   return httpJson<RefreshResponse, { refresh_token: string }>("refresh_token", {
     method: "POST",
     body: { refresh_token },
+  });
+}
+
+// ---- Forgot Password APIs ----
+export type ForgotPasswordPayload = {
+  email: string;
+  password: string;
+  password_confirmation: string;
+};
+
+export async function postForgotPassword(payload: ForgotPasswordPayload) {
+  return httpJson<AuthResponse, ForgotPasswordPayload>("forgotPassword", {
+    method: "POST",
+    body: payload,
   });
 }
 

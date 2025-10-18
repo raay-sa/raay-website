@@ -101,21 +101,7 @@ function toStringArray(value: unknown): string[] {
 }
 
 const getCategoryColor = (id?: number | null) => {
-  const palette = [
-    "border-blue-500 bg-blue-50",
-    "border-purple-500 bg-purple-50",
-    "border-green-500 bg-green-50",
-    "border-orange-500 bg-orange-50",
-    "border-red-500 bg-red-50",
-    "border-amber-500 bg-amber-50",
-    "border-emerald-500 bg-emerald-50",
-    "border-sky-500 bg-sky-50",
-    "border-rose-500 bg-rose-50",
-    "border-teal-500 bg-teal-50",
-    "border-indigo-500 bg-indigo-50",
-  ];
-  if (id == null || id < 0) return palette[0];
-  return palette[id % palette.length];
+  return "border-indigo-500";
 };
 
 
@@ -423,7 +409,7 @@ export default function OnsiteTrainingPage() {
                     transition={{ duration: 0.5 }}
                   >
                     <Card
-                      className={`h-full border-t-4 ${getCategoryColor(
+                      className={`h-full border-t-4 bg-indigo-50 ${getCategoryColor(
                         program.category?.id
                       )} hover:shadow-lg transition-all`}
                     >

@@ -1,6 +1,6 @@
 import { formatCurrency } from "@/lib/utils";
 import { useI18nStore } from "@/lib/i18n";
-import { Clock } from "lucide-react";
+import { Clock, User } from "lucide-react";
 import type { Program } from "@/lib/api/types";
 
 interface ProgramCardProps {
@@ -91,6 +91,31 @@ function getCategoryColor() {
   return "#2a2665";
 }
 
+/** Format date range for onsite programs */
+function formatDateRange(dateFrom: string, dateTo: string, lang: "ar" | "en"): string {
+  try {
+    const fromDate = new Date(dateFrom);
+    const toDate = new Date(dateTo);
+    
+    // Format dates with month names in the appropriate language
+    const formatOptions: Intl.DateTimeFormatOptions = {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      calendar: 'gregory' // Force Gregorian calendar
+    };
+    
+    const locale = lang === "ar" ? "ar-SA" : "en-US";
+    const fromFormatted = fromDate.toLocaleDateString(locale, formatOptions);
+    const toFormatted = toDate.toLocaleDateString(locale, formatOptions);
+    
+    return `${fromFormatted} - ${toFormatted}`;
+  } catch (error) {
+    // Fallback to raw dates if parsing fails
+    return `${dateFrom} - ${dateTo}`;
+  }
+}
+
 /** Build a readable duration based on API fields */
 function buildDurationLabel(p: Program, lang: "ar" | "en"): string {
   // If registered course with duration in hours
@@ -100,6 +125,11 @@ function buildDurationLabel(p: Program, lang: "ar" | "en"): string {
       return `${hours} ساعة`;
     }
     return `${hours}h`;
+  }
+
+  // If onsite program with date range
+  if (p.type === "onsite" && p.dateFrom && p.dateTo) {
+    return formatDateRange(p.dateFrom, p.dateTo, lang);
   }
 
   // If live program with date/time
@@ -216,6 +246,19 @@ export default function ProgramCard({ program }: ProgramCardProps) {
               </span>
             </span>
           </div>
+
+          {/* المدرب */}
+          {program.teacher && (
+            <div className="flex items-center text-xs text-gray-500">
+              <User className={`w-4 h-4 ${lang === "ar" ? "ml-2" : "mr-2"}`} />
+              <span>
+                {lang === "ar" ? "المدرب: " : "Instructor: "}
+                <span className="font-medium text-[#2a2665]">
+                  {program.teacher.name}
+                </span>
+              </span>
+            </div>
+          )}
 
           {/* السعر + زر التسجيل */}
           <div className="flex justify-between items-center text-sm">

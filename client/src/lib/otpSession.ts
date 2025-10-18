@@ -1,6 +1,6 @@
 export type OtpSession = {
   email: string;
-  method: "register" | "login";
+  method: "register" | "login" | "forgot_password";
 };
 
 const KEY = "raay-otp";

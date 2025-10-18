@@ -55,7 +55,7 @@ export default function OtpPage() {
       });
     } catch (err) {
       let description = "تعذر إرسال الرمز";
-      if (err instanceof HttpError<BackendErrorResponse>) {
+      if (err instanceof HttpError) {
         description =
           err.data?.message ||
           Object.values(err.data?.errors || {})[0]?.toString() ||
@@ -73,6 +73,18 @@ export default function OtpPage() {
     try {
       // include auth_method in verification
       const resp = await postVerifyOtp({ email, code, auth_method: method });
+      
+      // Handle forgot password flow
+      if (method === "forgot_password") {
+        toast({
+          title: "تم التحقق بنجاح",
+          description: "يمكنك الآن إعادة تعيين كلمة المرور.",
+        });
+        navigate("/reset-password");
+        return;
+      }
+      
+      // Handle login/register flow
       const token = resp?.data?.token ?? (resp as any)?.token ?? "";
       const refreshToken = resp?.data?.refresh_token ?? (resp as any)?.refresh_token ?? null;
       const user = resp?.data?.user ?? (resp as any)?.user ?? null;
@@ -95,7 +107,7 @@ export default function OtpPage() {
       }
     } catch (err) {
       let description = "رمز غير صالح";
-      if (err instanceof HttpError<BackendErrorResponse>) {
+      if (err instanceof HttpError) {
         description =
           err.data?.message ||
           Object.values(err.data?.errors || {})[0]?.toString() ||

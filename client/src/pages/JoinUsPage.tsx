@@ -747,7 +747,27 @@ export default function JoinUsPage() {
                                 "أدخل الاسم الكامل",
                                 "Enter your full name"
                               )}
+                              dir={language === "ar" ? "rtl" : "ltr"}
+                              style={{
+                                direction: language === "ar" ? "rtl" : "ltr",
+                                textAlign: language === "ar" ? "right" : "left"
+                              }}
                               {...field}
+                              onChange={(e) => {
+                                const value = e.target.value;
+                                field.onChange(value);
+                                e.target.value = value;
+                              }}
+                              onCompositionStart={(e) => {
+                                e.currentTarget.setAttribute('data-composing', 'true');
+                              }}
+                              onCompositionEnd={(e) => {
+                                e.currentTarget.removeAttribute('data-composing');
+                                const value = e.currentTarget.value;
+                                field.onChange(value);
+                                const changeEvent = new Event('change', { bubbles: true });
+                                e.currentTarget.dispatchEvent(changeEvent);
+                              }}
                             />
                           </FormControl>
                           <FormMessage />
@@ -823,7 +843,27 @@ export default function JoinUsPage() {
                                 "أدخل تخصصك",
                                 "Enter your specialization"
                               )}
+                              dir={language === "ar" ? "rtl" : "ltr"}
+                              style={{
+                                direction: language === "ar" ? "rtl" : "ltr",
+                                textAlign: language === "ar" ? "right" : "left"
+                              }}
                               {...field}
+                              onChange={(e) => {
+                                const value = e.target.value;
+                                field.onChange(value);
+                                e.target.value = value;
+                              }}
+                              onCompositionStart={(e) => {
+                                e.currentTarget.setAttribute('data-composing', 'true');
+                              }}
+                              onCompositionEnd={(e) => {
+                                e.currentTarget.removeAttribute('data-composing');
+                                const value = e.currentTarget.value;
+                                field.onChange(value);
+                                const changeEvent = new Event('change', { bubbles: true });
+                                e.currentTarget.dispatchEvent(changeEvent);
+                              }}
                             />
                           </FormControl>
                           <FormMessage />
@@ -847,7 +887,27 @@ export default function JoinUsPage() {
                                 "أدخل سنوات الخبرة",
                                 "Enter years of experience"
                               )}
+                              dir={language === "ar" ? "rtl" : "ltr"}
+                              style={{
+                                direction: language === "ar" ? "rtl" : "ltr",
+                                textAlign: language === "ar" ? "right" : "left"
+                              }}
                               {...field}
+                              onChange={(e) => {
+                                const value = e.target.value;
+                                field.onChange(value);
+                                e.target.value = value;
+                              }}
+                              onCompositionStart={(e) => {
+                                e.currentTarget.setAttribute('data-composing', 'true');
+                              }}
+                              onCompositionEnd={(e) => {
+                                e.currentTarget.removeAttribute('data-composing');
+                                const value = e.currentTarget.value;
+                                field.onChange(value);
+                                const changeEvent = new Event('change', { bubbles: true });
+                                e.currentTarget.dispatchEvent(changeEvent);
+                              }}
                             />
                           </FormControl>
                           <FormMessage />
@@ -965,7 +1025,27 @@ export default function JoinUsPage() {
                                 "Write a short bio about your experience & achievements."
                               )}
                               className="min-h-[120px]"
+                              dir={language === "ar" ? "rtl" : "ltr"}
+                              style={{
+                                direction: language === "ar" ? "rtl" : "ltr",
+                                textAlign: language === "ar" ? "right" : "left"
+                              }}
                               {...field}
+                              onChange={(e) => {
+                                const value = e.target.value;
+                                field.onChange(value);
+                                e.target.value = value;
+                              }}
+                              onCompositionStart={(e) => {
+                                e.currentTarget.setAttribute('data-composing', 'true');
+                              }}
+                              onCompositionEnd={(e) => {
+                                e.currentTarget.removeAttribute('data-composing');
+                                const value = e.currentTarget.value;
+                                field.onChange(value);
+                                const changeEvent = new Event('change', { bubbles: true });
+                                e.currentTarget.dispatchEvent(changeEvent);
+                              }}
                             />
                           </FormControl>
                           <FormMessage />
@@ -1042,7 +1122,19 @@ export default function JoinUsPage() {
                                   "أدخل عدد الساعات المتاحة أسبوعياً",
                                   "Enter available hours per week"
                                 )}
-                                {...field}
+                                dir={language === "ar" ? "rtl" : "ltr"}
+                                style={{
+                                  direction: language === "ar" ? "rtl" : "ltr",
+                                  textAlign: language === "ar" ? "right" : "left"
+                                }}
+                                defaultValue={field.value || ""}
+                                onChange={(e) => {
+                                  // Update the form field value
+                                  field.onChange(e.target.value);
+                                }}
+                                onBlur={field.onBlur}
+                                name={field.name}
+                                ref={field.ref}
                               />
                             </FormControl>
                             <FormMessage />
@@ -1068,7 +1160,19 @@ export default function JoinUsPage() {
                                   "أدخل قائمة بالعملاء السابقين",
                                   "Enter a list of previous clients"
                                 )}
-                                {...field}
+                                dir={language === "ar" ? "rtl" : "ltr"}
+                                style={{
+                                  direction: language === "ar" ? "rtl" : "ltr",
+                                  textAlign: language === "ar" ? "right" : "left"
+                                }}
+                                defaultValue={field.value || ""}
+                                onChange={(e) => {
+                                  // Update the form field value
+                                  field.onChange(e.target.value);
+                                }}
+                                onBlur={field.onBlur}
+                                name={field.name}
+                                ref={field.ref}
                               />
                             </FormControl>
                             <FormMessage />
@@ -1112,8 +1216,7 @@ export default function JoinUsPage() {
                     <Button
                       type="submit"
                       className="bg-[#2a2665] hover:bg-[#1a1545] text-white py-2 px-6"
-                      disabled={submitting}
-                    >
+                      disabled={submitting}>
                       {submitting
                         ? t(language, "جاري الإرسال...", "Submitting...")
                         : t(language, "إرسال الطلب", "Submit Application")}

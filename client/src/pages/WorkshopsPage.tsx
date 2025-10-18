@@ -1088,18 +1088,18 @@ export default function WorkshopsPage() {
       {/* Workshop Details Dialog */}
       {selectedWorkshop && (
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-          <DialogContent className="max-w-4xl w-[90%]">
-            <DialogHeader>
-              <DialogTitle className="text-2xl text-[#2a2665]">
+          <DialogContent className="max-w-6xl w-[95%] max-h-[90vh] overflow-y-auto mx-auto my-4">
+            <DialogHeader className="pb-4 border-b border-gray-200">
+              <DialogTitle className="text-2xl font-bold text-[#2a2665] text-center">
                 {language === "ar"
                   ? selectedWorkshop.title.ar
                   : selectedWorkshop.title.en}
               </DialogTitle>
             </DialogHeader>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="md:col-span-2">
-                <div className="mb-4">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-6">
+              <div className="lg:col-span-2 space-y-6">
+                <div className="relative overflow-hidden rounded-xl shadow-lg">
                   <img
                     src={selectedWorkshop.image}
                     alt={
@@ -1107,15 +1107,17 @@ export default function WorkshopsPage() {
                         ? selectedWorkshop.title.ar
                         : selectedWorkshop.title.en
                     }
-                    className="w-full h-64 object-cover rounded-lg"
+                    className="w-full h-80 object-cover"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                 </div>
 
-                <div className="mb-6">
-                  <h3 className="text-lg font-bold text-[#2a2665] mb-2">
+                <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                  <h3 className="text-xl font-bold text-[#2a2665] mb-4 flex items-center gap-2">
+                    <BookOpen className="h-5 w-5 text-[#b29567]" />
                     {language === "ar" ? "نبذة عن الورشة" : "Workshop Overview"}
                   </h3>
-                  <p className="text-gray-700">
+                  <p className="text-gray-700 leading-relaxed">
                     {language === "ar"
                       ? selectedWorkshop.description.ar
                       : selectedWorkshop.description.en}
@@ -1123,52 +1125,56 @@ export default function WorkshopsPage() {
                 </div>
 
                 {/* Workshop Objectives */}
-                <div className="mb-6">
-                  <h3 className="text-lg font-bold text-[#2a2665] mb-2 flex items-center gap-2">
+                <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                  <h3 className="text-xl font-bold text-[#2a2665] mb-4 flex items-center gap-2">
                     <Target className="h-5 w-5 text-[#b29567]" />
                     {language === "ar" ? "أهداف الورشة" : "Workshop Objectives"}
                   </h3>
-                  <ul className="space-y-2">
+                  <ul className="space-y-3">
                     {(language === "ar"
                       ? selectedWorkshop.objectives.ar
                       : selectedWorkshop.objectives.en
                     ).map((objective, index) => (
-                      <li key={index} className="flex items-start">
-                        <ChevronRight className="h-5 w-5 text-[#b29567] flex-shrink-0 mt-0.5" />
-                        <span className="text-gray-700">{objective}</span>
+                      <li key={index} className="flex items-start gap-3">
+                        <div className="w-6 h-6 bg-[#b29567]/10 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                          <Check className="h-4 w-4 text-[#b29567]" />
+                        </div>
+                        <span className="text-gray-700 leading-relaxed">{objective}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
 
                 {/* Target Audience */}
-                <div className="mb-6">
-                  <h3 className="text-lg font-bold text-[#2a2665] mb-2 flex items-center gap-2">
+                <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                  <h3 className="text-xl font-bold text-[#2a2665] mb-4 flex items-center gap-2">
                     <Users className="h-5 w-5 text-[#b29567]" />
                     {language === "ar" ? "الفئة المستهدفة" : "Target Audience"}
                   </h3>
-                  <ul className="space-y-2">
+                  <ul className="space-y-3">
                     {(language === "ar"
                       ? selectedWorkshop.audience.ar
                       : selectedWorkshop.audience.en
                     ).map((audience, index) => (
-                      <li key={index} className="flex items-start">
-                        <ChevronRight className="h-5 w-5 text-[#b29567] flex-shrink-0 mt-0.5" />
-                        <span className="text-gray-700">{audience}</span>
+                      <li key={index} className="flex items-start gap-3">
+                        <div className="w-6 h-6 bg-[#b29567]/10 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                          <User className="h-4 w-4 text-[#b29567]" />
+                        </div>
+                        <span className="text-gray-700 leading-relaxed">{audience}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
 
                 {/* Workshop Agenda */}
-                <div className="mb-6">
-                  <h3 className="text-lg font-bold text-[#2a2665] mb-2 flex items-center gap-2">
+                <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                  <h3 className="text-xl font-bold text-[#2a2665] mb-4 flex items-center gap-2">
                     <List className="h-5 w-5 text-[#b29567]" />
                     {language === "ar" ? "جدول الورشة" : "Workshop Agenda"}
                   </h3>
 
                   <Tabs defaultValue="day1" className="w-full">
-                    <TabsList className="w-full">
+                    <TabsList className="grid w-full grid-cols-3 bg-gray-100 p-1 rounded-lg">
                       {(language === "ar"
                         ? selectedWorkshop.agenda.ar
                         : selectedWorkshop.agenda.en
@@ -1176,7 +1182,7 @@ export default function WorkshopsPage() {
                         <TabsTrigger
                           key={index}
                           value={`day${index + 1}`}
-                          className="flex-1"
+                          className="data-[state=active]:bg-white data-[state=active]:shadow-sm rounded-md"
                         >
                           {day.title}
                         </TabsTrigger>
@@ -1190,13 +1196,15 @@ export default function WorkshopsPage() {
                       <TabsContent
                         key={index}
                         value={`day${index + 1}`}
-                        className="p-4 border rounded-md"
+                        className="mt-4 p-4 bg-gray-50 rounded-lg border"
                       >
-                        <ul className="space-y-2">
+                        <ul className="space-y-3">
                           {day.items.map((item, itemIndex) => (
-                            <li key={itemIndex} className="flex items-start">
-                              <ChevronRight className="h-5 w-5 text-[#b29567] flex-shrink-0 mt-0.5" />
-                              <span className="text-gray-700">{item}</span>
+                            <li key={itemIndex} className="flex items-start gap-3">
+                              <div className="w-6 h-6 bg-[#b29567]/10 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <span className="text-[#b29567] text-sm font-medium">{itemIndex + 1}</span>
+                              </div>
+                              <span className="text-gray-700 leading-relaxed">{item}</span>
                             </li>
                           ))}
                         </ul>
@@ -1206,21 +1214,21 @@ export default function WorkshopsPage() {
                 </div>
               </div>
 
-              <div className="md:col-span-1">
-                <Card className="bg-gray-50 border-t-4 border-[#2a2665]">
-                  <CardHeader className="pb-2">
-                    <CardTitle className="text-lg text-[#2a2665]">
+              <div className="lg:col-span-1">
+                <Card className="bg-gradient-to-br from-[#2a2665] to-[#1a1545] text-white shadow-xl border-0 sticky top-4">
+                  <CardHeader className="pb-4">
+                    <CardTitle className="text-xl text-white text-center">
                       {language === "ar" ? "تفاصيل الورشة" : "Workshop Details"}
                     </CardTitle>
                   </CardHeader>
-                  <CardContent className="space-y-4">
-                    <div className="flex items-center gap-2">
+                  <CardContent className="space-y-6">
+                    <div className="flex items-center gap-3 p-3 bg-white/10 rounded-lg">
                       <Calendar className="h-5 w-5 text-[#b29567]" />
                       <div>
-                        <div className="text-sm font-medium text-gray-500">
+                        <div className="text-sm font-medium text-white/80">
                           {language === "ar" ? "التاريخ" : "Date"}
                         </div>
-                        <div className="text-gray-700">
+                        <div className="text-white font-medium">
                           {language === "ar"
                             ? selectedWorkshop.date.ar
                             : selectedWorkshop.date.en}
@@ -1228,13 +1236,13 @@ export default function WorkshopsPage() {
                       </div>
                     </div>
 
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-3 p-3 bg-white/10 rounded-lg">
                       <Clock className="h-5 w-5 text-[#b29567]" />
                       <div>
-                        <div className="text-sm font-medium text-gray-500">
+                        <div className="text-sm font-medium text-white/80">
                           {language === "ar" ? "المدة" : "Duration"}
                         </div>
-                        <div className="text-gray-700">
+                        <div className="text-white font-medium">
                           {language === "ar"
                             ? selectedWorkshop.duration.ar
                             : selectedWorkshop.duration.en}
@@ -1242,13 +1250,13 @@ export default function WorkshopsPage() {
                       </div>
                     </div>
 
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-3 p-3 bg-white/10 rounded-lg">
                       <MapPin className="h-5 w-5 text-[#b29567]" />
                       <div>
-                        <div className="text-sm font-medium text-gray-500">
+                        <div className="text-sm font-medium text-white/80">
                           {language === "ar" ? "المكان" : "Location"}
                         </div>
-                        <div className="text-gray-700">
+                        <div className="text-white font-medium">
                           {language === "ar"
                             ? selectedWorkshop.location.ar
                             : selectedWorkshop.location.en}
@@ -1256,28 +1264,28 @@ export default function WorkshopsPage() {
                       </div>
                     </div>
 
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-3 p-3 bg-[#b29567]/20 rounded-lg border border-[#b29567]/30">
                       <Tag className="h-5 w-5 text-[#b29567]" />
                       <div>
-                        <div className="text-sm font-medium text-gray-500">
+                        <div className="text-sm font-medium text-white/80">
                           {language === "ar" ? "التكلفة" : "Price"}
                         </div>
-                        <div className="text-[#2a2665] font-bold">
+                        <div className="text-[#b29567] font-bold text-xl">
                           {selectedWorkshop.price}{" "}
                           {language === "ar" ? "ريال" : "SAR"}
                         </div>
                       </div>
                     </div>
 
-                    <Separator className="my-4" />
+                    <Separator className="my-4 bg-white/20" />
 
                     {/* Instructor Info */}
-                    <div>
-                      <div className="text-sm font-medium text-gray-500 mb-2">
+                    <div className="p-3 bg-white/10 rounded-lg">
+                      <div className="text-sm font-medium text-white/80 mb-3">
                         {language === "ar" ? "المدرب" : "Instructor"}
                       </div>
                       <div className="flex items-center gap-3">
-                        <div className="h-12 w-12 rounded-full overflow-hidden">
+                        <div className="h-12 w-12 rounded-full overflow-hidden border-2 border-[#b29567]">
                           <img
                             src={selectedWorkshop.instructor.image}
                             alt={
@@ -1289,12 +1297,12 @@ export default function WorkshopsPage() {
                           />
                         </div>
                         <div>
-                          <div className="font-medium text-[#2a2665]">
+                          <div className="font-medium text-white">
                             {language === "ar"
                               ? selectedWorkshop.instructor.name.ar
                               : selectedWorkshop.instructor.name.en}
                           </div>
-                          <div className="text-sm text-gray-600">
+                          <div className="text-sm text-white/80">
                             {language === "ar"
                               ? selectedWorkshop.instructor.title.ar
                               : selectedWorkshop.instructor.title.en}
@@ -1305,7 +1313,7 @@ export default function WorkshopsPage() {
 
                     <div className="pt-4">
                       <Button
-                        className="w-full bg-[#2a2665] hover:bg-[#1a1545] text-white py-2"
+                        className="w-full bg-[#b29567] hover:bg-[#a0855a] text-white py-3 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-200"
                         onClick={openRegistrationDialog}
                       >
                         {language === "ar"
@@ -1318,11 +1326,11 @@ export default function WorkshopsPage() {
               </div>
             </div>
 
-            <DialogFooter>
+            <DialogFooter className="pt-6 border-t border-gray-200">
               <Button
                 variant="outline"
                 onClick={() => setIsDialogOpen(false)}
-                className="border-[#2a2665] text-[#2a2665]"
+                className="border-[#2a2665] text-[#2a2665] hover:bg-[#2a2665] hover:text-white px-6"
               >
                 {language === "ar" ? "إغلاق" : "Close"}
               </Button>
@@ -1336,14 +1344,14 @@ export default function WorkshopsPage() {
         open={isRegistrationDialogOpen}
         onOpenChange={setIsRegistrationDialogOpen}
       >
-        <DialogContent className="max-w-3xl w-[90%]">
-          <DialogHeader>
-            <DialogTitle className="text-2xl text-[#2a2665]">
+        <DialogContent className="max-w-4xl w-[95%] max-h-[90vh] overflow-y-auto mx-auto my-4">
+          <DialogHeader className="pb-4 border-b border-gray-200">
+            <DialogTitle className="text-2xl font-bold text-[#2a2665] text-center">
               {language === "ar"
                 ? "التسجيل في ورشة العمل"
                 : "Workshop Registration"}
             </DialogTitle>
-            <DialogDescription>
+            <DialogDescription className="text-center text-gray-600">
               {language === "ar"
                 ? "يرجى تعبئة النموذج التالي للتسجيل في ورشة العمل. سيتم التواصل معك لتأكيد التسجيل ومعلومات الدفع."
                 : "Please fill out the following form to register for the workshop. We will contact you to confirm registration and payment information."}
@@ -1597,18 +1605,18 @@ export default function WorkshopsPage() {
                 )}
               />
 
-              <DialogFooter>
+              <DialogFooter className="pt-6 border-t border-gray-200">
                 <Button
                   type="button"
                   variant="outline"
                   onClick={() => setIsRegistrationDialogOpen(false)}
-                  className="border-[#2a2665] text-[#2a2665]"
+                  className="border-[#2a2665] text-[#2a2665] hover:bg-[#2a2665] hover:text-white px-6"
                 >
                   {language === "ar" ? "إلغاء" : "Cancel"}
                 </Button>
                 <Button
                   type="submit"
-                  className="bg-[#2a2665] hover:bg-[#1a1545] text-white"
+                  className="bg-[#2a2665] hover:bg-[#1a1545] text-white px-6"
                 >
                   {language === "ar"
                     ? "إرسال طلب التسجيل"

@@ -1,5 +1,5 @@
 // src/pages/ContactPage.tsx
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -76,16 +76,49 @@ export default function ContactPage() {
   const { toast } = useToast();
   const { language } = useI18nStore();
 
+  // Read URL parameters for program information
+  const [programInfo, setProgramInfo] = useState<{
+    programId?: string;
+    programTitle?: string;
+  }>({});
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const programId = urlParams.get('programId');
+    const programTitle = urlParams.get('programTitle');
+    
+    if (programId && programTitle) {
+      setProgramInfo({
+        programId,
+        programTitle: decodeURIComponent(programTitle)
+      });
+    }
+  }, []);
+
   const form = useForm<ContactFormValues>({
     resolver: zodResolver(contactFormSchema),
     defaultValues: {
       name: "",
       phone: "",
       email: "",
-      subject: "",
+      subject: programInfo.programTitle 
+        ? (language === "ar" 
+            ? `استفسار عن البرنامج: ${programInfo.programTitle}` 
+            : `Inquiry about Program: ${programInfo.programTitle}`)
+        : "",
       message: "",
     },
   });
+
+  // Update form when program info is loaded
+  useEffect(() => {
+    if (programInfo.programTitle) {
+      const subjectText = language === "ar" 
+        ? `استفسار عن البرنامج: ${programInfo.programTitle}` 
+        : `Inquiry about Program: ${programInfo.programTitle}`;
+      form.setValue("subject", subjectText);
+    }
+  }, [programInfo.programTitle, language, form]);
 
   const { mutate, isPending } = useMutation({
     mutationFn: postContactUs,
@@ -148,8 +181,13 @@ export default function ContactPage() {
   });
 
   function onSubmit(values: ContactFormValues) {
+    const formData = {
+      ...values,
+      program_id: programInfo.programId ? parseInt(programInfo.programId, 10) : undefined
+    };
+
     // don't await to avoid dev overlay; onError/onSuccess will handle UI
-    mutate(values);
+    mutate(formData);
   }
 
   return (
@@ -393,6 +431,31 @@ export default function ContactPage() {
                   <h2 className="text-2xl font-bold text-[#2a2665] mb-6">
                     {language === "ar" ? "أرسل لنا رسالة" : "Send Us a Message"}
                   </h2>
+                  
+                  {/* Program inquiry notice */}
+                  {programInfo.programTitle && (
+                    <div className="mb-6 p-4 bg-[#2a2665]/10 border border-[#2a2665]/20 rounded-lg">
+                      <div className="flex items-center">
+                        <div className="flex-shrink-0">
+                          <div className="w-8 h-8 bg-[#2a2665] rounded-full flex items-center justify-center text-white text-sm font-bold">
+                            i
+                          </div>
+                        </div>
+                        <div className={`${language === "ar" ? "mr-3" : "ml-3"}`}>
+                          <p className="text-sm text-[#2a2665] font-medium">
+                            {language === "ar" 
+                              ? `أنت تستفسر عن البرنامج: ${programInfo.programTitle}`
+                              : `You are inquiring about: ${programInfo.programTitle}`}
+                          </p>
+                          <p className="text-xs text-gray-600 mt-1">
+                            {language === "ar" 
+                              ? "سيتم ربط استفسارك بالبرنامج المحدد"
+                              : "Your inquiry will be linked to the specified program"}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  )}
                   <Form {...form}>
                     <form
                       onSubmit={form.handleSubmit(onSubmit)}

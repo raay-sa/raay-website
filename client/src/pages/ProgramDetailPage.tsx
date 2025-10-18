@@ -289,14 +289,14 @@ export default function ProgramDetailPage({
   const levelName = getLevelName(program.level, language);
   const durationLabel = buildDurationLabel(program, language);
   const whenLabel = buildWhenLabel(program, language);
-
+ 
   const isRegistered = program.type === "registered";
   const isLive = program.type === "live" || program.isLive;
 
   // Auth-aware primary CTA
   const handlePrimaryCta = () => {
     if (!token) {
-      window.location.href = "/join-us";
+      window.location.href = "/auth";
       return;
     }
     const ssoUrl = buildSsoLoginUrl(token, `/student/courses/${program.id}`);
@@ -670,7 +670,7 @@ export default function ProgramDetailPage({
                     <Button
                       variant="outline"
                       className="w-full border-[#2a2665] text-[#2a2665] hover:bg-[#2a2665] hover:text-white"
-                      onClick={() => (window.location.href = "/contact")}
+                      onClick={() => (window.location.href = `/contact?programId=${program.id}&programTitle=${encodeURIComponent(program.title)}`)}
                     >
                       {language === "ar"
                         ? "استفسر عن البرنامج"
@@ -771,7 +771,7 @@ export default function ProgramDetailPage({
             <Button
               variant="outline"
               className="border-white hover:bg-white hover:text-[#2a2665] py-3 px-10 text-lg"
-              onClick={() => (window.location.href = "/contact")}
+              onClick={() => (window.location.href = `/contact?programId=${program.id}&programTitle=${encodeURIComponent(program.title)}`)}
             >
               {language === "ar" ? "تواصل معنا" : "Contact Us"}
             </Button>

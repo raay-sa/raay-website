@@ -74,12 +74,13 @@ export default function AboutSection() {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="flex flex-col lg:flex-row gap-12 items-center">
+          {/* <div className=" gap-12 items-center"> */}
             <motion.div 
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="lg:w-1/2"
+              // className="lg:w-1/2"
             >
               <h2 className="text-3xl font-bold text-[#2a2665] mb-6">
                 {language === 'ar' ? 'نبذة عن المركز' : 'About The Center'}
@@ -97,7 +98,7 @@ export default function AboutSection() {
               </p>
             </motion.div>
             
-            <motion.div 
+            {/* <motion.div 
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -113,7 +114,7 @@ export default function AboutSection() {
                   className="w-full h-auto"
                 />
               </div>
-            </motion.div>
+            </motion.div> */}
           </div>
         </div>
       </section>
@@ -310,7 +311,7 @@ export default function AboutSection() {
             className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
             <motion.div variants={itemVariants} className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-all h-full">
-              <div className="flex items-start mb-4">
+              <div className="flex items-center gap-3  mb-4">
                 <div className="bg-[#2a2665] rounded-full p-3 mr-4">
                   <FaCheckCircle className="text-white text-xl" />
                 </div>
@@ -326,7 +327,7 @@ export default function AboutSection() {
             </motion.div>
             
             <motion.div variants={itemVariants} className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-all h-full">
-              <div className="flex items-start mb-4">
+              <div className="flex items-center gap-3  mb-4">
                 <div className="bg-[#b29567] rounded-full p-3 mr-4">
                   <FaCheckCircle className="text-white text-xl" />
                 </div>
@@ -342,7 +343,7 @@ export default function AboutSection() {
             </motion.div>
             
             <motion.div variants={itemVariants} className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-all h-full">
-              <div className="flex items-start mb-4">
+              <div className="flex items-center gap-3  mb-4">
                 <div className="bg-[#2a2665] rounded-full p-3 mr-4">
                   <FaCheckCircle className="text-white text-xl" />
                 </div>
@@ -358,7 +359,7 @@ export default function AboutSection() {
             </motion.div>
             
             <motion.div variants={itemVariants} className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-all h-full">
-              <div className="flex items-start mb-4">
+              <div className="flex items-center gap-3  mb-4">
                 <div className="bg-[#b29567] rounded-full p-3 mr-4">
                   <FaCheckCircle className="text-white text-xl" />
                 </div>
@@ -374,7 +375,7 @@ export default function AboutSection() {
             </motion.div>
             
             <motion.div variants={itemVariants} className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-all h-full">
-              <div className="flex items-start mb-4">
+              <div className="flex items-center gap-3  mb-4">
                 <div className="bg-[#2a2665] rounded-full p-3 mr-4">
                   <FaCheckCircle className="text-white text-xl" />
                 </div>
@@ -390,7 +391,7 @@ export default function AboutSection() {
             </motion.div>
             
             <motion.div variants={itemVariants} className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-all h-full">
-              <div className="flex items-start mb-4">
+                <div className="flex items-center gap-3  mb-4">
                 <div className="bg-[#b29567] rounded-full p-3 mr-4">
                   <FaCheckCircle className="text-white text-xl" />
                 </div>

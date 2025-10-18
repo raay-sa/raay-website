@@ -352,3 +352,37 @@ html[dir="ltr"] .methodology-list-item {
 @media (pointer: coarse) {
   .nice-scrollbar::-webkit-scrollbar { height: 8px; }
 }
+
+/* Arabic text input support */
+html[dir="rtl"] input[type="text"],
+html[dir="rtl"] input[type="email"],
+html[dir="rtl"] input[type="tel"],
+html[dir="rtl"] input[type="password"],
+html[dir="rtl"] textarea {
+  direction: rtl;
+  text-align: right;
+  unicode-bidi: plaintext;
+}
+
+html[dir="ltr"] input[type="text"],
+html[dir="ltr"] input[type="email"],
+html[dir="ltr"] input[type="tel"],
+html[dir="ltr"] input[type="password"],
+html[dir="ltr"] textarea {
+  direction: ltr;
+  text-align: left;
+}
+
+/* Ensure proper font rendering for Arabic text */
+input, textarea {
+  font-family: inherit;
+  font-feature-settings: "liga" 1, "kern" 1;
+  text-rendering: optimizeLegibility;
+}
+
+/* Fix for Arabic text in form inputs */
+html[dir="rtl"] input::placeholder,
+html[dir="rtl"] textarea::placeholder {
+  direction: rtl;
+  text-align: right;
+}

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useLocation } from "wouter";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -20,17 +20,19 @@ import * as z from "zod";
 import { useToast } from "@/hooks/use-toast";
 import { Lock, Mail, User } from "lucide-react";
 import { PasswordStrengthIndicator } from "@/components/ui/password-strength-indicator";
+import GoogleCaptcha, { GoogleCaptchaRef } from "@/components/ui/google-captcha";
+import rayLogo from "@/assets/images/rayLogo.webp";
 
 // APIs
 import {
   postLogin,
   postRegister,
-  postSendOtp, // <-- use OTP for login + register flow
+  postSendOtp, // <-- use OTP for login and register flows
   type BackendErrorResponse,
 } from "@/lib/api/auth";
 import { HttpError } from "@/lib/api/http";
 
-// OTP session helper
+// OTP session helper (for login and register flows)
 import { setOtpSession } from "@/lib/otpSession";
 
 // ----- Schemas -----
@@ -111,6 +113,11 @@ export default function AuthPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
+  // reCAPTCHA state
+  const [captchaToken, setCaptchaToken] = useState<string>("");
+  const [captchaError, setCaptchaError] = useState<string>("");
+  const captchaRef = useRef<GoogleCaptchaRef>(null);
+
   // ----- Forms -----
   const loginForm = useForm<LoginFormValues>({
     resolver: zodResolver(loginSchema),
@@ -131,15 +138,44 @@ export default function AuthPage() {
     },
   });
 
-  // ----- Login submit (now: send OTP, then verify on /otp) -----
+  // reCAPTCHA handlers
+  const handleCaptchaVerify = (token: string) => {
+    setCaptchaToken(token);
+    setCaptchaError("");
+  };
+
+  const handleCaptchaExpire = () => {
+    setCaptchaToken("");
+    setCaptchaError("انتهت صلاحية التحقق. يرجى المحاولة مرة أخرى.");
+  };
+
+  const handleCaptchaError = (error: any) => {
+    setCaptchaToken("");
+    setCaptchaError("حدث خطأ في التحقق. يرجى المحاولة مرة أخرى.");
+    console.error('Captcha error:', error);
+  };
+
+  // ----- Login submit (OTP-based login flow) -----
   async function onLoginSubmit(values: LoginFormValues) {
     setIsSubmitting(true);
     try {
-      // We do NOT call postLogin here — the backend will complete login on /verifyOtp
-      await postSendOtp({ email: values.email, auth_method: "login" });
+      // First verify email and password with backend
+      await postLogin({
+        email: values.email,
+        password: values.password,
+      });
 
-      // keep minimal session for the OTP page
-      setOtpSession({ email: values.email, method: "login" });
+      // If login credentials are valid, send OTP
+      await postSendOtp({ 
+        email: values.email, 
+        auth_method: "login" 
+      });
+
+      // Store session for OTP verification
+      setOtpSession({ 
+        email: values.email, 
+        method: "login" 
+      });
 
       toast({
         title: "تحقق من بريدك",
@@ -149,16 +185,24 @@ export default function AuthPage() {
 
       navigate("/otp");
     } catch (err) {
-      let description = "تعذر إرسال رمز التحقق";
+      let description = "فشل تسجيل الدخول";
       if (err instanceof HttpError) {
         const be = err.data;
-        // optionally surface field-level errors
+        // Surface field-level errors
         const emailErr = be?.errors?.email;
+        const passwordErr = be?.errors?.password;
+        
         if (emailErr) {
           loginForm.setError("email", {
             message: Array.isArray(emailErr) ? emailErr[0] : String(emailErr),
           });
         }
+        if (passwordErr) {
+          loginForm.setError("password", {
+            message: Array.isArray(passwordErr) ? passwordErr[0] : String(passwordErr),
+          });
+        }
+        
         const list = flattenErrors(be?.errors);
         description = list[0] || be?.message || err.message || description;
       } else if (err instanceof Error && err.message) {
@@ -173,6 +217,19 @@ export default function AuthPage() {
   // ----- Register submit (student only, then OTP like dashboard flow) -----
   async function onRegisterSubmit(values: RegisterFormValues) {
     setIsSubmitting(true);
+    
+    // Validate reCAPTCHA
+    if (!captchaToken) {
+      setCaptchaError("يجب إكمال التحقق من أنك لست روبوت.");
+      toast({
+        title: "خطأ",
+        description: "يجب إكمال التحقق من أنك لست روبوت.",
+        variant: "destructive",
+      });
+      setIsSubmitting(false);
+      return;
+    }
+
     try {
       // 1) Register first (no token saved yet)
       const res = await postRegister({
@@ -249,7 +306,7 @@ export default function AuthPage() {
             >
               <div className="mb-8">
                 <img
-                  src="/src/assets/images/rayLogo.webp"
+                  src={rayLogo}
                   alt="شعار مركز راي"
                   className="h-20 mb-8 brightness-0 invert"
                 />
@@ -361,12 +418,13 @@ export default function AuthPage() {
                             render={({ field }) => (
                               <FormItem>
                                 <div className="flex justify-between items-center">
-                                  <a
-                                    href="#"
+                                  <button
+                                    type="button"
+                                    onClick={() => navigate("/forgot-password")}
                                     className="text-sm text-[#b29567] hover:underline"
                                   >
                                     نسيت كلمة المرور؟
-                                  </a>
+                                  </button>
                                   <FormLabel className="text-gray-700">
                                     كلمة المرور
                                   </FormLabel>
@@ -596,6 +654,16 @@ export default function AuthPage() {
                                 <FormMessage />
                               </FormItem>
                             )}
+                          />
+
+                          {/* Google reCAPTCHA */}
+                          <GoogleCaptcha
+                            ref={captchaRef}
+                            onVerify={handleCaptchaVerify}
+                            onExpire={handleCaptchaExpire}
+                            onError={handleCaptchaError}
+                            error={captchaError}
+                            className="flex justify-center"
                           />
 
                           <Button

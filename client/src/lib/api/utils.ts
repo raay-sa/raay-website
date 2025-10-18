@@ -104,5 +104,12 @@ export function mapApiProgram(p: ApiProgram, language: string = "ar"): Program {
     category: p.category
       ? { id: p.category.id, title: categoryTitle }
       : p.category ?? null,
+    teacher: p.teacher
+      ? {
+          id: p.teacher.id,
+          name: p.teacher.name,
+          imageUrl: toAbsoluteAssetUrl(p.teacher.image ?? null),
+        }
+      : null,
   };
 }

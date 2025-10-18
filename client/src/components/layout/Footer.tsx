@@ -14,6 +14,7 @@ import { useI18nStore } from "@/lib/i18n";
 import { useEffect, useState } from "react";
 import rayLogo from "@/assets/images/rayLogo.webp";
 import maarifaLogo from "@/assets/maarifa-logo.png";
+import logo2 from "@/assets/images/logo2.svg";
 import { SiX } from "react-icons/si";
 
 export default function Footer() {
@@ -49,6 +50,8 @@ export default function Footer() {
 
               <img src={maarifaLogo} className="h-14 mb-4 md:hidden" alt="" />
             </div>
+
+            <img src={logo2} alt="Raay Center Logo" className="h-12 mb-4" />
 
             <p className="text-gray-400 text-sm">
               <TranslatedText
