@@ -11,6 +11,8 @@ import type {
   ContactUsPayload,
   ContactUsResponse,
   ApiPaginatedResponse,
+  WorkshopRegistrationPayload,
+  WorkshopRegistrationResponse,
 } from "./types";
 import { mapApiProgram, mapApiCategory } from "./utils";
 
@@ -150,6 +152,20 @@ export async function postContactUs(
 ): Promise<ContactUsResponse> {
   const res = await httpJson<ContactUsResponse, ContactUsPayload>(
     "public/contact_us",
+    {
+      method: "POST",
+      body: payload,
+    }
+  );
+  return res;
+}
+
+// --- POST /public/workshops ---
+export async function postWorkshopRegistration(
+  payload: WorkshopRegistrationPayload
+): Promise<WorkshopRegistrationResponse> {
+  const res = await httpJson<WorkshopRegistrationResponse, WorkshopRegistrationPayload>(
+    "public/workshops",
     {
       method: "POST",
       body: payload,

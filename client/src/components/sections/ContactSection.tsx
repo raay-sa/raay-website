@@ -321,12 +321,12 @@ export default function ContactSection() {
                       />
                     </h4>
                     <a
-                      href="https://wa.me/966530023285"
+                      href="https://wa.me/966583500010"
                       target="_blank"
                       rel="noreferrer"
                       className="text-gray-600 hover:text-[#25d366] transition-colors ltr:text-left"
                       dir="ltr">
-                      0530023285
+                      0583500010
                     </a>
                   </div>
                 </div>

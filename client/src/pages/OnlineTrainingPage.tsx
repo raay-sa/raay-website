@@ -454,14 +454,16 @@ export default function OnlineTrainingPage() {
                                 {formatDate(program.dateTo)}
                               </span>
                             </div>
-                            <div className="flex items-start">
-                              <span className="text-[#2a2665] font-medium min-w-[120px]">
-                                {t(language, "الوقت:", "Time:")}
-                              </span>
-                              <span className="text-gray-700">
-                                {formatTime(program.time ?? null)}
-                              </span>
-                            </div>
+                            {program.duration !== null && (
+                              <div className="flex items-start">
+                                <span className="text-[#2a2665] font-medium min-w-[120px]">
+                                  {t(language, "الوقت:", "Time:")}
+                                </span>
+                                <span className="text-gray-700">
+                                  {formatTime(program.time ?? null)}
+                                </span>
+                              </div>
+                            )}
                           </div>
                         </CardContent>
 

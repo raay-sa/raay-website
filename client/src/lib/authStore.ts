@@ -29,10 +29,14 @@ export const useAuthStore = create<AuthState>((set) => ({
     if (token || user) {
       try {
         localStorage.setItem(STORAGE_KEY, JSON.stringify({ token, refreshToken, user }));
+        // Dispatch custom event to notify Header component of auth change (same tab)
+        window.dispatchEvent(new CustomEvent("raay-auth-changed"));
       } catch {}
     } else {
       try {
         localStorage.removeItem(STORAGE_KEY);
+        // Dispatch custom event to notify Header component of auth change (same tab)
+        window.dispatchEvent(new CustomEvent("raay-auth-changed"));
       } catch {}
     }
     set({ token: token ?? null, refreshToken: refreshToken ?? null, user: user ?? null, isAuthenticated: !!token });
@@ -40,6 +44,8 @@ export const useAuthStore = create<AuthState>((set) => ({
   logout: () => {
     try {
       localStorage.removeItem(STORAGE_KEY);
+      // Dispatch custom event to notify Header component of auth change (same tab)
+      window.dispatchEvent(new CustomEvent("raay-auth-changed"));
     } catch {}
     set({ token: null, refreshToken: null, user: null, isAuthenticated: false });
   },

@@ -116,8 +116,8 @@ export default function SkillAssessmentPage() {
       try {
         const res = await fetch(`${API_BASE}/public/skills`);
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const json = await res.j;
-        const items: ApiQuestion[] = json?.data ?? [];
+        const json = await res.json();
+        const items: ApiQuestion[] = Array.isArray(json?.data) ? json.data : [];
         if (!cancelled) setQuestions(items);
       } catch (e: any) {
         if (!cancelled) setLoadErr(e?.message || "Failed to load questions");

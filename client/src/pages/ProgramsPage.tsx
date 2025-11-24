@@ -171,13 +171,84 @@ export default function ProgramsPage() {
   );
 }
 
+/** Format date for display */
+function formatDate(dateString: string, lang: "ar" | "en"): string {
+  try {
+    const date = new Date(dateString);
+    const formatOptions: Intl.DateTimeFormatOptions = {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      calendar: 'gregory'
+    };
+    const locale = lang === "ar" ? "ar-SA" : "en-US";
+    return date.toLocaleDateString(locale, formatOptions);
+  } catch (error) {
+    return dateString;
+  }
+}
+
+/** Calculate days difference between two dates */
+function calculateDaysDifference(dateFrom: string, dateTo: string): number {
+  try {
+    const from = new Date(dateFrom);
+    const to = new Date(dateTo);
+    const diffTime = Math.abs(to.getTime() - from.getTime());
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    return diffDays;
+  } catch (error) {
+    return 0;
+  }
+}
+
 function ProgramCard({ program, language }: { program: Program; language: "ar" | "en" }) {
   const durationLabel = React.useMemo(() => {
-    if (program.durationHours == null) return language === "ar" ? "غير محدد" : "Not specified";
-    const hours = program.durationHours;
-    const isInt = Math.abs(hours - Math.round(hours)) < 1e-6;
-    return isInt ? `${Math.round(hours)}h` : `${hours.toFixed(1)}h`;
-  }, [program.durationHours, language]);
+    // If registered course with duration in hours
+    if (program.type === "registered" && program.durationHours != null) {
+      const hours = program.durationHours;
+      const isInt = Math.abs(hours - Math.round(hours)) < 1e-6;
+      return isInt ? `${Math.round(hours)}h` : `${hours.toFixed(1)}h`;
+    }
+
+    // Use duration from API (in days) if available
+    let daysFromApi: number | null = null;
+    if (program.duration != null && typeof program.duration === 'number' && program.duration > 0) {
+      daysFromApi = program.duration;
+    }
+
+    // If onsite or live program with date range
+    if ((program.type === "onsite" || program.type === "live") && program.dateFrom && program.dateTo) {
+      const fromFormatted = formatDate(program.dateFrom, language);
+      const toFormatted = formatDate(program.dateTo, language);
+      
+      // Use API duration if available, otherwise calculate from dates
+      const daysDiff = daysFromApi ?? (program.dateFrom !== program.dateTo ? calculateDaysDifference(program.dateFrom, program.dateTo) : 0);
+      
+      if (daysDiff > 0 && program.dateFrom !== program.dateTo) {
+        if (language === "ar") {
+          return `${fromFormatted} - ${toFormatted} (${daysDiff} ${daysDiff === 1 ? "يوم" : "أيام"})`;
+        }
+        return `${fromFormatted} - ${toFormatted} (${daysDiff} ${daysDiff === 1 ? "day" : "days"})`;
+      }
+      
+      if (program.dateFrom !== program.dateTo) {
+        return `${fromFormatted} - ${toFormatted}`;
+      }
+      
+      return fromFormatted;
+    }
+
+    // If live program with single date
+    if (program.type === "live") {
+      const date = program.dateFrom ?? program.dateTo ?? null;
+      if (date) {
+        return formatDate(date, language);
+      }
+      return language === "ar" ? "مباشر" : "Live";
+    }
+
+    return language === "ar" ? "غير محدد" : "Not specified";
+  }, [program, language]);
 
   return (
     <div className="bg-indigo-50 rounded overflow-hidden shadow-sm border border-gray-100">

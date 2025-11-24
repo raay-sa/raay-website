@@ -62,6 +62,7 @@ export function getProgramTranslation(translations: ApiProgramTranslation[], lan
     description: translation?.description || "",
     learning: translation?.learning || [],
     requirement: translation?.requirement || [],
+    main_axes: translation?.main_axes || [],
   };
 }
 
@@ -82,6 +83,11 @@ export function mapApiProgram(p: ApiProgram, language: string = "ar"): Program {
     ? getCategoryTitle(p.category.translations, language)
     : "—";
     
+  // Parse duration - API returns number (days) or string (time format)
+  const durationValue = typeof p.duration === 'number' 
+    ? p.duration 
+    : (p.duration ? Number(p.duration) : null);
+  
   return {
     id: p.id,
     slug: p.slug,
@@ -95,11 +101,15 @@ export function mapApiProgram(p: ApiProgram, language: string = "ar"): Program {
     dateTo: p.date_to ?? null,
     time: p.time ?? null,
     isLive: p.is_live === 1,
+    address: p.address ?? null,
+    url: p.url ?? null,
     description: translation.description,
     userType: p.user_type ?? null,
     learning: translation.learning,
     requirement: translation.requirement,
-    durationHours: parseDurationToHours(p.program_duration),
+    mainAxes: translation.main_axes,
+    durationHours: parseDurationToHours(p.duration),
+    duration: durationValue, // Duration in days from API
     subscriptionsCount: p.subscriptions_count,
     category: p.category
       ? { id: p.category.id, title: categoryTitle }

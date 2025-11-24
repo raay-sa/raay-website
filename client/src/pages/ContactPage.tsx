@@ -143,8 +143,9 @@ export default function ContactPage() {
           : "An error occurred while sending your message";
 
       // If it's our HttpError with backend payload, surface field errors
-      if (err instanceof HttpError<BackendErrorResponse>) {
-        const be = err.data as BackendErrorResponse | undefined;
+      const httpErr = err as HttpError<BackendErrorResponse> | undefined;
+      if (httpErr && httpErr.name === "HttpError") {
+        const be = httpErr.data as BackendErrorResponse | undefined;
 
         // map field errors to react-hook-form fields (name, phone, email, subject, message)
         const fieldKeys = [
@@ -285,13 +286,13 @@ export default function ContactPage() {
                           {language === "ar" ? "واتساب" : "WhatsApp"}
                         </h4>
                         <a
-                          href="https://wa.me/966530023285"
+                          href="https://wa.me/966583500010"
                           target="_blank"
                           rel="noreferrer"
                           className="text-gray-600 hover:text-[#25d366] transition-colors ltr:text-left"
                           dir="ltr"
                         >
-                          0530023285
+                          0583500010
                         </a>
                       </div>
                     </div>
@@ -402,7 +403,7 @@ export default function ContactPage() {
 
                   {/* WhatsApp */}
                   <a
-                    href="https://wa.me/966530023285"
+                    href="https://wa.me/966583500010"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="WhatsApp"

@@ -30,6 +30,7 @@ type ApiProgram = {
   date_from?: string | null; // "YYYY-MM-DD"
   date_to?: string | null; // "YYYY-MM-DD" | null
   time?: string | null; // "HH:mm:ss" | null
+  duration?: string | null; // e.g. "0:09"
   program_duration?: string | null; // e.g. "0:09"
   category_id?: number;
   category?: ApiCategory | null;
@@ -267,15 +268,15 @@ export default function ProgramCategoryPage() {
                               {dateTo
                                 ? ` • ${t(language, "إلى", "To")}: ${dateTo}`
                                 : ""}
-                              {time
+                              {time && program.duration !== null
                                 ? ` • ${t(language, "الوقت", "Time")}: ${time}`
                                 : ""}
                             </span>
                           ) : (
-                            program.program_duration && (
+                            program.duration && (
                               <span className="px-3 py-1 rounded-full text-xs font-medium bg-teal-100 text-teal-800">
                                 {t(language, "المدة", "Duration")}:{" "}
-                                {program.program_duration}
+                                {program.duration}
                               </span>
                             )
                           )}

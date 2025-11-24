@@ -225,13 +225,13 @@ export default function Footer() {
                   } mt-1`}
                 />
                 <a
-                  href="https://wa.me/966530023285"
+                  href="https://wa.me/966583500010"
                   target="_blank"
                   rel="noreferrer"
                   dir="ltr"
                   className="hover:text-[#25d366] transition-colors ltr:text-left"
                 >
-                  0530023285
+                  0583500010
                 </a>
               </li>
               <li className="flex items-start">

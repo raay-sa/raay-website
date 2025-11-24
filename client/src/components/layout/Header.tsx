@@ -62,11 +62,20 @@ export default function Header() {
         setToken(null);
       }
     };
+    
+    // Initial read
     readAuth();
 
-    // react to auth changes across tabs
+    // React to auth changes across tabs (storage event - only fires for cross-tab changes)
     window.addEventListener("storage", readAuth);
-    return () => window.removeEventListener("storage", readAuth);
+    
+    // React to auth changes in the same tab (custom event)
+    window.addEventListener("raay-auth-changed", readAuth);
+    
+    return () => {
+      window.removeEventListener("storage", readAuth);
+      window.removeEventListener("raay-auth-changed", readAuth);
+    };
   }, []);
 
   // Menu data

@@ -43,17 +43,47 @@ import {
 // ---- helpers ----
 const getLevelName = (level: string | undefined, language: string) => {
   if (!level) return language === "ar" ? "غير محدد" : "N/A";
-  if (["مبتدئ", "متوسط", "متقدم"].includes(level)) return level;
+
+  // Bidirectional mapping between Arabic and English, including Expert
+  const arToEn: Record<string, string> = {
+    "مبتدئ": "Beginner",
+    "متوسط": "Intermediate",
+    "متقدم": "Advanced",
+    "خبير": "Expert",
+  };
+  const enToAr: Record<string, string> = {
+    beginner: "مبتدئ",
+    intermediate: "متوسط",
+    advanced: "متقدم",
+    expert: "خبير",
+  };
+
+  // If UI is Arabic, ensure Arabic label; if English, ensure English label
   const normalized = level.toLowerCase();
-  switch (normalized) {
-    case "beginner":
-      return language === "ar" ? "مبتدئ" : "Beginner";
-    case "intermediate":
-      return language === "ar" ? "متوسط" : "Intermediate";
-    case "advanced":
-      return language === "ar" ? "متقدم" : "Advanced";
-    default:
-      return level;
+  if (language === "ar") {
+    // From English to Arabic when needed
+    return enToAr[normalized] ?? level;
+  } else {
+    // From Arabic to English when needed
+    return arToEn[level] ?? arToEn[normalized] ?? capitalizeFirst(level);
+  }
+};
+
+function capitalizeFirst(value: string): string {
+  if (!value) return value;
+  return value.charAt(0).toUpperCase() + value.slice(1);
+}
+
+/** Calculate days difference between two dates */
+const calculateDaysDifference = (dateFrom: string, dateTo: string): number => {
+  try {
+    const from = new Date(dateFrom);
+    const to = new Date(dateTo);
+    const diffTime = Math.abs(to.getTime() - from.getTime());
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    return diffDays;
+  } catch (error) {
+    return 0;
   }
 };
 
@@ -66,22 +96,68 @@ const buildDurationLabel = (p: Program, language: string): string => {
   return language === "ar" ? "غير محدد" : "N/A";
 };
 
+/** Build duration in days label - use API duration if available, otherwise calculate from dates */
+const buildDurationDaysLabel = (p: Program, language: string): string | null => {
+  // Use duration from API (in days) if available
+  let daysDiff: number | null = null;
+  
+  if (p.duration != null && typeof p.duration === 'number' && p.duration > 0) {
+    daysDiff = p.duration;
+  } else if (p.dateFrom && p.dateTo && p.dateFrom !== p.dateTo) {
+    // Fallback to calculating from dates if API duration not available
+    daysDiff = calculateDaysDifference(p.dateFrom, p.dateTo);
+  }
+  
+  if (daysDiff != null && daysDiff > 0) {
+    if (language === "ar") {
+      return `${daysDiff} ${daysDiff === 1 ? "يوم" : "أيام"}`;
+    }
+    return `${daysDiff} ${daysDiff === 1 ? "day" : "days"}`;
+  }
+  
+  return null;
+};
+
+/** Format date for display */
+const formatDate = (dateString: string, language: string): string => {
+  try {
+    const date = new Date(dateString);
+    const formatOptions: Intl.DateTimeFormatOptions = {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      calendar: 'gregory'
+    };
+    const locale = language === "ar" ? "ar-SA" : "en-US";
+    return date.toLocaleDateString(locale, formatOptions);
+  } catch (error) {
+    return dateString; // fallback to raw string
+  }
+};
+
 const buildWhenLabel = (p: Program, language: string): string => {
   const parts: string[] = [];
-  if (p.dateFrom && p.dateTo && p.dateFrom !== p.dateTo) {
+
+  const fromLabel = p.dateFrom ? formatDate(p.dateFrom, language) : null;
+  const toLabel = p.dateTo ? formatDate(p.dateTo, language) : null;
+
+  if (fromLabel && toLabel && p.dateFrom !== p.dateTo) {
     parts.push(
       language === "ar"
-        ? `من ${p.dateFrom} إلى ${p.dateTo}`
-        : `From ${p.dateFrom} to ${p.dateTo}`
+        ? `من ${fromLabel} إلى ${toLabel}`
+        : `From ${fromLabel} to ${toLabel}`
     );
-  } else if (p.dateFrom) {
-    parts.push(p.dateFrom);
-  } else if (p.dateTo) {
-    parts.push(p.dateTo);
+  } else if (fromLabel) {
+    parts.push(fromLabel);
+  } else if (toLabel) {
+    parts.push(toLabel);
   }
-  if (p.time) parts.push(p.time);
+
+  if (p.time && p.durationHours !== null) parts.push(p.time);
+
   if (parts.length === 0)
     return language === "ar" ? "موعد يحدد لاحقاً" : "Schedule TBA";
+
   return parts.join(" • ");
 };
 
@@ -215,6 +291,10 @@ export default function ProgramDetailPage({
     () => toStringArray(program?.requirement),
     [program?.requirement]
   );
+  const mainAxesList = useMemo(
+    () => toStringArray(program?.mainAxes),
+    [program?.mainAxes]
+  );
 
   // Randomly select up to 3 related (exclude current)
   const relatedPrograms = useMemo(() => {
@@ -289,9 +369,11 @@ export default function ProgramDetailPage({
   const levelName = getLevelName(program.level, language);
   const durationLabel = buildDurationLabel(program, language);
   const whenLabel = buildWhenLabel(program, language);
+  const durationDaysLabel = buildDurationDaysLabel(program, language);
  
   const isRegistered = program.type === "registered";
   const isLive = program.type === "live" || program.isLive;
+  const isOnsite = program.type === "onsite";
 
   // Auth-aware primary CTA
   const handlePrimaryCta = () => {
@@ -408,6 +490,10 @@ export default function ProgramDetailPage({
                   ? language === "ar"
                     ? "مسجل (حسب الطلب)"
                     : "Registered (On-demand)"
+                  : isOnsite
+                  ? language === "ar"
+                    ? "حضوري"
+                    : "Onsite"
                   : language === "ar"
                   ? "مباشر"
                   : "Live"}
@@ -499,6 +585,21 @@ export default function ProgramDetailPage({
                 </p>
               </div>
 
+              {mainAxesList.length > 0 && (
+                <div className="mb-10">
+                  <h2 className="text-2xl font-bold text-[#2a2665] mb-4">
+                    {language === "ar" ? "المحاور الرئيسية" : "Main Axes"}
+                  </h2>
+                  <ul className="list-disc list-inside space-y-2 text-gray-700">
+                    {mainAxesList.map((item, idx) => (
+                      <li key={idx} className="leading-relaxed">
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
               {learningList.length > 0 && (
                 <div className="mb-10">
                   <h2 className="text-2xl font-bold text-[#2a2665] mb-4">
@@ -517,7 +618,7 @@ export default function ProgramDetailPage({
               {requirementList.length > 0 && (
                 <div className="mb-10">
                   <h2 className="text-2xl font-bold text-[#2a2665] mb-4">
-                    {language === "ar" ? "المتطلبات" : "Requirements"}
+                    {language === "ar" ? "الفئه المستهدفه" : "Target Audience"}
                   </h2>
                   <ul className="list-disc list-inside space-y-2 text-gray-700">
                     {requirementList.map((item, idx) => (
@@ -551,13 +652,17 @@ export default function ProgramDetailPage({
                             ? language === "ar"
                               ? "مسجل"
                               : "Registered"
+                            : isOnsite
+                            ? language === "ar"
+                              ? "حضوري"
+                              : "Onsite"
                             : language === "ar"
                             ? "مباشر"
                             : "Live"}
                         </span>
                       </div>
 
-                      {/* Duration (registered) */}
+                      {/* Duration (registered programs) */}
                       {isRegistered && (
                         <div className="flex justify-between">
                           <span className="text-gray-600">
@@ -567,18 +672,18 @@ export default function ProgramDetailPage({
                         </div>
                       )}
 
-                      {/* Schedule (live) */}
-                      {isLive && (
+                      {/* Date Information (onsite and live programs) */}
+                      {(isOnsite || isLive) && (
                         <>
                           {program.dateFrom && (
                             <div className="flex justify-between">
                               <span className="text-gray-600">
                                 {language === "ar"
                                   ? "تاريخ البداية:"
-                                  : "Start date:"}
+                                  : "Start Date:"}
                               </span>
                               <span className="font-medium">
-                                {program.dateFrom}
+                                {formatDate(program.dateFrom, language)}
                               </span>
                             </div>
                           )}
@@ -587,14 +692,27 @@ export default function ProgramDetailPage({
                               <span className="text-gray-600">
                                 {language === "ar"
                                   ? "تاريخ النهاية:"
-                                  : "End date:"}
+                                  : "End Date:"}
                               </span>
                               <span className="font-medium">
-                                {program.dateTo}
+                                {formatDate(program.dateTo, language)}
                               </span>
                             </div>
                           )}
-                          {program.time && (
+                          {/* Duration in days when dates are different */}
+                          {durationDaysLabel && (
+                            <div className="flex justify-between">
+                              <span className="text-gray-600">
+                                {language === "ar"
+                                  ? "مدة البرنامج (بالأيام):"
+                                  : "Program Duration (in days):"}
+                              </span>
+                              <span className="font-medium">
+                                {durationDaysLabel}
+                              </span>
+                            </div>
+                          )}
+                          {program.time && program.durationHours !== null && (
                             <div className="flex justify-between">
                               <span className="text-gray-600">
                                 {language === "ar" ? "الوقت:" : "Time:"}
@@ -605,6 +723,18 @@ export default function ProgramDetailPage({
                             </div>
                           )}
                         </>
+                      )}
+
+                      {/* Teacher Information */}
+                      {program.teacher && (
+                        <div className="flex justify-between">
+                          <span className="text-gray-600">
+                            {language === "ar" ? "المدرب:" : "Instructor:"}
+                          </span>
+                          <span className="font-medium">
+                            {program.teacher.name}
+                          </span>
+                        </div>
                       )}
 
                       {/* Level */}
@@ -629,8 +759,36 @@ export default function ProgramDetailPage({
                         </div>
                       )}
 
+                      {/* Onsite Address & Location URL */}
+                      {isOnsite && program.address && (
+                        <div className="flex justify-between">
+                          <span className="text-gray-600">
+                            {language === "ar" ? "العنوان:" : "Address:"}
+                          </span>
+                          <span className="font-medium text-right ltr:text-left" dir="ltr">
+                            {program.address}
+                          </span>
+                        </div>
+                      )}
+                      {isOnsite && program.url && (
+                        <div className="flex justify-between">
+                          <span className="text-gray-600">
+                            {language === "ar" ? "رابط الموقع:" : "Location URL:"}
+                          </span>
+                          <a
+                            href={program.url}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="font-medium text-[#2a2665] hover:underline truncate max-w-[60%] text-right ltr:text-left"
+                            dir="ltr"
+                          >
+                            {program.url}
+                          </a>
+                        </div>
+                      )}
+
                       {/* Certificate */}
-                      <div className="flex justify_between">
+                      <div className="flex justify-between">
                         <span className="text-gray-600">
                           {language === "ar" ? "شهادة:" : "Certificate:"}
                         </span>

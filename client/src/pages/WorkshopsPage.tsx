@@ -17,6 +17,8 @@ import { useToast } from "@/hooks/use-toast";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { postWorkshopRegistration } from "@/lib/api/endpoints";
+import { HttpError } from "@/lib/api/http";
 import {
   Form,
   FormControl,
@@ -770,17 +772,26 @@ export default function WorkshopsPage() {
   }, [selectedWorkshop, form]);
 
   // Handle form submission
-  const onSubmit = (values: z.infer<typeof workshopRegistrationSchema>) => {
-    console.log("Workshop registration submitted:", values);
+  const onSubmit = async (values: z.infer<typeof workshopRegistrationSchema>) => {
+    try {
+      const participantsCount = values.attendees === "more" ? 10 : Number(values.attendees || 1);
+      const titleFromSelection = selectedWorkshop
+        ? (language === "ar" ? selectedWorkshop.title.ar : selectedWorkshop.title.en)
+        : (language === "ar" ? "ورشة مخصصة" : "Customized Workshop");
 
-    // Simulating API request delay
-    setTimeout(() => {
-      // Show success message
+      await postWorkshopRegistration({
+        full_name: values.name,
+        email: values.email,
+        phone: values.phone || undefined,
+        organization: values.organization || undefined,
+        job_title: values.position || undefined,
+        workshop_title: titleFromSelection,
+        participants_count: participantsCount,
+        special_requests: values.specialRequests || undefined,
+      });
+
       toast({
-        title:
-          language === "ar"
-            ? "تم إرسال طلب التسجيل بنجاح"
-            : "Registration request sent successfully",
+        title: language === "ar" ? "تم إرسال الطلب بنجاح" : "Request submitted successfully",
         description:
           language === "ar"
             ? "سيتم التواصل معك قريباً لتأكيد التسجيل"
@@ -788,12 +799,51 @@ export default function WorkshopsPage() {
         variant: "default",
       });
 
-      // Close dialog
       setIsRegistrationDialogOpen(false);
-
-      // Reset form
       form.reset();
-    }, 1000);
+    } catch (err) {
+      if (err instanceof HttpError && err.status === 422) {
+        const errors = (err.data as any)?.errors as Record<string, string[] | string> | undefined;
+        if (errors) {
+          const map: Record<string, keyof typeof values> = {
+            full_name: "name",
+            email: "email",
+            phone: "phone",
+            organization: "organization",
+            job_title: "position",
+            workshop_title: "workshopId",
+            participants_count: "attendees",
+            special_requests: "specialRequests",
+          };
+          Object.entries(errors).forEach(([field, msgs]) => {
+            const formField = map[field];
+            if (formField) {
+              form.setError(formField as any, {
+                type: "server",
+                message: Array.isArray(msgs) ? msgs[0] : String(msgs),
+              });
+            }
+          });
+        }
+        toast({
+          title: language === "ar" ? "أخطاء في التحقق" : "Validation errors",
+          description:
+            language === "ar"
+              ? "يرجى تصحيح الحقول المحددة ثم إعادة المحاولة"
+              : "Please fix the highlighted fields and try again",
+          variant: "destructive",
+        });
+      } else {
+        toast({
+          title: language === "ar" ? "حدث خطأ غير متوقع" : "Unexpected error",
+          description:
+            language === "ar"
+              ? "تعذر إرسال الطلب حالياً. حاول لاحقاً"
+              : "Unable to submit your request right now. Please try again later",
+          variant: "destructive",
+        });
+      }
+    }
   };
 
   // Filter workshops by category

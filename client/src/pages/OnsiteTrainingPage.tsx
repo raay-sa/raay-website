@@ -30,6 +30,7 @@ type ApiProgram = {
   category_id: number | null;
   address: string | null;
   url: string | null;
+  duration: string | null;
   program_duration: string | null;
   date_from: string | null;
   date_to: string | null;

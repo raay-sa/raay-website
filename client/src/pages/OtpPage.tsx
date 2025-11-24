@@ -92,6 +92,8 @@ export default function OtpPage() {
       if (token && user) {
         try {
           localStorage.setItem("raay-auth", JSON.stringify({ token, refreshToken, user }));
+          // Dispatch custom event to notify Header component of auth change (same tab)
+          window.dispatchEvent(new CustomEvent("raay-auth-changed"));
         } catch {}
         clearOtpSession();
         toast({

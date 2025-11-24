@@ -91,29 +91,41 @@ function getCategoryColor() {
   return "#2a2665";
 }
 
-/** Format date range for onsite programs */
-function formatDateRange(dateFrom: string, dateTo: string, lang: "ar" | "en"): string {
+/** Format date for display */
+function formatDate(dateString: string, lang: "ar" | "en"): string {
   try {
-    const fromDate = new Date(dateFrom);
-    const toDate = new Date(dateTo);
-    
-    // Format dates with month names in the appropriate language
+    const date = new Date(dateString);
     const formatOptions: Intl.DateTimeFormatOptions = {
       year: 'numeric',
       month: 'long',
       day: 'numeric',
-      calendar: 'gregory' // Force Gregorian calendar
+      calendar: 'gregory'
     };
-    
     const locale = lang === "ar" ? "ar-SA" : "en-US";
-    const fromFormatted = fromDate.toLocaleDateString(locale, formatOptions);
-    const toFormatted = toDate.toLocaleDateString(locale, formatOptions);
-    
-    return `${fromFormatted} - ${toFormatted}`;
+    return date.toLocaleDateString(locale, formatOptions);
   } catch (error) {
-    // Fallback to raw dates if parsing fails
-    return `${dateFrom} - ${dateTo}`;
+    return dateString; // fallback to raw string
   }
+}
+
+/** Calculate days difference between two dates */
+function calculateDaysDifference(dateFrom: string, dateTo: string): number {
+  try {
+    const from = new Date(dateFrom);
+    const to = new Date(dateTo);
+    const diffTime = Math.abs(to.getTime() - from.getTime());
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    return diffDays;
+  } catch (error) {
+    return 0;
+  }
+}
+
+/** Format date range for onsite programs */
+function formatDateRange(dateFrom: string, dateTo: string, lang: "ar" | "en"): string {
+  const fromFormatted = formatDate(dateFrom, lang);
+  const toFormatted = formatDate(dateTo, lang);
+  return `${fromFormatted} - ${toFormatted}`;
 }
 
 /** Build a readable duration based on API fields */
@@ -127,9 +139,26 @@ function buildDurationLabel(p: Program, lang: "ar" | "en"): string {
     return `${hours}h`;
   }
 
+  // Use duration from API (in days) if available
+  let daysFromApi: number | null = null;
+  if (p.duration != null && typeof p.duration === 'number' && p.duration > 0) {
+    daysFromApi = p.duration;
+  }
+
   // If onsite program with date range
   if (p.type === "onsite" && p.dateFrom && p.dateTo) {
-    return formatDateRange(p.dateFrom, p.dateTo, lang);
+    const dateRange = formatDateRange(p.dateFrom, p.dateTo, lang);
+    
+    // Use API duration if available, otherwise calculate from dates
+    const daysDiff = daysFromApi ?? (p.dateFrom !== p.dateTo ? calculateDaysDifference(p.dateFrom, p.dateTo) : 0);
+    
+    if (daysDiff > 0) {
+      if (lang === "ar") {
+        return `${dateRange} (${daysDiff} ${daysDiff === 1 ? "يوم" : "أيام"})`;
+      }
+      return `${dateRange} (${daysDiff} ${daysDiff === 1 ? "day" : "days"})`;
+    }
+    return dateRange;
   }
 
   // If live program with date/time
@@ -138,13 +167,30 @@ function buildDurationLabel(p: Program, lang: "ar" | "en"): string {
     const time = p.time ?? null;
 
     const hasDate = !!date;
-    const hasTime = !!time;
+    const hasTime = !!time && p.durationHours !== null;
+
+    // If live program has both dateFrom and dateTo, show range with days
+    if (p.dateFrom && p.dateTo && p.dateFrom !== p.dateTo) {
+      const dateRange = formatDateRange(p.dateFrom, p.dateTo, lang);
+      
+      // Use API duration if available, otherwise calculate from dates
+      const daysDiff = daysFromApi ?? calculateDaysDifference(p.dateFrom, p.dateTo);
+      
+      if (daysDiff > 0) {
+        if (lang === "ar") {
+          return `${dateRange} (${daysDiff} ${daysDiff === 1 ? "يوم" : "أيام"})`;
+        }
+        return `${dateRange} (${daysDiff} ${daysDiff === 1 ? "day" : "days"})`;
+      }
+      return dateRange;
+    }
 
     if (hasDate && hasTime) {
-      return lang === "ar" ? `${date} - ${time}` : `${date} - ${time}`;
+      const formattedDate = formatDate(date, lang);
+      return lang === "ar" ? `${formattedDate} - ${time}` : `${formattedDate} - ${time}`;
     }
     if (hasDate) {
-      return lang === "ar" ? `${date}` : `${date}`;
+      return formatDate(date, lang);
     }
     if (hasTime) {
       return lang === "ar" ? `${time}` : `${time}`;
@@ -190,7 +236,7 @@ export default function ProgramCard({ program }: ProgramCardProps) {
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
         />
 
-        {/* طبقة تدرج شفافة لتوحيد مظهر البطاقة */}
+        {/* طبقة تدرج شفافة لتوحيد مظهر البطاقة */} 
         <div
           className="absolute inset-0"
           style={{

@@ -32,6 +32,7 @@ export interface ApiProgramTranslation {
   description: string;
   learning: string[];
   requirement: string[];
+  main_axes?: string[];
   parent_id: number;
   created_at: string;
   updated_at: string;
@@ -50,7 +51,10 @@ export interface ApiProgram {
   date_to?: string | null;
   time?: string | null;
   is_live?: 0 | 1;
+  address?: string | null;
+  url?: string | null;
   user_type?: string | null;
+  duration: number | string | null;
   program_duration: number | string | null;
   subscriptions_count?: number;
   category_id?: number;
@@ -96,11 +100,15 @@ export interface Program {
   dateTo?: string | null;
   time?: string | null;
   isLive?: boolean;
+  address?: string | null;
+  url?: string | null;
   description: string;
   userType?: string | null;
   learning?: string[] | null;
   requirement?: string[] | null;
+  mainAxes?: string[] | null;
   durationHours?: number | null;
+  duration?: number | null; // Duration in days from API
   subscriptionsCount?: number;
   category?: { id: number; title: string } | null;
   teacher?: Teacher | null;
@@ -115,11 +123,41 @@ export interface ContactUsPayload {
   subject: string;
   message: string;
   program_id?: number;
-}
+}x
 export interface ContactUsResponse {
   success?: boolean;
   message?: string;
   data?: unknown;
+}
+
+// ===== Workshop Registration =====
+export interface WorkshopRegistrationPayload {
+  full_name: string;
+  email: string;
+  phone?: string;
+  organization?: string;
+  job_title?: string;
+  workshop_title: string;
+  participants_count?: number; // default to 1 on backend
+  special_requests?: string;
+}
+
+export interface WorkshopRegistrationResponse {
+  success: boolean;
+  message?: string;
+  data?: {
+    id: number | string;
+    full_name: string;
+    email: string;
+    phone?: string | null;
+    organization?: string | null;
+    job_title?: string | null;
+    workshop_title: string;
+    participants_count: number;
+    special_requests?: string | null;
+    status?: string;
+    [k: string]: unknown;
+  };
 }
 
 // ===== Login =====
