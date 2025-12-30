@@ -11,7 +11,7 @@ export default function TrainingTracksSection() {
         </div>
         
         <div className="grid md:grid-cols-3 gap-6">
-          {tracks.map((track) => (
+          {tracks().map((track) => (
             <TrackCard key={track.id} track={track} />
           ))}
         </div>

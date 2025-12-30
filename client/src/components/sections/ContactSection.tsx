@@ -87,7 +87,7 @@ export default function ContactSection() {
           ? "حدث خطأ أثناء إرسال الرسالة"
           : "An error occurred while sending the message";
 
-      if (error instanceof HttpError<BackendErrorResponse>) {
+      if (error instanceof HttpError) {
         const be = error.data as BackendErrorResponse | undefined;
         const messages = flattenBackendErrors(be?.errors);
         if (messages.length > 0) {

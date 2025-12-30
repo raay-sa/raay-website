@@ -1,6 +1,15 @@
 // src/components/ui/partners-carousel.tsx
 import { useCallback, useEffect, useMemo, useState } from "react";
-import useEmblaCarousel, { EmblaOptionsType } from "embla-carousel-react";
+import useEmblaCarousel from "embla-carousel-react";
+
+type EmblaOptionsType = {
+  loop?: boolean;
+  dragFree?: boolean;
+  align?: "start" | "center" | "end";
+  direction?: "ltr" | "rtl";
+  containScroll?: "trimSnaps" | "keepSnaps" | false;
+  [key: string]: any;
+};
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import clsx from "clsx";
 

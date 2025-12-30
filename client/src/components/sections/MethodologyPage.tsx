@@ -28,9 +28,6 @@ function MethodologyCard({
 }: { 
   icon: any, 
   titleKey: string, 
-
-
-  CONST HANDLEbULKdELETE =
   descKey: string, 
   points?: string[] 
 }) {

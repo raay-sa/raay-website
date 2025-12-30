@@ -66,9 +66,9 @@ const GoogleCaptcha = forwardRef<GoogleCaptchaRef, GoogleCaptchaProps>(({
     }
   };
 
-  const handleError = (error: any) => {
+  const handleError = () => {
     if (onError) {
-      onError(error);
+      onError(new Error('reCAPTCHA error occurred'));
     }
   };
 

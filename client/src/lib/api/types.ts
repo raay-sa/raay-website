@@ -123,7 +123,7 @@ export interface ContactUsPayload {
   subject: string;
   message: string;
   program_id?: number;
-}x
+}
 export interface ContactUsResponse {
   success?: boolean;
   message?: string;
