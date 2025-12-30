@@ -4,6 +4,7 @@ export type ProgramCategory =
   | 'artificial-intelligence'
   | 'data-science'
   | 'risk-avoidance'
+  | 'organizational-transformation'
   | 'leadership-development';
 
 export interface Program {

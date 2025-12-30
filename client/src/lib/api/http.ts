@@ -26,7 +26,9 @@ type HttpJsonOptions<B> = {
 };
 
 function buildUrl(path: string, query?: HttpJsonOptions<any>["query"]) {
+  // It removes trailing slashes from the base URL.
   const base = API_BASE_URL.replace(/\/+$/, "");
+  // It removes leading slashes from the path.
   const clean = path.replace(/^\/+/, "");
   const url = new URL(`${base}/${clean}`);
   if (query) {
