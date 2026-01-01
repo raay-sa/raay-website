@@ -12,7 +12,8 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "client", "src"),
-      "@assets": path.resolve(__dirname, "attached_assets"),
+      // Removed @assets alias as attached_assets is not used
+      // "@assets": path.resolve(__dirname, "attached_assets"),
     },
   },
   root: path.resolve(__dirname, "client"),
