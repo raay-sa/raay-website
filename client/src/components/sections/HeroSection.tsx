@@ -109,7 +109,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="inline-block text-3xl md:text-5xl font-bold mb-6 px-6 py-2 bg-[#2a2665] text-[#b29567] rounded-lg"
+              className="inline-block text-3xl md:text-5xl font-bold mb-6 px-6 py-2 text-[#b29567] rounded-lg"
             >
               <TranslatedText textKey="hero.title" />
             </motion.h1>
