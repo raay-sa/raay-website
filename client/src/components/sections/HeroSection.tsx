@@ -146,7 +146,7 @@ export default function HeroSection() {
               
               {/* زر الملف التعريفي */}
               <a href="/assets/docs/profile.pdf" target="_blank" rel="noopener noreferrer" download>
-                <Button variant="outline" className="bg-transparent border-2 border-white text-white hover:bg-white/10 font-bold py-3 px-6 rounded-md transition duration-300">
+                <Button variant="outline" className="bg-transparent/10 border-2 border-white text-white hover:bg-white hover:text-[#2a2665] font-bold hover:font-black py-3 px-6 rounded-md transition duration-300 ease-out">
                   <TranslatedText textKey="profile.title" />
                 </Button>
               </a>
