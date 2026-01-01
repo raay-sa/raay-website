@@ -13,7 +13,7 @@ import { useI18nStore } from "@/lib/i18n";
 import { motion } from "framer-motion";
 import workValuesImg from "../../assets/image_1747131919824.png";
 import raayVideo from "../../assets/videos/raay-center-video.mp4";
-import raayIntroVideo from "../../assets/videos/raay-intro-video.mov";
+import AboutVideo from "../utils/AboutVideo";
 
 export default function AboutSection() {
   const { language } = useI18nStore();
@@ -116,15 +116,7 @@ export default function AboutSection() {
               transition={{ duration: 0.6 }}
               className="lg:w-1/2"
             >
-              <div className="rounded-lg overflow-hidden shadow-lg">
-                <video
-                  src={raayIntroVideo}
-                  controls
-                  autoPlay={true}
-                  preload="auto"
-                  className="w-full h-auto"
-                />
-              </div>
+              <AboutVideo />
             </motion.div>
           </div>
         </div>
