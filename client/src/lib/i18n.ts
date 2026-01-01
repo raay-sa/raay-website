@@ -232,7 +232,7 @@ export const dictionary: Dictionary = {
     "contact.info.title": "معلومات التواصل",
 
     // Profile section
-    "profile.title": "الملف التعريفي",
+    "profile.title": "يتعلم أكثر",
     "profile.download": "تحميل الملف",
     "profile.view": "عرض الملف",
     "contact.info.address": "العنوان",
@@ -499,7 +499,7 @@ export const dictionary: Dictionary = {
     "contact.section.info": "Contact Information",
 
     // Profile section
-    "profile.title": "Profile",
+    "profile.title": "Learn More",
     "profile.download": "Download",
     "profile.view": "View Profile",
 

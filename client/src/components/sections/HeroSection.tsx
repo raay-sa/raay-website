@@ -5,6 +5,7 @@ import { useI18nStore } from "@/lib/i18n";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { ArrowRight, ArrowLeft, Clock, User, Award } from "lucide-react";
+import { Link } from "wouter";
 
 // مكون بطاقة المزايا
 interface FeatureCardProps {
@@ -140,16 +141,18 @@ export default function HeroSection() {
               <a href="#programs" className="mb-2 md:mb-0">
                 <Button className="bg-[#b29567] hover:bg-[#b29567]/90 text-white font-bold py-3 px-6 rounded-md transition duration-300">
                   <TranslatedText textKey="hero.explore" />
-                  <DirectionArrow />
                 </Button>
               </a>
               
               {/* زر الملف التعريفي */}
-              <a href="/assets/docs/profile.pdf" target="_blank" rel="noopener noreferrer" download>
+              {/* <a href="/assets/docs/profile.pdf" target="_blank" rel="noopener noreferrer" download> */}
+              <Link to="/about-us#about-center">
                 <Button variant="outline" className="bg-transparent/10 border-2 border-white text-white hover:bg-white hover:text-[#2a2665] font-bold hover:font-black py-3 px-6 rounded-md transition duration-300 ease-out">
                   <TranslatedText textKey="profile.title" />
+                  <DirectionArrow />
                 </Button>
-              </a>
+              </Link>
+              {/* </a> */}
               {/* تم إزالة زر فيديو تعريفي للمركز من هنا */}
             </motion.div>
           </div>

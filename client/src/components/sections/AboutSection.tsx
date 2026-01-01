@@ -82,7 +82,7 @@ export default function AboutSection() {
       </section>
 
       {/* About Center Section */}
-      <section className="py-16 bg-white">
+      <section id="about-center" className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="flex flex-col lg:flex-row gap-12 items-center">
             {/* <div className=" gap-12 items-center"> */}
