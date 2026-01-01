@@ -122,6 +122,152 @@ export default function AboutSection() {
         </div>
       </section>
 
+      {/* Why choose Raay Center? */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-14">
+            <h2 className="text-3xl font-bold text-[#2a2665] mb-4">
+              {language === "ar"
+                ? "لماذا تختار مركز راي؟"
+                : "Why Choose Raay Center?"}
+            </h2>
+            <div className="h-1 w-20 bg-[#b29567] mx-auto mb-6"></div>
+          </div>
+
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
+            <motion.div
+              variants={itemVariants}
+              className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-all h-full"
+            >
+              <div className="flex items-center gap-3  mb-4">
+                <div className="bg-[#2a2665] rounded-full p-3 mr-4">
+                  <FaCheckCircle className="text-white text-xl" />
+                </div>
+                <h4 className="text-xl font-bold text-[#2a2665]">
+                  {language === "ar"
+                    ? "خبرات وطنية ودولية"
+                    : "National & International Expertise"}
+                </h4>
+              </div>
+              <p className="text-gray-700 mt-4 pl-16">
+                {language === "ar"
+                  ? "نضم نخبة من الخبراء والمدربين ذوي الكفاءات العالية والخبرات المتميزة محلياً ودولياً"
+                  : "We bring together elite experts and trainers with high competencies and distinguished experiences locally and internationally"}
+              </p>
+            </motion.div>
+
+            <motion.div
+              variants={itemVariants}
+              className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-all h-full"
+            >
+              <div className="flex items-center gap-3  mb-4">
+                <div className="bg-[#b29567] rounded-full p-3 mr-4">
+                  <FaCheckCircle className="text-white text-xl" />
+                </div>
+                <h4 className="text-xl font-bold text-[#2a2665]">
+                  {language === "ar"
+                    ? "منهجية متكاملة"
+                    : "Integrated Methodology"}
+                </h4>
+              </div>
+              <p className="text-gray-700 mt-4 pl-16">
+                {language === "ar"
+                  ? "نعتمد على منهجية متكاملة في التدريب والاستشارات تشمل التخطيط والتنفيذ والتقييم والتحسين"
+                  : "We rely on an integrated methodology in training and consulting that includes planning, implementation, evaluation, and improvement"}
+              </p>
+            </motion.div>
+
+            <motion.div
+              variants={itemVariants}
+              className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-all h-full"
+            >
+              <div className="flex items-center gap-3  mb-4">
+                <div className="bg-[#2a2665] rounded-full p-3 mr-4">
+                  <FaCheckCircle className="text-white text-xl" />
+                </div>
+                <h4 className="text-xl font-bold text-[#2a2665]">
+                  {language === "ar" ? "برامج متخصصة" : "Specialized Programs"}
+                </h4>
+              </div>
+              <p className="text-gray-700 mt-4 pl-16">
+                {language === "ar"
+                  ? "برامجنا مصممة بعناية لتلبية احتياجات المتدربين وتحقيق أهداف المؤسسات بشكل فعال"
+                  : "Our programs are carefully designed to meet the needs of trainees and effectively achieve organizational objectives"}
+              </p>
+            </motion.div>
+
+            <motion.div
+              variants={itemVariants}
+              className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-all h-full"
+            >
+              <div className="flex items-center gap-3  mb-4">
+                <div className="bg-[#b29567] rounded-full p-3 mr-4">
+                  <FaCheckCircle className="text-white text-xl" />
+                </div>
+                <h4 className="text-xl font-bold text-[#2a2665]">
+                  {language === "ar"
+                    ? "أساليب تدريب متنوعة"
+                    : "Diverse Training Methods"}
+                </h4>
+              </div>
+              <p className="text-gray-700 mt-4 pl-16">
+                {language === "ar"
+                  ? "نستخدم أساليب تدريب متنوعة تناسب جميع أنماط التعلم وتضمن تحقيق أقصى استفادة للمتدربين"
+                  : "We use diverse training methods that suit all learning styles and ensure maximum benefit for trainees"}
+              </p>
+            </motion.div>
+
+            <motion.div
+              variants={itemVariants}
+              className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-all h-full"
+            >
+              <div className="flex items-center gap-3  mb-4">
+                <div className="bg-[#2a2665] rounded-full p-3 mr-4">
+                  <FaCheckCircle className="text-white text-xl" />
+                </div>
+                <h4 className="text-xl font-bold text-[#2a2665]">
+                  {language === "ar"
+                    ? "حقائب تدريبية احترافية"
+                    : "Professional Training Packages"}
+                </h4>
+              </div>
+              <p className="text-gray-700 mt-4 pl-16">
+                {language === "ar"
+                  ? "حقائبنا التدريبية مصممة وفق أحدث المعايير العالمية وتتضمن محتوى تفاعلي وتطبيقي"
+                  : "Our training packages are designed according to the latest global standards and include interactive and applied content"}
+              </p>
+            </motion.div>
+
+            <motion.div
+              variants={itemVariants}
+              className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-all h-full"
+            >
+              <div className="flex items-center gap-3  mb-4">
+                <div className="bg-[#b29567] rounded-full p-3 mr-4">
+                  <FaCheckCircle className="text-white text-xl" />
+                </div>
+                <h4 className="text-xl font-bold text-[#2a2665]">
+                  {language === "ar"
+                    ? "تقييم دقيق للمخرجات"
+                    : "Accurate Output Evaluation"}
+                </h4>
+              </div>
+              <p className="text-gray-700 mt-4 pl-16">
+                {language === "ar"
+                  ? "نولي اهتماماً كبيراً لتقييم مخرجات التدريب وقياس الأثر على أداء المتدربين والمؤسسات"
+                  : "We pay great attention to evaluating training outputs and measuring the impact on the performance of trainees and organizations"}
+              </p>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Vision Mission Values Section */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
@@ -286,8 +432,8 @@ export default function AboutSection() {
         </div>
       </section>
 
-      {/* قيم العمل - صورة بحجم كامل */}
-      <section className="py-16 bg-gray-50">
+      {/* Work Values Section */}
+      {/* <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-14">
             <h2 className="text-3xl font-bold text-[#2a2665] mb-4">
@@ -310,153 +456,9 @@ export default function AboutSection() {
             />
           </div>
         </div>
-      </section>
+      </section> */}
 
-      {/* لماذا تختار مركز راي */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-14">
-            <h2 className="text-3xl font-bold text-[#2a2665] mb-4">
-              {language === "ar"
-                ? "لماذا تختار مركز راي؟"
-                : "Why Choose Raay Center?"}
-            </h2>
-            <div className="h-1 w-20 bg-[#b29567] mx-auto mb-6"></div>
-          </div>
 
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
-          >
-            <motion.div
-              variants={itemVariants}
-              className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-all h-full"
-            >
-              <div className="flex items-center gap-3  mb-4">
-                <div className="bg-[#2a2665] rounded-full p-3 mr-4">
-                  <FaCheckCircle className="text-white text-xl" />
-                </div>
-                <h4 className="text-xl font-bold text-[#2a2665]">
-                  {language === "ar"
-                    ? "خبرات وطنية ودولية"
-                    : "National & International Expertise"}
-                </h4>
-              </div>
-              <p className="text-gray-700 mt-4 pl-16">
-                {language === "ar"
-                  ? "نضم نخبة من الخبراء والمدربين ذوي الكفاءات العالية والخبرات المتميزة محلياً ودولياً"
-                  : "We bring together elite experts and trainers with high competencies and distinguished experiences locally and internationally"}
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={itemVariants}
-              className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-all h-full"
-            >
-              <div className="flex items-center gap-3  mb-4">
-                <div className="bg-[#b29567] rounded-full p-3 mr-4">
-                  <FaCheckCircle className="text-white text-xl" />
-                </div>
-                <h4 className="text-xl font-bold text-[#2a2665]">
-                  {language === "ar"
-                    ? "منهجية متكاملة"
-                    : "Integrated Methodology"}
-                </h4>
-              </div>
-              <p className="text-gray-700 mt-4 pl-16">
-                {language === "ar"
-                  ? "نعتمد على منهجية متكاملة في التدريب والاستشارات تشمل التخطيط والتنفيذ والتقييم والتحسين"
-                  : "We rely on an integrated methodology in training and consulting that includes planning, implementation, evaluation, and improvement"}
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={itemVariants}
-              className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-all h-full"
-            >
-              <div className="flex items-center gap-3  mb-4">
-                <div className="bg-[#2a2665] rounded-full p-3 mr-4">
-                  <FaCheckCircle className="text-white text-xl" />
-                </div>
-                <h4 className="text-xl font-bold text-[#2a2665]">
-                  {language === "ar" ? "برامج متخصصة" : "Specialized Programs"}
-                </h4>
-              </div>
-              <p className="text-gray-700 mt-4 pl-16">
-                {language === "ar"
-                  ? "برامجنا مصممة بعناية لتلبية احتياجات المتدربين وتحقيق أهداف المؤسسات بشكل فعال"
-                  : "Our programs are carefully designed to meet the needs of trainees and effectively achieve organizational objectives"}
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={itemVariants}
-              className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-all h-full"
-            >
-              <div className="flex items-center gap-3  mb-4">
-                <div className="bg-[#b29567] rounded-full p-3 mr-4">
-                  <FaCheckCircle className="text-white text-xl" />
-                </div>
-                <h4 className="text-xl font-bold text-[#2a2665]">
-                  {language === "ar"
-                    ? "أساليب تدريب متنوعة"
-                    : "Diverse Training Methods"}
-                </h4>
-              </div>
-              <p className="text-gray-700 mt-4 pl-16">
-                {language === "ar"
-                  ? "نستخدم أساليب تدريب متنوعة تناسب جميع أنماط التعلم وتضمن تحقيق أقصى استفادة للمتدربين"
-                  : "We use diverse training methods that suit all learning styles and ensure maximum benefit for trainees"}
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={itemVariants}
-              className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-all h-full"
-            >
-              <div className="flex items-center gap-3  mb-4">
-                <div className="bg-[#2a2665] rounded-full p-3 mr-4">
-                  <FaCheckCircle className="text-white text-xl" />
-                </div>
-                <h4 className="text-xl font-bold text-[#2a2665]">
-                  {language === "ar"
-                    ? "حقائب تدريبية احترافية"
-                    : "Professional Training Packages"}
-                </h4>
-              </div>
-              <p className="text-gray-700 mt-4 pl-16">
-                {language === "ar"
-                  ? "حقائبنا التدريبية مصممة وفق أحدث المعايير العالمية وتتضمن محتوى تفاعلي وتطبيقي"
-                  : "Our training packages are designed according to the latest global standards and include interactive and applied content"}
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={itemVariants}
-              className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-all h-full"
-            >
-              <div className="flex items-center gap-3  mb-4">
-                <div className="bg-[#b29567] rounded-full p-3 mr-4">
-                  <FaCheckCircle className="text-white text-xl" />
-                </div>
-                <h4 className="text-xl font-bold text-[#2a2665]">
-                  {language === "ar"
-                    ? "تقييم دقيق للمخرجات"
-                    : "Accurate Output Evaluation"}
-                </h4>
-              </div>
-              <p className="text-gray-700 mt-4 pl-16">
-                {language === "ar"
-                  ? "نولي اهتماماً كبيراً لتقييم مخرجات التدريب وقياس الأثر على أداء المتدربين والمؤسسات"
-                  : "We pay great attention to evaluating training outputs and measuring the impact on the performance of trainees and organizations"}
-              </p>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
     </>
   );
 }
